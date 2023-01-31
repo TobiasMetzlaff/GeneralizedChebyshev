@@ -14,7 +14,7 @@ The first time running
  read("GeneralizedChebyshev.mpl"): with(GeneralizedChebyshev);
 can return an error. In this case, save the file, close it and open it again.
 
-To use 'GeneralizedChebsyhevHelp.mw' in any Maple2022 worksheet, place it in the same folder as the worksheet and run the above command.
+To use 'GeneralizedChebsyhevHelp.mw' in any Maple 2022 worksheet, place it in the same folder as the worksheet and run the above command.
 
 
 
@@ -22,11 +22,11 @@ For questions, please contact 'tobias.metzlaff@inria.fr'.
 
 
 
-[1] M. Hoffman and W. Withers: Generalized Chebyshev Polynomials Associated with Affine Weyl Groups
+[1] M. Hoffman and W. Withers: Generalized Chebyshev Polynomials Associated with Affine Weyl Groups.
 https://www.jstor.org/stable/2000951#metadata_info_tab_contents
 
-[2] Bourbaki: Groupes et algèbres de Lie, Ch. VI
+[2] Bourbaki: Groupes et algèbres de Lie, Ch. VI.
 https://link.springer.com/book/10.1007/978-3-540-34491-9
 
-[3] E. Hubert, T. Metzlaff, P. Moustrou and C. Riener: Optimization of trigonometric polynomials with crystallographic symmetry and applications
+[3] E. Hubert, T. Metzlaff, P. Moustrou and C. Riener: Optimization of trigonometric polynomials with crystallographic symmetry and applications.
 https://hal.science/hal-03768067v1
