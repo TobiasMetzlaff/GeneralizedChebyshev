@@ -28,5 +28,5 @@ https://www.jstor.org/stable/2000951#metadata_info_tab_contents
 [2] Bourbaki: Groupes et algèbres de Lie, Ch. VI
 https://link.springer.com/book/10.1007/978-3-540-34491-9
 
-[3] E. Hubert, T. Metzlaff, P. Moustrou and Cordian Riener: Optimization of trigonometric polynomials with crystallographic symmetry and applications
+[3] E. Hubert, T. Metzlaff, P. Moustrou and C. Riener: Optimization of trigonometric polynomials with crystallographic symmetry and applications
 https://hal.science/hal-03768067v1
