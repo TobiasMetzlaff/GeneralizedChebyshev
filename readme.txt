@@ -1,6 +1,6 @@
-This is a Maple 2022 package for computations with generalized Chebyshev polynomials associated to weight lattices of crystallographic root systems.
+This is a Maple 2022 package for computations with generalized Chebyshev polynomials [1] associated to weight lattices of crystallographic root systems [2].
 
-The main purpose of this package is to produce matrices for semi-definite programs that appear in polynomial optimization.
+The main purpose of this package is to produce matrices for semi-definite programs that appear in polynomial optimization [3].
 
 
 
@@ -19,3 +19,14 @@ To use 'GeneralizedChebsyhevHelp.mw' in any Maple2022 worksheet, place it in the
 
 
 For questions, please contact 'tobias.metzlaff@inria.fr'.
+
+
+
+[1] M. Hoffman and W. Withers: Generalized Chebyshev Polynomials Associated with Affine Weyl Groups
+https://www.jstor.org/stable/2000951#metadata_info_tab_contents
+
+[2] Bourbaki: Groupes et algèbres de Lie, Ch. VI
+https://link.springer.com/book/10.1007/978-3-540-34491-9
+
+[3] E. Hubert, T. Metzlaff, P. Moustrou and Cordian Riener: Optimization of trigonometric polynomials with crystallographic symmetry and applications
+https://hal.science/hal-03768067v1
