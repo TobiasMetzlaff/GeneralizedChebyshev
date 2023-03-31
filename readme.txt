@@ -16,14 +16,16 @@ A theorem from multiplicative invariant theory states that those elements of the
  
 (*) Q[Omega]^W = Q[theta_{omega_1}, ..., theta_{omega_n}],
 
-where for every weight in Omega we define the "orbit polynomial" or "generalized cosine"
+where for every weight in Omega we define the "generalized cosine"
 
-    theta_weight := 1/|W| \sum\limits_{A \in W} e^{A weight}.
+    theta_weight := 1/|W| \sum\limits_{A \in W} e^{A weight},
     
+which is simply the averaging sum over all orbit points and in particular invariant.
 The property (*) allows to define the generalized Chebyshev polynomial (of the first kind) associated to a weight, namely the unique multivariate T_weight in Q[z_1, ..., z_n], such that
 
     T_weight(theta_{omega_1}, ..., theta_{omega_n}) = theta_weight.
 
+(Why is it called "generalized"? Because it extends the univariate definition of Chebyshev polynomials T_k ((x+x^{-1})/2) = (x^k + x^{-k})/2.)
 These polynomials form a basis of Q[z_1, ..., z_n] and are orthogonal on the orbit space of W, that is, on the basic semi-algebraic set
 
     TOrbSpace := { (theta_{omega_1}, ..., theta_{omega_n})(u) | u in R^n }.
@@ -38,7 +40,7 @@ The matrix entries of H are given through a closed formula that is available as 
 
 Any root system can be decomposed into irreducible components which classify the 7 families of simple Lie algebras:
 
-    A B C (n>=2)    D (n>=4)    E (n=6,7,8)    F (n=4)    G (n=2)
+    A (n>=1)    B C (n>=2)    D (n>=4)    E (n=6,7,8)    F (n=4)    G (n=2)
 
 Any semi-simple Lie algebra admits a root system that decomposes into orthogonal, irreducible components which are of one of the above "simple Lie types". Hence, we only need to consider the latter.
 
