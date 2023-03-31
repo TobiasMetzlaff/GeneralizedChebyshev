@@ -7,26 +7,28 @@ with(combinat):
 with(GroupTheory):
 with(LinearAlgebra):
 
-export Base, coroot, WeightMatrix, FWeight, RWeylGroupGen, RWeylGroup, ZWeylGroup, FundomVertexCoefficient, VertexFundom, VertexTOrbitSpace, FundamentalInvariant, HighestRoot, MonomialExponent, ChebyshevLevel, ChebyshevDegExp, ROrbit, ZOrbit, GeneralizedCosine, RGeneralizedCosine, TMultiply, TPolyRecurrence, HermiteMatrix, RHermiteMatrix, InvariantRewrite, THermiteMatrix, RTHermiteMatrix, TLocalizedPMI, TArchimedeanPMI, ChebyshevSDPdata, ChebyshevArchimedeanSDP, Pull, TruncatedTMomentMatrix;
+export Base, coroot, WeightMatrix, FWeight, RWeylGroupGen, RWeylGroup, ZWeylGroup, FundomVertexCoefficient, VertexFundom, VertexTOrbitSpace, FundamentalInvariant, HighestRoot, MonomialExponent, ChebyshevLevel, ChebyshevDegExp, ROrbit, ZOrbit, GeneralizedCosine, RGeneralizedCosine, TMultiply, TPolyRecurrence, HermiteMatrix, RHermiteMatrix, InvariantRewrite, THermiteMatrix, RTHermiteMatrix, TLocalizedPMI, TArchimedeanPMI, ChebyshevSDPdata, ChebyshevArchimedeanSDP, Pull, RPull, TruncatedTMomentMatrix, ZWeylGroupGen, Reflection;
 
-local OrthogonalMatrixConstructor, DiagonalMatrixConstructor, esp, MonomialMultiply, TruncatedMonomialMomentMatrix, PrimalConstraintMatrix, DualConstraintMatrix, SolutionSet, MonomialExponent2, MonomialRewrite, MonomialHermiteMatrix, MonomialLocalizedPMI, CoeffInMatrix, THermiteEntries, RTHermiteEntries;
+local OrthogonalMatrixConstructor, DiagonalMatrixConstructor, esp, MonomialMultiply, TruncatedMonomialMomentMatrix, PrimalConstraintMatrix, DualConstraintMatrix, SolutionSet, MonomialExponent2, MonomialRewrite, MonomialHermiteMatrix, MonomialLocalizedPMI, CoeffInMatrix, THermiteEntries, RTHermiteEntriesOld, RTHermiteEntries;
 
 Base:=proc(Type,n) # base of a root system
-local i;
+local i, j;
  if   Type = A then
-  [seq(convert(Column(IdentityMatrix(n+1),i)-Column(IdentityMatrix(n+1),i+1),list),i=1..n)]
+  [seq([seq(`if`(j=i,1,`if`(j=i+1,-1,0)),j=1..n+1)],i=1..n)]
  elif Type = B then
-  [seq(convert(Column(IdentityMatrix(n),i)-Column(IdentityMatrix(n),i+1),list),i=1..n-1),[seq(0,i=1..n-1),1]]
+  [seq([seq(`if`(j=i,1,`if`(j=i+1,-1,0)),j=1..n)],i=1..n)]
  elif Type = C then
-  [seq(convert(Column(IdentityMatrix(n),i)-Column(IdentityMatrix(n),i+1),list),i=1..n-1),[seq(0,i=1..n-1),2]]
+  [seq([seq(`if`(j=i,1,`if`(j=i+1,-1,0)),j=1..n)],i=1..n-1),[seq(0,i=1..n-1),2]]
  elif Type = D then
-  [seq(convert(Column(IdentityMatrix(n),i)-Column(IdentityMatrix(n),i+1),list),i=1..n-1),convert(Column(IdentityMatrix(n),n-1)+Column(IdentityMatrix(n),n),list)]
+  [seq([seq(`if`(j=i,1,`if`(j=i+1,-1,0)),j=1..n)],i=1..n-1),[seq(`if`(j=n,1,`if`(j=n-1,1,0)),j=1..n)]]
+ elif Type = E and 6 <= n and n <= 8 then
+  [[1,-1,-1,-1,-1,-1,-1,1]/2,[1,1,seq(0,j=3..8)],seq([seq(`if`(j=i-1,1,`if`(j=i-2,-1,0)),j=1..8)],i=3..n)]
  elif Type = F and n = 4 then
   [[0,1,-1,0],[0,0,1,-1],[0,0,0,1],[1,-1,-1,-1]/2]
  elif Type = G and n = 2 then
   [[1,-1,0],[-2,1,1]]
  else
-  printf("Error: root system must be of Type A, B, C, D, F, G")
+  printf("Error: root system must be of simple Lie type")
  fi;
 end proc:
 
@@ -37,21 +39,42 @@ coroot:=proc(r::list) # coroot of the input
 end proc:
 
 WeightMatrix:=proc(Type,n) # the matrix containing the fundamental weights as columns
-local i, j;
- if Type = A then
-  Transpose(Matrix([seq(1/(n+1)*((n+1-i)*convert([seq(convert(Column(IdentityMatrix(n+1),j),list),j=1..i)],`+`)-i*convert([seq(convert(Column(IdentityMatrix(n+1),j),list),j=i+1..n+1)],`+`)),i=1..n)]))
- elif Type = G then
-  Transpose(Matrix(2, 3, [[0, -1, 1], [-1, -1, 2]]))
- elif Type = B or Type = C or Type = D or Type = F then
-  Matrix([seq(coroot(Base(Type,n)[i]),i=1..n)])^(-1)
- else
-  printf("Error: root system must be of Type A, B, C, D, F, G")
- fi;
+ MatrixInverse(Matrix(map(v->coroot(v),Base(Type,n))))
 end proc:
 
 FWeight:=proc(Type,n) # the list of fundamental weights
 local i;
  [seq(convert(Column(WeightMatrix(Type,n),i),list),i=1..n)]
+end proc:
+
+HighestRoot:=proc(Type,n)
+local i, j;
+ if   Type = A then
+  FWeight(Type,n)[1]+FWeight(Type,n)[n]
+ elif Type = B then
+  Base(Type,n)[1] + 2*convert([seq(Base(Type,n)[j],j=2..n)],`+`)
+ elif Type = C then
+  2*FWeight(Type,n)[1]
+ elif Type = D then
+  Base(Type,n)[1] + 2*convert([seq(Base(Type,n)[j],j=2..n-2)],`+`) + Base(Type,n)[n-1] + Base(Type,n)[n]
+ elif Type = E and n = 6 then
+  FWeight(Type,n)[2]
+ elif Type = E and n = 7 then
+  FWeight(Type,n)[1]
+ elif Type = E and n = 8 then
+  FWeight(Type,n)[8]
+ elif Type = F and n = 4 then
+  FWeight(Type,n)[1]
+ elif Type = G and n = 2 then
+  FWeight(Type,n)[2]
+ else
+  printf("Error: root system must be of simple Lie type")
+ fi;
+end proc:
+
+FundomVertexCoefficient:=proc(Type,n) # fundamental domain is convex hull of 0 and fundamental weights, divided by some scalars. this is the list of scalar divisors (!!!)
+local i;
+ [op(convert(Transpose(<op(HighestRoot(Type,n))>).WeightMatrix(Type,n),list)),1]
 end proc:
 
 OrthogonalMatrixConstructor:=proc(Type,n,i,j)
@@ -71,11 +94,9 @@ DiagonalMatrixConstructor:=proc(n,i,j)
 end proc:
 
 RWeylGroupGen:=proc(Type,n) option remember; # generators of the Weyl group as a real orthogonal matrix group
-local i, j, k, N, diag;
+ local i, j, k, N, diag;
  if   Type = A then
-  {seq(seq(Matrix([seq(convert(Column(IdentityMatrix(n+1),k),list),k=1..i-1),convert(Column(IdentityMatrix(n+1),j),list),seq(convert(Column(IdentityMatrix(n+1),k),list),k=i+1..j-1),convert(Column(IdentityMatrix(n+1),i),list),seq(convert(Column(IdentityMatrix(n+1),k),list),k=j+1..n+1)]),i=1..j-1),j=1..n+1)};
- elif Type = G and n = 2 then
-  {Matrix(3, 3, [[0, 1, 0], [1, 0, 0], [0, 0, 1]]), Matrix(3, 3, [[-1/3, 2/3, 2/3], [2/3, 2/3, -1/3], [2/3, -1/3, 2/3]])}
+  [seq(seq(Matrix([seq(convert(Column(IdentityMatrix(n+1),k),list),k=1..i-1),convert(Column(IdentityMatrix(n+1),j),list),seq(convert(Column(IdentityMatrix(n+1),k),list),k=i+1..j-1),convert(Column(IdentityMatrix(n+1),i),list),seq(convert(Column(IdentityMatrix(n+1),k),list),k=j+1..n+1)]),i=1..j-1),j=1..n+1)];
  elif Type = B or Type = C or Type = D or Type = F then
   for i from 1 to n do
    N[i]:=Matrix([seq(OrthogonalMatrixConstructor(Type,n,i,j),j=1..n)]):
@@ -84,27 +105,58 @@ local i, j, k, N, diag;
    diag[i]:=Matrix([seq(DiagonalMatrixConstructor(n,i,j),j=1..n)]):
   od:
   for i from 1 to n do
-   {seq(Transpose(N[i]^(-1).diag[i].N[i]),i=1..n)}
+   [seq(Transpose(N[i]^(-1).diag[i].N[i]),i=1..n)]
   od:
+ elif Type = G and n = 2 then
+  [Matrix(3, 3, [[0, 1, 0], [1, 0, 0], [0, 0, 1]]), Matrix(3, 3, [[-1/3, 2/3, 2/3], [2/3, 2/3, -1/3], [2/3, -1/3, 2/3]])]
  else
   printf("Error: root system must be of Type A, B, C, D, F, G")
  fi;
 end proc:
 
 RWeylGroup:=proc(Type,n) option remember; # the Weyl group as a real orthogonal matrix group
-local W;
- W:=Group(RWeylGroupGen(Type,n));
+ local W;
+ W:=Group({op(RWeylGroupGen(Type,n))});
  [op(Elements(W))];
+end proc:
+
+ZWeylGroupGen:=proc(Type,n) option remember; # the Weyl group as an integer matrix group
+ local mat;
+ map(mat-> MatrixInverse(WeightMatrix(Type,n)).mat.WeightMatrix(Type,n),RWeylGroupGen(Type,n));
 end proc:
 
 ZWeylGroup:=proc(Type,n) option remember; # the Weyl group as an integer matrix group
-local ZWeylGroupGen, mat, W;
- ZWeylGroupGen:=map(mat-> MatrixInverse(WeightMatrix(Type,n)).mat.WeightMatrix(Type,n),RWeylGroupGen(Type,n));
- W:=Group(ZWeylGroupGen);
+ local W;
+ W:=Group({op(ZWeylGroupGen(Type,n))});
  [op(Elements(W))];
 end proc:
 
-FundamentalInvariant:=proc(Type,n)
+Reflection:=proc(rho,omega)  
+ omega - ListTools[DotProduct](coroot(rho),omega)*rho;
+end:
+
+ROrbit:=proc(Type,n,omega) option remember;
+ local Orb, i, stack_omega, next_omega, new_omega;
+ Orb := {omega};
+ stack_omega := stack[new](omega);
+ while (not stack[empty](stack_omega)) do
+  next_omega := stack[pop](stack_omega);
+  for i from 1 to n do
+   new_omega := Reflection(Base(Type,n)[i],next_omega);
+   if (not (new_omega in Orb)) then
+    Orb := Orb union {new_omega};
+    stack[push](new_omega, stack_omega);
+   end if;
+  od;
+ od;
+ Orb := [op(simplify(Orb))];
+end proc:
+
+ZOrbit:=proc(Type,n,alpha) option remember; 
+ map(v->convert(MatrixInverse(WeightMatrix(Type,n)).<v>,list),ROrbit(Type,n,convert(WeightMatrix(Type,n).<alpha>,list)))
+end proc:
+
+FundamentalInvariant:=proc(Type,n) # as Laurent polynomials
  local k, l, orb;
  global x;
  x:='x';
@@ -128,41 +180,6 @@ FundamentalInvariant:=proc(Type,n)
  fi;
 end proc:
 
-HighestRoot:=proc(Type,n)
-local i, j;
- if   Type = A then
-  convert([seq(Base(Type,n)[i],i=1..n)],`+`)
- elif Type = B then
-  Base(Type,n)[1] + 2*convert([seq(Base(Type,n)[j],j=2..n)],`+`)
- elif Type = C then
-  2*convert([seq(Base(Type,n)[j],j=1..n-1)],`+`) + Base(Type,n)[n]
- elif Type = D then
-  Base(Type,n)[1] + 2*convert([seq(Base(Type,n)[j],j=2..n-2)],`+`) + Base(Type,n)[n-1] + Base(Type,n)[n]
- elif Type = F and n = 4 then
-  [1,1,0,0]
- elif Type = G and n = 2 then
-  [-1, -1, 2]
- else
-  printf("Error: root system must be of Type A, B, C, D, F, G")
-
- fi;
-end proc:
-
-FundomVertexCoefficient:=proc(Type,n) # fundamental domain is convex hull of 0 and fundamental weights, divided by some scalars. this is the list of scalar divisors (!!!)
-local i;
- [op(convert(Transpose(<op(HighestRoot(Type,n))>).WeightMatrix(Type,n),list)),1]
-end proc:
-
-ROrbit:=proc(Type,n,omega) option remember; # list of elements in an orbit under orthogonal Weyl group action, not counting multiplicities
-local i, mat;
- [op({op(map(mat -> convert(mat.<omega>,list),RWeylGroup(Type,n)))})];
-end proc:
-
-ZOrbit:=proc(Type,n,alpha) option remember; # list of elements in an orbit under integer Weyl group action, not counting multiplicities
-local i;
- [op({op(map(mat -> convert(mat.<alpha>,list),ZWeylGroup(Type,n)))})];
-end proc:
-
 esp:=proc(L,r) # r-th elementary symmetric polynomials, evaluated in list L
  local f, i;
  f:=product((x_-L[i]),i=1..nops(L));
@@ -179,10 +196,15 @@ local i, j;
   [seq( simplify(1/binomial(n,j)*esp([seq(cos(2*Pi*u[i]),i=1..n)],j)) , j=1..n)]
  elif Type = D then
   [seq( simplify(1/binomial(n,j)*esp([seq(cos(2*Pi*u[i]),i=1..n)],j)) , j=1..n-2),simplify(esp([seq(cos(Pi*u[i]),i=1..n)],n)-(-I)^n*esp([seq(sin(Pi*u[i]),i=1..n)],n)),simplify(esp([seq(cos(Pi*u[i]),i=1..n)],n)+(-I)^n*esp([seq(sin(Pi*u[i]),i=1..n)],n))]
+ elif Type = F and n = 4 then
+  [cos(Pi*u[1])*cos(Pi*u[2])/6 + cos(Pi*u[1])*cos(Pi*u[3])/6 + cos(Pi*u[1])*cos(Pi*u[4])/6 + cos(Pi*u[2])*cos(Pi*u[3])/6 + cos(Pi*u[2])*cos(Pi*u[4])/6 + cos(Pi*u[3])*cos(Pi*u[4])/6,
+   cos(Pi*u[1])*cos(Pi*u[4])*cos(Pi*u[2])^2/6 + cos(Pi*u[1])*cos(Pi*u[2])*cos(Pi*u[3])^2/6 + cos(Pi*u[1])*cos(Pi*u[2])*cos(Pi*u[4])^2/6 + cos(Pi*u[1])*cos(Pi*u[4])*cos(Pi*u[3])^2/6 + cos(Pi*u[1])*cos(Pi*u[3])*cos(Pi*u[4])^2/6 + cos(Pi*u[1])^2*cos(Pi*u[2])*cos(Pi*u[3])/6 + cos(Pi*u[1])^2*cos(Pi*u[2])*cos(Pi*u[4])/6 + cos(Pi*u[1])^2*cos(Pi*u[3])*cos(Pi*u[4])/6 + cos(Pi*u[2])*cos(Pi*u[4])*cos(Pi*u[3])^2/6 + cos(Pi*u[2])*cos(Pi*u[3])*cos(Pi*u[4])^2/6 + cos(Pi*u[2])^2*cos(Pi*u[3])*cos(Pi*u[4])/6 - cos(Pi*u[1])*cos(Pi*u[2])/6 - cos(Pi*u[1])*cos(Pi*u[3])/6 - cos(Pi*u[1])*cos(Pi*u[4])/6 - cos(Pi*u[2])*cos(Pi*u[3])/6 - cos(Pi*u[2])*cos(Pi*u[4])/6 - cos(Pi*u[3])*cos(Pi*u[4])/6 + cos(Pi*u[1])*cos(Pi*u[3])*cos(Pi*u[2])^2/6,
+   cos((3*Pi*u[1])/2)*cos(Pi*u[2]/2)*cos(Pi*u[3]/2)*cos(Pi*u[4]/2)/6 + cos(Pi*u[1])*cos(Pi*u[2])*cos(Pi*u[3])/12 + cos(Pi*u[1])*cos(Pi*u[2])*cos(Pi*u[4])/12 + cos(Pi*u[1])*cos(Pi*u[3])*cos(Pi*u[4])/12 + cos(Pi*u[2])*cos(Pi*u[3])*cos(Pi*u[4])/12 + cos(Pi*u[1]/2)*cos((3*Pi*u[2])/2)*cos(Pi*u[3]/2)*cos(Pi*u[4]/2)/6 + cos(Pi*u[1]/2)*cos(Pi*u[2]/2)*cos((3*Pi*u[3])/2)*cos(Pi*u[4]/2)/6 + cos(Pi*u[1]/2)*cos(Pi*u[2]/2)*cos(Pi*u[3]/2)*cos((3*Pi*u[4])/2)/6,
+   cos(Pi*u[1])/12 + cos(Pi*u[2])/12 + cos(Pi*u[3])/12 + cos(Pi*u[4])/12 + (2*cos(Pi*u[1]/2)*cos(Pi*u[2]/2)*cos(Pi*u[3]/2)*cos(Pi*u[4]/2))/3]
  elif Type = G and n = 2 then
   [cos(2*Pi*(u[1] - u[2]))/3 + cos(2*Pi*(u[1] - u[3]))/3 + cos(2*Pi*(u[2] - u[3]))/3, cos(2*Pi*(u[1] - 2*u[2] + u[3]))/3 + cos(2*Pi*(u[1] + u[2] - 2*u[3]))/3 + cos((4*u[1] - 2*u[2] - 2*u[3])*Pi)/3]
  else
-  printf("Error: root system must be of Type A, B, C, D")
+  printf("Error: root system must be of Type A, B, C, D, F, G")
  fi;
 end proc:
 
@@ -190,23 +212,24 @@ RGeneralizedCosine:=proc(Type,n,u::list) # real generalized cosine evaluated in 
 local i, j;
  if Type = A then
   [seq( simplify(GeneralizedCosine(Type,n,u)[j]+GeneralizedCosine(Type,n,u)[n+1-j])/2 , j=1..floor(n/2)) , seq(simplify(GeneralizedCosine(Type,n,u)[j]),j=ceil((n+1)/2)..floor((n+1)/2)) , seq( simplify(GeneralizedCosine(Type,n,u)[n+1-j]-GeneralizedCosine(Type,n,u)[j])/(2*I) , j=ceil((n+2)/2)..n)]
- elif Type = B or Type = C or (Type = G and n = 3) then
+ elif Type = B or Type = C or (Type = G and n = 2) or (Type = F and n = 4) then
   GeneralizedCosine(Type,n,u)
  elif Type = D then
-  if is(n::even) then GeneralizedCosine(Type,n,u)
+  if is(n::even) then 
+   GeneralizedCosine(Type,n,u)
   else
    [seq(GeneralizedCosine(Type,n,u)[j],j=1..n-2),simplify((GeneralizedCosine(Type,n,u)[n]-GeneralizedCosine(Type,n,u)[n-1])/(2*I)),simplify((GeneralizedCosine(Type,n,u)[n]+GeneralizedCosine(Type,n,u)[n-1])/2)]
   fi;
  else
-  printf("Error: root system must be of Type A, B, C, D")
+  printf("Error: root system must be of Type A, B, C, D, F, G")
  fi;
 end proc:
 
 VertexFundom:=proc(Type,n) # list of vertices of the fundamental domain of orthogonal Weyl group
 local i;
- if Type = A then
+ if Type = A or (Type = G and n = 2) then
   [seq(FWeight(Type,n)[i]/FundomVertexCoefficient(Type,n)[i],i=1..n),[seq(0,i=1..n+1)]]
- elif Type = B or Type = C or Type = D or Type = G then
+ elif Type = B or Type = C or Type = D or (Type = F and n = 4) then
   [seq(FWeight(Type,n)[i]/FundomVertexCoefficient(Type,n)[i],i=1..n),[seq(0,i=1..n)]]
  fi;
 end proc:
@@ -216,15 +239,27 @@ local i;
  [seq(RGeneralizedCosine(Type,n,VertexFundom(Type,n)[i]),i=1..n+1)];
 end proc:
 
-Pull := proc(Type,n,alpha) option remember; # returns the dominant weight, containing alpha as an integer vector in its orbit
-local orb, i, u;
- if `and`(seq(is(alpha[i] >=0), i=1..n)) then
-  alpha
- else
-  orb := ZOrbit(Type,n,alpha);
-  orb := select( u -> `and`( seq(is(u[i] >=0), i=1..n) ), orb);
-  op(1, orb);
- end if;
+RPull:=proc(Type,n,omega) option remember;
+ local M, mu, L, i, v;
+ M:=MatrixInverse(WeightMatrix(Type,n));
+ mu:=omega;
+ L:=map(v->sign(v),M.<mu>);
+ while `or`(seq(is(L[i]=-1),i=1..n)) do
+  for i from 1 to n do
+   if L[i]=-1 then
+    mu:=Reflection(Base(Type,n)[i],mu)
+   fi;
+  od;
+  L:=map(v->sign(v),M.<mu>);
+ od;
+ mu;
+end proc:
+
+Pull := proc(Type,n,alpha) option remember;
+ local M, mu;
+ M:=WeightMatrix(Type,n);
+ mu:=convert(M.<alpha>,list);
+ convert(MatrixInverse(M).<RPull(Type,n,mu)>,list);
 end proc:
 
 TMultiply:=proc(Type,alpha,beta) option remember; # recurrence formula for Chebyshev polynomials associated to integer vectors alpha, beta. returns indeterminates y[...]
@@ -258,11 +293,12 @@ ChebyshevDegExp:=proc(Type,n,l,bound) option remember;
 end proc:
 
 ChebyshevLevel:=proc(Type,n,l) option remember;
- local L, i;
+ local F, L, i;
+ F:=FundomVertexCoefficient(Type,n);
  if Type=F and n=4 then
-  select( L-> l = convert([seq(FundomVertexCoefficient(Type,n)[1..n][i]*L[i],i=1..n)],`+`),MonomialExponent(n,l))
+  select( L-> l = convert([seq(F[1..n][i]*L[i],i=1..n)],`+`),MonomialExponent(n,l))
  else
-  select( L-> l*FundomVertexCoefficient(Type,n)[1] = convert([seq(FundomVertexCoefficient(Type,n)[1..n][i]*L[i],i=1..n)],`+`),MonomialExponent(n,l))
+  select( L-> l*F[1] = convert([seq(F[1..n][i]*L[i],i=1..n)],`+`),MonomialExponent(n,l))
  fi;
 end proc:
 
@@ -321,43 +357,52 @@ HermiteMatrix:=proc(Type,n) # polynomial matrix which characterizes the T-orbit 
  elif Type = B then
   Y:=[seq(z[i],i=1..n)]:
   for k from 1 to n-1 do
-   f[k]:=(-1)^(k+1)*2^k*binomial(n,k)*Y[k];
+   f[k]:=(-1)^(k+1)*binomial(n,k)*Y[k];
   od:
-  f[n]:=(-1)^(n+1)*2^n*(2^n*Y[n]^2-convert([seq(binomial(n,i)*Y[i],i=1..n-1)],`+`)-1);
+  f[n]:=(-1)^(n+1)*(2^n*Y[n]^2-convert([seq(binomial(n,i)*Y[i],i=1..n-1)],`+`)-1);
   CompMat:=Matrix(n,(i,j)-> if  (i = j+1 and j <= n-1) then 1
                             elif j <= n-1 then 0
                             else f[n-i+1]
                             fi):
-  Matrix(n,(i,j)->expand(4*Trace(CompMat^(i+j-2))-Trace(CompMat^(i+j))))
+  Matrix(n,(i,j)->expand(Trace(CompMat^(i+j-2))-Trace(CompMat^(i+j))))
  elif Type = C then
   Y:=[seq(z[i],i=1..n)]:
   for k from 1 to n do
-   f[k]:=(-1)^(k+1)*2^k*binomial(n,k)*Y[k];
+   f[k]:=(-1)^(k+1)*binomial(n,k)*Y[k];
   od:
   CompMat:=Matrix(n,(i,j)-> if  (i = j+1 and j <= n-1) then 1
                             elif j <= n-1 then 0
                             else f[n-i+1]
                             fi):
-  Matrix(n,(i,j)->expand(4*Trace(CompMat^(i+j-2))-Trace(CompMat^(i+j))))
+  Matrix(n,(i,j)->expand(Trace(CompMat^(i+j-2))-Trace(CompMat^(i+j))))
  elif Type = D then
   Y:=[seq(z[i],i=1..n)]:
   for k from 1 to n-2 do
-   f[k]:=(-1)^(k+1)*2^k*binomial(n,k)*Y[k];
+   f[k]:=(-1)^(k+1)*binomial(n,k)*Y[k];
   od:
   if is(n,even) then
-   f[n-1]:=(-1)^(n)*2^(n-1)*( 2^(n-1)*Y[n]*Y[n-1]       -convert([seq(binomial(n,2*i-1)*Y[2*i-1],i=1..(n-2)/2)],`+`)   );
-   f[n]  :=(-1)^(n+1)*2^n  *( 2^(n-2)*(Y[n]^2+Y[n-1]^2) -convert([seq(binomial(n,2*i)  *Y[2*i]  ,i=1..(n-2)/2)],`+`) -1);
+   f[n-1]:=(-1)^(n)*( 2^(n-1)*Y[n]*Y[n-1]       -convert([seq(binomial(n,2*i-1)*Y[2*i-1],i=1..(n-2)/2)],`+`)   );
+   f[n]  :=(-1)^(n+1)*( 2^(n-2)*(Y[n]^2+Y[n-1]^2) -convert([seq(binomial(n,2*i)  *Y[2*i]  ,i=1..(n-2)/2)],`+`) -1);
   else
-   f[n-1]:=(-1)^(n)*2^(n-1)*( 2^(n-1)*Y[n]*Y[n-1]       -convert([seq(binomial(n,2*i)  *Y[2*i]  ,i=1..(n-3)/2)],`+`) -1);
-   f[n]  :=(-1)^(n+1)*2^n  *( 2^(n-2)*(Y[n]^2+Y[n-1]^2) -convert([seq(binomial(n,2*i+1)*Y[2*i+1],i=1..(n-3)/2)],`+`)   );
+   f[n-1]:=(-1)^(n)*( 2^(n-1)*Y[n]*Y[n-1]       -convert([seq(binomial(n,2*i)  *Y[2*i]  ,i=1..(n-3)/2)],`+`) -1);
+   f[n]  :=(-1)^(n+1)*( 2^(n-2)*(Y[n]^2+Y[n-1]^2) -convert([seq(binomial(n,2*i+1)*Y[2*i+1],i=1..(n-3)/2)],`+`)   );
   fi:
   CompMat:=Matrix(n,(i,j)-> if  (i = j+1 and j <= n-1) then 1
                             elif j <= n-1 then 0
                             else f[n-i+1]
                             fi):
-  Matrix(n,(i,j)->expand(4*Trace(CompMat^(i+j-2))-Trace(CompMat^(i+j))))
+  Matrix(n,(i,j)->expand(Trace(CompMat^(i+j-2))-Trace(CompMat^(i+j))))
+ elif Type = G and n = 2 then
+  f[3]:=3*z[1]:
+  f[2]:=-3*(z[1]+z[2])/2:
+  f[1]:=(9*z[1]^2-3*z[1]-3*z[2]-1)/2:
+  CompMat:=Matrix(n+1,(i,j)-> if  (i = j+1 and j <= n) then 1
+                              elif j <= n then 0
+                              else f[i]
+                              fi):
+  Matrix(n+1,(i,j)->expand(Trace(CompMat^(i+j-2))-Trace(CompMat^(i+j))))
  else
-  printf("Error: root system must be of Type A, B, C, D")
+  printf("Error: root system must be of Type A, B, C, D, G")
  fi;
 end proc:
 
@@ -365,8 +410,31 @@ RHermiteMatrix:=proc(Type,n)
  local i, j, k, f, Y, CompMat;
  global z;
  z:='z';
- if Type=B or Type=C or Type=D then
+ if Type=B or Type=C or Type=G then
   HermiteMatrix(Type,n)
+ elif Type=D and is(n,even) then
+  HermiteMatrix(Type,n)
+ elif Type=D and is(n,odd) then
+  Y:=[seq(z[i],i=1..n)]:
+  for k from 1 to n-2 do
+   f[k]:=(-1)^(k+1)*binomial(n,k)*Y[k];
+  od:
+  f[n-1]:=(-1)^(n  )*(2^(n-1)*(Y[n]^2+Y[n-1]^2)-convert([seq(binomial(n,2*i)  *Y[2*i]  ,i=1..(n-3)/2)],`+`) -1);
+  f[n]  :=(-1)^(n+1)*(2^(n-1)* Y[n]^2          -convert([seq(binomial(n,2*i+1)*Y[2*i+1],i=1..(n-3)/2)],`+`)   );
+  CompMat:=Matrix(n,(i,j)-> if  (i = j+1 and j <= n-1) then 1
+                            elif j <= n-1 then 0
+                            else f[n-i+1]
+                            fi):
+  Matrix(n,(i,j)->expand(Trace(CompMat^(i+j-2))-Trace(CompMat^(i+j))))
+ elif Type = G and n = 2 then
+  f[3]:=3*z[1]:
+  f[2]:=-3*(z[1]+z[2])/2:
+  f[1]:=(9*z[1]^2-3*z[1]-3*z[2]-1)/2:
+  CompMat:=Matrix(n+1,(i,j)-> if  (i = j+1 and j <= n) then 1
+                              elif j <= n then 0
+                              else f[i]
+                              fi):
+  Matrix(n+1,(i,j)->expand(Trace(CompMat^(i+j-2))-Trace(CompMat^(i+j))))
  elif Type=A then 
   Y:=[1,seq(Y||i,i=1..n),1]:
   for k from 1 to n+1 do
@@ -383,11 +451,11 @@ RHermiteMatrix:=proc(Type,n)
   if is((n+1)::odd) then CompMat:=CompMat else CompMat:=subs(Y||((n+1)/2)=z[(n+1)/2],CompMat) fi;
   Matrix(n+1,(i,j)->expand(Trace(CompMat^(i+j-2))-Trace(CompMat^(i+j))))
  else
-  printf("Error: root system must be of Type A, B, C, D")
+  printf("Error: root system must be of Type A, B, C, D, G")
  fi;
 end proc:
 
-InvariantRewrite:=proc(Type,n,invariant) option remember; # This proc will give an output regardless if the input is invariant or not. Input must be Lauren polynomial in x[i]
+InvariantRewrite:=proc(Type,n,invariant) option remember; # This proc will give an output regardless if the input is invariant or not. Input must be Laurent polynomial in x[i]
 local W, TermsMatrixEntry, ExponentsMatrixEntry, SplitTermsMatrixEntry, PositiveTerms, OrbCard, i, j, k, l;
 global y;
  y:='y';
@@ -445,14 +513,14 @@ global y;
   Matrix(n  ,(i,j)->THermiteEntries(Type,n,  i+j));
  elif Type = A then 
   Matrix(n+1,(i,j)->THermiteEntries(Type,n+1,i+j));
- elif Type = G then
+ elif Type = G and n = 2 then
   Matrix(3  ,(i,j)->THermiteEntries(Type,2  ,i+j));
  else
   printf("Error: root system must be of Type A, B, C, D, G")
  fi;
 end proc:
 
-RTHermiteEntries:=proc(Type,n,k)
+RTHermiteEntriesOld:=proc(Type,n,k)
  local i, j;
  global y;
  if Type = A then
@@ -468,15 +536,26 @@ RTHermiteEntries:=proc(Type,n,k)
  fi;
 end proc:
 
+RTHermiteEntries:=proc(n,k)
+ local i, j;
+ global y;
+  if is(k::odd) then
+   1/2^k*(convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*(y[k-2*j,seq(0,i=1..n-1)]),j=1..(k-1)/2)],`+`)-(y[k,seq(0,i=1..n-1)]))
+  else
+   1/2^k*(convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*(y[k-2*j,seq(0,i=1..n-1)]),j=1..k/2-1)],`+`)-(y[k,seq(0,i=1..n-1)])
+   +(-binomial(k,k/2)+4*binomial(k-2,k/2-1))/2*y[0,seq(0,i=1..n-1)])
+  fi;
+end proc:
+
 RTHermiteMatrix:=proc(Type,n)
  local i, j;
  global y;
- if Type = B or Type = C or Type = D then
-  Matrix(n,(i,j)->RTHermiteEntries(Type,n,i+j));
- elif Type = A then 
-  Matrix(n+1,(i,j)->RTHermiteEntries(Type,n+1,i+j));
+ if Type = A or (Type=G and n=2) then 
+  Matrix(n+1,(i,j)->RTHermiteEntries(n,i+j));
+ elif Type = B or Type = C or Type = D then
+  Matrix(n  ,(i,j)->RTHermiteEntries(n,i+j));
  else
-  printf("Error: root system must be of Type A, B, C, D")
+  printf("Error: root system must be of Type A, B, C, D, G")
  fi;
 end proc:
 

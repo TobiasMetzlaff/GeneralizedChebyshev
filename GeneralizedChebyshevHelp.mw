@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Worksheet>
-<Version major="2022" minor="0"/>
+<Version major="2022" minor="2"/>
 <Label-Scheme value="2" prefix=""/>
 <View-Properties presentation="true" autoexpanding_sections="true" UserProfileName="Maple Default Profile" NumericFormat-ApplyInteger="true" NumericFormat-ApplyRational="true" NumericFormat-ApplyExponent="false" editable="true">
 </View-Properties>
-<MapleNet-Properties prettyprint="3" warnlevel="0" compactdisplay="false" preplot="" helpbrowser="standard" displayprecision="10" echo="1" scientificx="true" unitattributes="&quot;fontweight&quot; = &quot;bold&quot;" imaginaryunit="I" longdelim="true" elisiontermsthreshold="10000" elisiondigitsafter="100" elisiondigitsbefore="100" plotdevice="inline" errorbreak="1" plotoptions="" plotdriver="opengl" quiet="false" elisiontermsbefore="100" elisiontermsafter="100" historytimestamp="false" screenwidth="79" indentamount="4" plotoutput="terminal" screenpixelheight="1080" rtablesize="[10, 10]" useclientjvm="true" format="document" labelwidth="20" postplot="" typesetting="extended" ansi="false" ansicolor="[]" elisiondigitsthreshold="10000" showassumed="1" ansilprint="false" trailingsemicolon="true" errorcursor="false" labelling="true" screenheight="25" prompt="&gt; " verboseproc="1" latexwidth="8.0" ShowLabels="true"/>
+<MapleNet-Properties prettyprint="3" warnlevel="0" compactdisplay="false" preplot="" helpbrowser="standard" displayprecision="-1" echo="1" scientificx="true" unitattributes="&quot;fontweight&quot; = &quot;bold&quot;" imaginaryunit="I" longdelim="true" elisiontermsthreshold="10000" elisiondigitsafter="100" elisiondigitsbefore="100" plotdevice="inline" errorbreak="1" plotoptions="" plotdriver="opengl" quiet="false" elisiontermsbefore="100" elisiontermsafter="100" historytimestamp="false" screenwidth="79" indentamount="4" plotoutput="terminal" screenpixelheight="1440" rtablesize="[10, 10]" useclientjvm="true" format="document" labelwidth="20" postplot="" typesetting="extended" ansi="false" ansicolor="[]" elisiondigitsthreshold="10000" showassumed="1" ansilprint="false" trailingsemicolon="true" errorcursor="false" labelling="true" screenheight="25" prompt="&gt; " verboseproc="1" latexwidth="8.0" ShowLabels="true"/>
 <Styles>
 <Font name="Heading 1" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="18" subscript="false" superscript="false" underline="false" placeholder="false"/>
 <Font name="Warning" background="[255,255,255]" bold="false" executable="false" family="Courier New" foreground="[0,0,255]" italic="false" opaque="false" readonly="true" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
@@ -116,7 +116,7 @@
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">read(&quot;GeneralizedChebyshev.mpl&quot;): with(GeneralizedChebyshev);</Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L31216" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-input="false" labelreference="L31818" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
@@ -146,7 +146,7 @@
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L262" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">-type: A, B, C, D</Text-field>
+<Input><Text-field style="Text" layout="Normal">-type: simple Lie type</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L259" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -170,15 +170,11 @@
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L271" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">-r: list, nonzero</Text-field>
+<Input><Text-field style="Text" layout="Normal">-r: list, not all entries 0</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group hide-input="false" labelreference="L247" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">Base(B,3)[3];</Text-field>
-</Input>
-</Group>
-<Group view="code" hide-input="false" labelreference="L282" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">coroot(Base(B,3)[3]);</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">map(b-&gt;coroot(b),Base(B,3));</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L280" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -194,7 +190,7 @@
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L288" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">-type: A, B, C, D</Text-field>
+<Input><Text-field style="Text" layout="Normal">-type: simple Lie type</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L289" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -218,7 +214,7 @@
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L248" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">-type: A, B, C, D</Text-field>
+<Input><Text-field style="Text" layout="Normal">-type: simple Lie type</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L245" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -230,7 +226,7 @@
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L256" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbW9HRiQ2LVEhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR1EldHJ1ZUYnLyUpc3RyZXRjaHlHRjQvJSpzeW1tZXRyaWNHRjQvJShsYXJnZW9wR0Y0LyUubW92YWJsZWxpbWl0c0dGNC8lJ2FjY2VudEdGNC8lJ2xzcGFjZUdRJjAuMGVtRicvJSdyc3BhY2VHUSwwLjMzMzMzMzNlbUYnLyUrZXhlY3V0YWJsZUdGNEYv">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYjLUkjbW9HRiQ2LVEhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR1EldHJ1ZUYnLyUpc3RyZXRjaHlHRjQvJSpzeW1tZXRyaWNHRjQvJShsYXJnZW9wR0Y0LyUubW92YWJsZWxpbWl0c0dGNC8lJ2FjY2VudEdGNC8lJ2xzcGFjZUdRJjAuMGVtRicvJSdyc3BhY2VHUSwwLjMzMzMzMzNlbUYn</Equation></Text-field>
+<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">JSFH</Equation></Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L257" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -242,7 +238,7 @@
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L261" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">-type: A, B, C, D</Text-field>
+<Input><Text-field style="Text" layout="Normal">-type: simple Lie type</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L272" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -266,7 +262,7 @@
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L532" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">-type: A, B, C, D</Text-field>
+<Input><Text-field style="Text" layout="Normal">-type: simple Lie type</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L533" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -294,7 +290,7 @@
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L268" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">-type: A, B, C, D</Text-field>
+<Input><Text-field style="Text" layout="Normal">-type: simple Lie type</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L266" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -322,7 +318,7 @@
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L251" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">-type: A, B, C, D</Text-field>
+<Input><Text-field style="Text" layout="Normal">-type: simple Lie type</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L252" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -342,7 +338,7 @@
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L351" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"><Font underline="true">Pull</Font>(type,n,alpha)<Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbW9HRiQ2LVEhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR1EldHJ1ZUYnLyUpc3RyZXRjaHlHRjQvJSpzeW1tZXRyaWNHRjQvJShsYXJnZW9wR0Y0LyUubW92YWJsZWxpbWl0c0dGNC8lJ2FjY2VudEdGNC8lJ2xzcGFjZUdRJjAuMGVtRicvJSdyc3BhY2VHUSwwLjMzMzMzMzNlbUYnLyUrZXhlY3V0YWJsZUdGNEYv">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYjLUkjbW9HRiQ2LVEhRicvJSxtYXRodmFyaWFudEdRJ25vcm1hbEYnLyUmZmVuY2VHUSZmYWxzZUYnLyUqc2VwYXJhdG9yR1EldHJ1ZUYnLyUpc3RyZXRjaHlHRjQvJSpzeW1tZXRyaWNHRjQvJShsYXJnZW9wR0Y0LyUubW92YWJsZWxpbWl0c0dGNC8lJ2FjY2VudEdGNC8lJ2xzcGFjZUdRJjAuMGVtRicvJSdyc3BhY2VHUSwwLjMzMzMzMzNlbUYn</Equation></Text-field>
+<Input><Text-field style="Text" layout="Normal"><Font underline="true">Pull</Font>(type,n,alpha)<Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">JSFH</Equation></Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L350" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -350,7 +346,7 @@
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L343" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">-type: A, B, C, D</Text-field>
+<Input><Text-field style="Text" layout="Normal">-type: simple Lie type</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L348" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -392,7 +388,7 @@
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L313" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">-type: A, B, C, D</Text-field>
+<Input><Text-field style="Text" layout="Normal">-type: simple Lie type</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L311" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -424,7 +420,7 @@
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L301" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">-type: A, D</Text-field>
+<Input><Text-field style="Text" layout="Normal">-type: simple Lie type</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L302" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -466,7 +462,7 @@
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L322" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">-type: A, B, C, D</Text-field>
+<Input><Text-field style="Text" layout="Normal">-type: simple Lie type</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L327" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -478,7 +474,11 @@
 </Input>
 </Group>
 <Group view="code" hide-input="false" labelreference="L336" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">TMultiply(B,[1,0,0],[0,1,0]);</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">TMultiply(G,[1,0],[1,0]);</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" labelreference="L31868" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L543" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -490,11 +490,11 @@
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L549" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">writes the Chebyshev polynomial associated to alpha in Z^n according to a recurrence relation</Text-field>
+<Input><Text-field style="Text" layout="Normal">writes the Chebyshev polynomial associated to alpha in Z^n according to a recurrence relation (this is not unique: here we choose to always remove the first positive entry of the argument).</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L551" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">-type: A, B, C, D</Text-field>
+<Input><Text-field style="Text" layout="Normal">-type: simple Lie type</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L555" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -506,7 +506,7 @@
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-input="false" labelreference="L548" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">TPolyRecurrence(B,3,[1,1,0])</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">TPolyRecurrence(G,2,[2,0])</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L547" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -518,9 +518,9 @@
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-input="false" labelreference="L30694" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" foreground="[128,0,0]" layout="Normal"><Font underline="true" foreground="[120,0,14]">NumberOfVar</Font><Font foreground="[120,0,14]"> := 2 :
-<Font underline="true">DegreeBound</Font> := 4 :
-<Font underline="true">Type</Font>        := C :
+<Input><Text-field prompt="&gt; " style="Maple Input" foreground="[128,0,0]" layout="Normal"><Font underline="true" foreground="[120,0,14]">Type</Font><Font foreground="[120,0,14]">        := G :<Font underline="true">
+NumberOfVar</Font> := 2 :
+<Font underline="true">DegreeBound</Font> := 6 :
 
 M:=0: MM:='MM':
 
@@ -546,37 +546,28 @@ MM[M] := ChebyshevLevel(Type,NumberOfVar,M);
 od:
 </Font></Text-field>
 </Input>
-</Group>
-<Group view="code" hide-input="false" labelreference="L31066" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L31105" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field style="Text" layout="Normal"></Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L31106" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">We compare a trigonometric polynomial to its representation in the Chebyshev basis.</Text-field>
+<Input><Text-field style="Text" layout="Normal">We compare a trigonometric polynomial to its representation in the Chebyshev basis. The following f,g,h,k are the test functions from the paper section 3.5.</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-input="false" labelreference="L30685" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">Var:=GeneralizedCosine(G,2,[x,y,-x-y]):
-#Var:=GeneralizedCosine(C,2,[x,y]):
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#Var:=GeneralizedCosine(G,2,[x/2,y/2,z/2]):
+Var:=GeneralizedCosine(C,2,[x/2,y/2]):
 
-#f:=2*T[1,0]+1*T[0,1]+1*T[1,1]+4*T[3,0];
-f:=2*T[0,1]+1*T[2,0];
-#f:=T[0, 1]*1 + T[1, 0]*2 + T[0, 2]*(-1) + T[1, 1]*(-3);
-#f:=1*T[0,2]+2*T[2,0];
+#f:=2*T[0,1]+1*T[2,0]; #f
+#f:=2*T[1,0]+1*T[0,1]+1*T[1,1]+4*T[3,0]; #g
+#f:=2*T[1, 0] + T[0, 1] - T[0, 2] -3* T[1, 1]; #h
+f:=1*T[0,2]+2*T[2,0]; #k
 
-g:=expand((subs([z[1]=Var[1],z[2]=Var[2]],f)));</Text-field>
-</Input>
-</Group>
-<Group view="code" labelreference="L29733" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">plot3d(g,x=-1..1,y=-1..1,grid=[200,200],orientation=[142,-70,180],labelfont = [&quot;TimesNewRoman&quot;, 15],<Font opaque="false" subscript="false" underline="false" superscript="false" bold="true" foreground="[120,0,14]" italic="false" executable="true" selection-placeholder="false" size="12" readonly="false" background="[255,255,255]" style="Help Maple Name" placeholder="false" family="Courier New" font_style_name="Help Maple Name">labels=[u[1]</Font>,u[2],'f(u)'<Font opaque="false" subscript="false" underline="false" superscript="false" bold="true" foreground="[120,0,14]" italic="false" executable="true" selection-placeholder="false" size="12" readonly="false" background="[255,255,255]" style="Help Maple Name" placeholder="false" family="Courier New" font_style_name="Help Maple Name">],</Font>size=[1000,800]);</Text-field>
-</Input>
-</Group>
-<Group view="code" labelreference="L31065" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+F:=subs([x=2*x,y=2*y,z=-2*(x+y)],expand(subs([z[1]=Var[1],z[2]=Var[2]],f)));
+#F:=subs([x=2*x,y=2*y],expand(subs([z[1]=Var[1],z[2]=Var[2]],f))):
+
+plot3d(F,x=-1..1,y=-1..1,grid=[200,200],orientation=[142,-70,180],labelfont = [&quot;TimesNewRoman&quot;, 15],<Font opaque="false" subscript="false" underline="false" superscript="false" bold="true" foreground="[120,0,14]" italic="false" executable="true" selection-placeholder="false" size="12" readonly="false" background="[255,255,255]" style="Help Maple Name" placeholder="false" family="Courier New" font_style_name="Help Maple Name">labels=[x</Font>,y,'g(x,y)'<Font opaque="false" subscript="false" underline="false" superscript="false" bold="true" foreground="[120,0,14]" italic="false" executable="true" selection-placeholder="false" size="12" readonly="false" background="[255,255,255]" style="Help Maple Name" placeholder="false" family="Courier New" font_style_name="Help Maple Name">],</Font>size=[1300,1000]);</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L682" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -592,7 +583,7 @@ g:=expand((subs([z[1]=Var[1],z[2]=Var[2]],f)));</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L680" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">-type: A, B, C, D</Text-field>
+<Input><Text-field style="Text" layout="Normal">-type: simple Lie type</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L677" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -620,7 +611,7 @@ g:=expand((subs([z[1]=Var[1],z[2]=Var[2]],f)));</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L668" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">-type: A, B, C, D</Text-field>
+<Input><Text-field style="Text" layout="Normal">-type: simple Lie type</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L673" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -649,20 +640,109 @@ g:=expand((subs([z[1]=Var[1],z[2]=Var[2]],f)));</Text-field>
 </Input>
 </Group></Presentation-Block>
 <Section collapsed="true" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Fourier Analysis</Text-field></Title><Presentation-Block>
+<Group view="presentation" inline-output="false" labelreference="L31724" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field style="Text" layout="Normal"></Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="presentation" inline-output="false" labelreference="L31732" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field style="Text" layout="Normal"><Font underline="true">HermiteMatrix</Font>:=proc(type,n)</Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="presentation" inline-output="false" labelreference="L31726" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field style="Text" layout="Normal">returns the Hermite matrix polynomial.</Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="presentation" inline-output="false" labelreference="L31725" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field style="Text" layout="Normal">The orbit space of the nonlinear Weyl group action (aka deltoid/image of fundamental invariants/image of generalized cosines) is the compact basic semi-algebraic set, where this matrix is positive semidefinte.</Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="presentation" inline-output="false" labelreference="L31729" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field style="Text" layout="Normal">For type A and, if n odd, for type D, one has to substitute real variables (see RHermiteMatrix below).</Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="presentation" inline-output="false" labelreference="L31727" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field style="Text" layout="Normal">-type: simple Lie type</Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="presentation" inline-output="false" labelreference="L31728" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field style="Text" layout="Normal">-n: posint</Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="code" hide-input="false" labelreference="L31734" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">HermiteMatrix(A,2);</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" labelreference="L31762" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">THermiteMatrix(A,2)</Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="presentation" inline-output="false" labelreference="L31735" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field style="Text" layout="Normal"></Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="presentation" inline-output="false" labelreference="L31738" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field style="Text" layout="Normal"><Font underline="true">RHermiteMatrix</Font>(type,n)</Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="presentation" inline-output="false" labelreference="L31733" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field style="Text" layout="Normal">returns the Hermite matrix polynomial with real variables</Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="presentation" inline-output="false" labelreference="L31730" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field style="Text" layout="Normal">-type: simple Lie type</Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="presentation" inline-output="false" labelreference="L31737" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field style="Text" layout="Normal">-n: posint</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" labelreference="L31736" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">RHermiteMatrix(A,2);</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" labelreference="L31763" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">RTHermiteMatrix(A,2)</Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="presentation" inline-output="false" labelreference="L31759" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field style="Text" layout="Normal"></Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="presentation" inline-output="false" labelreference="L31731" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field style="Text" layout="Normal">To plot the orbit space:</Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group hide-input="false" labelreference="L31756" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">with(plots):
+
+H:=RHermiteMatrix(G,2):
+
+chi:=u-&gt;subs(t=u,CharacteristicPolynomial(H,t)):
+
+Condition[1]:=-      chi(0)     :
+Condition[2]:=+coeff(chi(u),u  ):
+Condition[3]:=-coeff(chi(u),u^2):
+              +coeff(chi(u),u^3):  <Font foreground="[128,128,128]"># should be 1
+
+</Font>display([
+  inequal({Condition[1]&gt;=0,Condition[2]&gt;=0,Condition[3]&gt;=0},z[1]=-2..2,z[2]=-2..2,optionsfeasible = [color = red, transparency=0.5], optionsclosed = [color = red, thickness = 2, linestyle=solid], optionsexcluded = [color = &quot;WhiteSmoke&quot;])
+],view=[-2..2,-2..2],<Font opaque="false" subscript="false" underline="false" superscript="false" bold="true" foreground="[120,0,14]" italic="false" executable="true" selection-placeholder="false" size="12" readonly="false" background="[255,255,255]" style="Help Maple Name" placeholder="false" family="Courier New" font_style_name="Help Maple Name">labels=[z[1]</Font>, z[2]<Font opaque="false" subscript="false" underline="false" superscript="false" bold="true" foreground="[120,0,14]" italic="false" executable="true" selection-placeholder="false" size="12" readonly="false" background="[255,255,255]" style="Help Maple Name" placeholder="false" family="Courier New" font_style_name="Help Maple Name">]</Font>,axes=boxed,scaling=constrained);</Text-field>
+</Input>
+</Group>
+<Group view="presentation" inline-output="false" labelreference="L31721" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field style="Text" layout="Normal"></Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="presentation" inline-output="false" labelreference="L31723" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field style="Text" layout="Normal"></Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L30161" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">To construct the Matrix from the Conjecture a la Procesi and Schwarz:</Text-field>
-</Input>
-</Group></Presentation-Block><Presentation-Block>
-<Group view="presentation" inline-output="false" labelreference="L31187" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbW9HRiQ2LVEifkYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGNC8lKXN0cmV0Y2h5R0Y0LyUqc3ltbWV0cmljR0Y0LyUobGFyZ2VvcEdGNC8lLm1vdmFibGVsaW1pdHNHRjQvJSdhY2NlbnRHRjQvJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZDLyUrZXhlY3V0YWJsZUdGNEYv">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbW9HRiQ2LVEifkYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGNC8lKXN0cmV0Y2h5R0Y0LyUqc3ltbWV0cmljR0Y0LyUobGFyZ2VvcEdGNC8lLm1vdmFibGVsaW1pdHNHRjQvJSdhY2NlbnRHRjQvJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZDLyUrZXhlY3V0YWJsZUdGNEYv</Equation></Text-field>
-</Input>
-</Group></Presentation-Block><Presentation-Block>
-<Group view="presentation" inline-output="false" labelreference="L31186" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbW9HRiQ2LVEifkYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGNC8lKXN0cmV0Y2h5R0Y0LyUqc3ltbWV0cmljR0Y0LyUobGFyZ2VvcEdGNC8lLm1vdmFibGVsaW1pdHNHRjQvJSdhY2NlbnRHRjQvJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZDLyUrZXhlY3V0YWJsZUdGNEYv">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbW9HRiQ2LVEifkYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGNC8lKXN0cmV0Y2h5R0Y0LyUqc3ltbWV0cmljR0Y0LyUobGFyZ2VvcEdGNC8lLm1vdmFibGVsaW1pdHNHRjQvJSdhY2NlbnRHRjQvJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZDLyUrZXhlY3V0YWJsZUdGNEYv</Equation></Text-field>
+<Input><Text-field style="Text" layout="Normal">To construct the Matrix from the Procesi and Schwarz approach:</Text-field>
 </Input>
 </Group></Presentation-Block>
 <Group hide-input="false" labelreference="L30150" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">Type:=C: n:=2:
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">Type:=G: n:=2:
 
 theta:=FundamentalInvariant(Type,n):
 
@@ -690,7 +770,7 @@ else
  MM:=-Matrix( n , (i,j) -&gt; InvariantRewrite( Type,n,expand( Transpose(gradtheta[i]).S.gradtheta[    j] ) ) ) ;
 fi:
 
-MM:=subs('y'='T',MM):
+MM:=subs('y'='T',MM);
 </Text-field>
 </Input>
 </Group>
@@ -700,150 +780,33 @@ MM:=subs('y'='T',MM):
 chi:=u-&gt;subs(t=u,CharacteristicPolynomial(MM,t)):
 
 Condition[1]:=+      chi(0)     :
-Condition[2]:=-coeff(chi(u),u  ):
-              +coeff(chi(u),u^2);  <Font foreground="[128,128,128]"># should be 1
+Condition[2]:=-coeff(chi(u),u  ):  <Font foreground="[128,128,128]"># alternating sign
+</Font>              +coeff(chi(u),u^2);  <Font foreground="[128,128,128]"># should be 1
 
 </Font>display([
   inequal({Condition[1]&gt;=0,Condition[2]&gt;=0},z[1]=-2..2,z[2]=-2..2,optionsfeasible = [color = red, transparency=0.5], optionsclosed = [color = red, thickness = 2], optionsexcluded = [color = &quot;WhiteSmoke&quot;])
-  #,
-  #inequal({Condition[2]&gt;=0},z[1]=-2..2,z[2]=-2..2,optionsfeasible = [color = blue,transparency=0.5], optionsclosed = [color = blue, thickness = 2, linestyle=dot ], optionsexcluded = [color = &quot;WhiteSmoke&quot;])
 ],view=[-2..2,-2..2],<Font opaque="false" subscript="false" underline="false" superscript="false" bold="true" foreground="[120,0,14]" italic="false" executable="true" selection-placeholder="false" size="12" readonly="false" background="[255,255,255]" style="Help Maple Name" placeholder="false" family="Courier New" font_style_name="Help Maple Name">labels=[z[1]</Font>, z[2]<Font opaque="false" subscript="false" underline="false" superscript="false" bold="true" foreground="[120,0,14]" italic="false" executable="true" selection-placeholder="false" size="12" readonly="false" background="[255,255,255]" style="Help Maple Name" placeholder="false" family="Courier New" font_style_name="Help Maple Name">]</Font>,axes=boxed,scaling=constrained);</Text-field>
 </Input>
 </Group>
-<Group hide-input="false" labelreference="L30162" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+<Group hide-input="false" labelreference="L31509" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">simplify(Determinant(H)/Determinant(MM))</Text-field>
 </Input>
 </Group>
-<Group hide-input="false" labelreference="L30164" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group labelreference="L31343" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group><Presentation-Block>
-<Group view="presentation" inline-output="false" labelreference="L30157" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="presentation" inline-output="false" labelreference="L31938" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field style="Text" layout="Normal"></Text-field>
-</Input>
-</Group></Presentation-Block><Presentation-Block>
-<Group view="presentation" inline-output="false" labelreference="L31188" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbW9HRiQ2LVEifkYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGNC8lKXN0cmV0Y2h5R0Y0LyUqc3ltbWV0cmljR0Y0LyUobGFyZ2VvcEdGNC8lLm1vdmFibGVsaW1pdHNHRjQvJSdhY2NlbnRHRjQvJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZDLyUrZXhlY3V0YWJsZUdGNEYv">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbW9HRiQ2LVEifkYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGNC8lKXN0cmV0Y2h5R0Y0LyUqc3ltbWV0cmljR0Y0LyUobGFyZ2VvcEdGNC8lLm1vdmFibGVsaW1pdHNHRjQvJSdhY2NlbnRHRjQvJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZDLyUrZXhlY3V0YWJsZUdGNEYv</Equation></Text-field>
 </Input>
 </Group></Presentation-Block>
 </Section><Presentation-Block>
-<Group view="presentation" inline-output="false" labelreference="L30449" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="presentation" inline-output="false" labelreference="L31939" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field style="Text" layout="Normal"></Text-field>
-</Input>
-</Group></Presentation-Block><Presentation-Block>
-<Group view="presentation" inline-output="false" labelreference="L31189" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"><Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbW9HRiQ2LVEifkYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGNC8lKXN0cmV0Y2h5R0Y0LyUqc3ltbWV0cmljR0Y0LyUobGFyZ2VvcEdGNC8lLm1vdmFibGVsaW1pdHNHRjQvJSdhY2NlbnRHRjQvJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZDLyUrZXhlY3V0YWJsZUdGNEYv">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbW9HRiQ2LVEifkYnLyUsbWF0aHZhcmlhbnRHUSdub3JtYWxGJy8lJmZlbmNlR1EmZmFsc2VGJy8lKnNlcGFyYXRvckdGNC8lKXN0cmV0Y2h5R0Y0LyUqc3ltbWV0cmljR0Y0LyUobGFyZ2VvcEdGNC8lLm1vdmFibGVsaW1pdHNHRjQvJSdhY2NlbnRHRjQvJSdsc3BhY2VHUSYwLjBlbUYnLyUncnNwYWNlR0ZDLyUrZXhlY3V0YWJsZUdGNEYv</Equation></Text-field>
 </Input>
 </Group></Presentation-Block>
 <Section collapsed="true" isCollapsible="true" drawButton="true" MultipleChoiceAnswerIndex="-1" MultipleChoiceRandomizeChoices="false" TrueFalseAnswerIndex="-1" EssayAnswerRows="5" EssayAnswerColumns="60"><Title><Text-field style="Heading 1" layout="Heading 1">Optimization</Text-field></Title><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L373" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"></Text-field>
-</Input>
-</Group></Presentation-Block><Presentation-Block>
-<Group view="presentation" inline-output="false" labelreference="L369" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"><Font underline="true">HermiteMatrix</Font>:=proc(type,n)</Text-field>
-</Input>
-</Group></Presentation-Block><Presentation-Block>
-<Group view="presentation" inline-output="false" labelreference="L382" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">returns the Hermite matrix polynomial.</Text-field>
-</Input>
-</Group></Presentation-Block><Presentation-Block>
-<Group view="presentation" inline-output="false" labelreference="L384" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">The orbit space of the nonlinear Weyl group action (aka deltoid/image of fundamental invariants/image of generalized cosines) is the compact basic semi-algebraic set, where this matrix is positive semidefinte.</Text-field>
-</Input>
-</Group></Presentation-Block><Presentation-Block>
-<Group view="presentation" inline-output="false" labelreference="L386" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">For type A and, if n odd, for type D, one has to substitute real variables (see RHermiteMatrix below).</Text-field>
-</Input>
-</Group></Presentation-Block><Presentation-Block>
-<Group view="presentation" inline-output="false" labelreference="L388" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">-type: A, B, C, D</Text-field>
-</Input>
-</Group></Presentation-Block><Presentation-Block>
-<Group view="presentation" inline-output="false" labelreference="L387" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">-n: posint</Text-field>
-</Input>
-</Group></Presentation-Block><Presentation-Block>
-<Group view="code" hide-input="false" labelreference="L379" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">HermiteMatrix(B,2);</Text-field>
-</Input>
-</Group></Presentation-Block><Presentation-Block>
-<Group view="presentation" inline-output="false" labelreference="L368" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"></Text-field>
-</Input>
-</Group></Presentation-Block><Presentation-Block>
-<Group view="presentation" inline-output="false" labelreference="L391" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"><Font underline="true">RHermiteMatrix</Font>(type,n)</Text-field>
-</Input>
-</Group></Presentation-Block><Presentation-Block>
-<Group view="presentation" inline-output="false" labelreference="L402" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">returns the Hermite matrix polynomial with real variables</Text-field>
-</Input>
-</Group></Presentation-Block><Presentation-Block>
-<Group view="presentation" inline-output="false" labelreference="L403" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">-type: A, B, C, D</Text-field>
-</Input>
-</Group></Presentation-Block><Presentation-Block>
-<Group view="presentation" inline-output="false" labelreference="L404" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">-n: posint</Text-field>
-</Input>
-</Group>
-<Group view="code" hide-input="false" labelreference="L406" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">RHermiteMatrix(A,2);</Text-field>
-</Input>
-</Group></Presentation-Block><Presentation-Block>
-<Group view="presentation" inline-output="false" labelreference="L393" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"></Text-field>
-</Input>
-</Group></Presentation-Block><Presentation-Block>
-<Group view="presentation" inline-output="false" labelreference="L556" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">To plot a two-dimnesional orbit space, one can use the following code.</Text-field>
-</Input>
-</Group>
-<Group view="code" hide-input="false" labelreference="L31119" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">with(plots):
-
-H:=HermiteMatrix(C,2):
-
-chi:=u-&gt;subs(t=u,CharacteristicPolynomial(H,t)):
-
-Condition[1]:=+      chi(0)     :
-Condition[2]:=-coeff(chi(u),u  ):
-              +coeff(chi(u),u^2);  <Font foreground="[128,128,128]"># should be 1
-
-</Font>display([
-  inequal({Condition[1]&gt;=0,Condition[2]&gt;=0},z[1]=-2..2,z[2]=-2..2,optionsfeasible = [color = red, transparency=0.5], optionsclosed = [color = red, thickness = 2], optionsexcluded = [color = &quot;WhiteSmoke&quot;])
-  #,
-  #inequal({Condition[2]&gt;=0},z[1]=-2..2,z[2]=-2..2,optionsfeasible = [color = blue,transparency=0.5], optionsclosed = [color = blue, thickness = 2, linestyle=dot ], optionsexcluded = [color = &quot;WhiteSmoke&quot;])
-],view=[-2..2,-2..2],<Font opaque="false" subscript="false" underline="false" superscript="false" bold="true" foreground="[120,0,14]" italic="false" executable="true" selection-placeholder="false" size="12" readonly="false" background="[255,255,255]" style="Help Maple Name" placeholder="false" family="Courier New" font_style_name="Help Maple Name">labels=[z[1]</Font>, z[2]<Font opaque="false" subscript="false" underline="false" superscript="false" bold="true" foreground="[120,0,14]" italic="false" executable="true" selection-placeholder="false" size="12" readonly="false" background="[255,255,255]" style="Help Maple Name" placeholder="false" family="Courier New" font_style_name="Help Maple Name">]</Font>,axes=boxed,scaling=constrained);</Text-field>
-</Input>
-</Group>
-<Group view="code" hide-input="false" labelreference="L558" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">with(plots):
-
-H:=RHermiteMatrix(A,2):
-
-chi:=u-&gt;subs(t=u,CharacteristicPolynomial(H,t)):
-
-Condition[1]:=-      chi(0)     :
-Condition[2]:=+coeff(chi(u),u  ):
-Condition[3]:=-coeff(chi(u),u^2):
-              +coeff(chi(u),u^3);  <Font foreground="[128,128,128]"># should be 1
-
-</Font>display([
-  inequal({Condition[1]&gt;=0,Condition[2]&gt;=0,Condition[3]&gt;=0},z[1]=-2..2,z[2]=-2..2,optionsfeasible = [color = red, transparency=0.5], optionsclosed = [color = red, thickness = 2], optionsexcluded = [color = &quot;WhiteSmoke&quot;])
-  #,
-  #inequal({Condition[2]&gt;=0},z[1]=-2..2,z[2]=-2..2,optionsfeasible = [color = blue,transparency=0.5], optionsclosed = [color = blue, thickness = 2, linestyle=dot ], optionsexcluded = [color = &quot;WhiteSmoke&quot;])
-  #,
-  #inequal({Condition[3]&gt;=0},z[1]=-2..2,z[2]=-2..2,optionsfeasible = [color = &quot;Green&quot;,transparency=0.5], optionsclosed = [color = &quot;Green&quot;, thickness = 2,linestyle=dash], optionsexcluded = [color = &quot;WhiteSmoke&quot;])
-],view=[-2..2,-2..2],<Font opaque="false" subscript="false" underline="false" superscript="false" bold="true" foreground="[120,0,14]" italic="false" executable="true" selection-placeholder="false" size="12" readonly="false" background="[255,255,255]" style="Help Maple Name" placeholder="false" family="Courier New" font_style_name="Help Maple Name">labels=[z[1]</Font>, z[2]<Font opaque="false" subscript="false" underline="false" superscript="false" bold="true" foreground="[120,0,14]" italic="false" executable="true" selection-placeholder="false" size="12" readonly="false" background="[255,255,255]" style="Help Maple Name" placeholder="false" family="Courier New" font_style_name="Help Maple Name">]</Font>,axes=boxed,scaling=constrained);</Text-field>
-</Input>
-</Group>
-<Group view="code" hide-input="false" labelreference="L30609" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
-</Input>
-</Group></Presentation-Block><Presentation-Block>
-<Group view="presentation" inline-output="false" labelreference="L557" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field style="Text" layout="Normal"></Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
@@ -856,7 +819,7 @@ Condition[3]:=-coeff(chi(u),u^2):
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L663" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">-type: A, B, C, D</Text-field>
+<Input><Text-field style="Text" layout="Normal">-type: simple Lie type</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L657" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -864,7 +827,7 @@ Condition[3]:=-coeff(chi(u),u^2):
 </Input>
 </Group>
 <Group view="code" hide-input="false" labelreference="L658" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">TruncatedTMomentMatrix(B,3,1);</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">TruncatedTMomentMatrix(G,2,1);</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L661" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -880,7 +843,7 @@ Condition[3]:=-coeff(chi(u),u^2):
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L426" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">-type: A, B, C, D</Text-field>
+<Input><Text-field style="Text" layout="Normal">-type: simple Lie type</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L427" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -888,7 +851,7 @@ Condition[3]:=-coeff(chi(u),u^2):
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="code" hide-input="false" labelreference="L423" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">THermiteMatrix(B,2);</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">THermiteMatrix(G,2);</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L463" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -908,7 +871,7 @@ Condition[3]:=-coeff(chi(u),u^2):
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L432" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">-type: B, C</Text-field>
+<Input><Text-field style="Text" layout="Normal">-type: simple Lie type</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L431" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -916,7 +879,7 @@ Condition[3]:=-coeff(chi(u),u^2):
 </Input>
 </Group>
 <Group view="code" hide-input="false" labelreference="L434" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">TLocalizedPMI(B,2,3);</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">TLocalizedPMI(G,2,2);</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L401" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -956,11 +919,12 @@ Condition[3]:=-coeff(chi(u),u^2):
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L452" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">Warning: This takes a while!</Text-field>
+<Input><Text-field style="Text" layout="Normal"><Font foreground="[255,0,0]">Remark: This takes a while so maybe start with n=3, d=3!
+Warning: This creates a file in the folder of this worksheet!</Font></Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L453" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">-type: C (to be extended to A, B, D)</Text-field>
+<Input><Text-field style="Text" layout="Normal">-type: simple Lie type</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L454" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -980,8 +944,8 @@ Condition[3]:=-coeff(chi(u),u^2):
 </Input>
 </Group>
 <Group view="code" hide-input="false" labelreference="L722" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">Type:=C: n:=2: d:=4:
-ChebyshevSDPdata(Type,n,d,&quot;C2Deg4.csv&quot;);
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">Type:=B: n:=3: d:=3:
+#ChebyshevSDPdata(Type,n,d,&quot;B3Deg3.csv&quot;);
 
 </Text-field>
 </Input>
@@ -996,7 +960,7 @@ ChebyshevSDPdata(Type,n,d,&quot;C2Deg4.csv&quot;);
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L720" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">For questions, please contact &quot;tobias.metzlaff@inria.fr&quot;.</Text-field>
+<Input><Text-field style="Text" layout="Normal">For questions, please contact &quot;tobias.metzlaff@rptu.de&quot;.</Text-field>
 </Input>
 </Group></Presentation-Block>
 </Worksheet>
