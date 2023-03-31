@@ -44,9 +44,12 @@ Download the two files 'GeneralizedChebsyhev.mpl' and 'GeneralizedChebsyhevHelp.
 Place both in the SAME folder open the file 'GeneralizedChebsyhevHelp.mw' with Maple2022.
 The worksheet 'GeneralizedChebsyhevHelp.mw' is a guide through the available commands of the package.
 The first time running 
- read("GeneralizedChebyshev.mpl"): with(GeneralizedChebyshev);
-can return an error. In this case, save the file, close it and open it again.
-To use 'GeneralizedChebsyhevHelp.mw' in any Maple 2022 worksheet, place it in the same folder as the worksheet and run the above command.
+
+    read("GeneralizedChebyshev.mpl"): 
+    with(GeneralizedChebyshev);
+
+can output an error. In this case, save everything, close Maple and reopen it.
+To use 'GeneralizedChebsyhevHelp.mw' in any other Maple 2022 worksheet, place it in the same folder as the worksheet and run the above command.
 
 
 Problems/Questions:
