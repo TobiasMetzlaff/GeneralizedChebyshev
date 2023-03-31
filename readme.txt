@@ -28,6 +28,8 @@ These polynomials form a basis of Q[z_1, ..., z_n] and are orthogonal on the orb
 
     TOrbSpace := { (theta_{omega_1}, ..., theta_{omega_n})(u) | u in R^n }.
 
+Here, theta_weight becomes a function in u by setting e^{weight}(u) := exp(-2 Pi i <weight, u>).
+Those are the special functions associated to root systems, that is, periodic W-invariant trigonometric polynomials, see [6] for more.
 In [5], we have constructed a Hermite matrix polynomial H with the property
 
     TOrbSpace = { z in R^n | H(z) is positive semi-definite}.
@@ -62,6 +64,8 @@ Feel free to contact 'tobias.metzlaff@rptu.de'.
 
 Literature:
 
+-Books:
+
 [1] Bourbaki: Groupes et algèbres de Lie.
 https://link.springer.com/book/10.1007/978-3-540-34491-9
 
@@ -71,8 +75,15 @@ https://link.springer.com/book/10.1007/978-1-4612-6398-2
 [3] R. Kane: Reflection groups and invariant theory
 https://link.springer.com/chapter/10.1007/978-1-4757-3542-0_1
 
+-Our work on the subject:
+
 [4] E. Hubert, T. Metzlaff, P. Moustrou and C. Riener: Optimization of trigonometric polynomials with crystallographic symmetry and spectral bounds for set avoiding graphs.
 https://hal.science/hal-03768067
 
 [5] E. Hubert, T. Metzlaff, and C. Riener: Polynomial description for the T-orbit spaces of multiplicative actions.
 https://hal.science/hal-03590007
+
+-An introduction to the numerical aspects of Fourier analysis with special functions of root systems:
+
+[6] H. Munthe-Kaas, M. Nome and B. N. Ryland: Through the Kaleidoscope: Symmetries, Groups and Chebyshev-Approximations from a Computational Point of View
+https://www.cambridge.org/core/books/abs/foundations-of-computational-mathematics-budapest-2011/through-the-kaleidoscope-symmetries-groups-and-chebyshevapproximations-from-a-computational-point-of-view/5216EE38DB87E5688221552CD99BA9A6
