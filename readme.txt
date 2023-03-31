@@ -3,6 +3,9 @@ This is a Maple 2022 (https://de.maplesoft.com/products/maple/) package for comp
 The main purpose of this package is to produce matrices for semi-definite programs that appear in polynomial optimization [4].
 Beyond that, it features several functionalities for computations with Weyl groups of simple Lie type and polynomial descriptions for the orbit space [5].
 
+If you are specifically interested in Weyl groups acting on minuscule weights:
+Those are not covered here (yet), but there is a Maple 2008 worksheet by Michael Singer (https://singer.math.ncsu.edu/papers/minuscule/).
+
 
 Definition:
 
