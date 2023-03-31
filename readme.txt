@@ -59,10 +59,10 @@ Feel free to contact 'tobias.metzlaff@rptu.de'.
 
 Literature:
 
-[1] Bourbaki: Groupes et algèbres de Lie, Ch. VI.
+[1] Bourbaki: Groupes et algèbres de Lie.
 https://link.springer.com/book/10.1007/978-3-540-34491-9
 
-[2] J. E. Humphreys: Introduction to Lie Algebras and Representation Theory
+[2] J. E. Humphreys: Introduction to Lie algebras and representation theory
 https://link.springer.com/book/10.1007/978-1-4612-6398-2
 
 [3] R. Kane: Reflection groups and invariant theory
@@ -71,5 +71,5 @@ https://link.springer.com/chapter/10.1007/978-1-4757-3542-0_1
 [4] E. Hubert, T. Metzlaff, P. Moustrou and C. Riener: Optimization of trigonometric polynomials with crystallographic symmetry and spectral bounds for set avoiding graphs.
 https://hal.science/hal-03768067
 
-[5] E. Hubert, T. Metzlaff, and C. Riener: Polynomial description for the T-Orbit Spaces of Multiplicative Actions.
+[5] E. Hubert, T. Metzlaff, and C. Riener: Polynomial description for the T-orbit spaces of multiplicative actions.
 https://hal.science/hal-03590007
