@@ -3,13 +3,11 @@ GeneralizedChebyshev := module()
 description "A collection of procedures for generalized Chebyshev Polynomials";
 option package;
 
-with(combinat):
-with(GroupTheory):
 with(LinearAlgebra):
 
-export Base, coroot, WeightMatrix, FWeight, RWeylGroupGen, RWeylGroup, ZWeylGroup, FundomVertexCoefficient, VertexFundom, VertexTOrbitSpace, FundamentalInvariant, HighestRoot, MonomialExponent, ChebyshevLevel, ChebyshevDegExp, ROrbit, ZOrbit, GeneralizedCosine, RGeneralizedCosine, TMultiply, TPoly, TPolyRecurrence, HermiteMatrix, RHermiteMatrix, InvariantRewrite, THermiteMatrix, RTHermiteMatrix, TLocalizedPMI, TArchimedeanPMI, ChebyshevSDPdata, ChebyshevArchimedeanSDP, Pull, RPull, TruncatedTMomentMatrix, ZWeylGroupGen, Reflection;
+export Base, coroot, WeightMatrix, FWeight, RWeylGroupGen, ZWeylGroupGen, FundomVertexCoefficient, VertexFundom, VertexTOrbitSpace, FundamentalInvariant, HighestRoot, ChebyshevLevel, ROrbit, ZOrbit, GeneralizedCosine, RGeneralizedCosine, TMultiply, TPoly, TPolyRecurrence, HermiteMatrix, RHermiteMatrix, InvariantRewrite, THermiteMatrix, RTHermiteMatrix, TLocalizedPMI, TArchimedeanPMI, ChebyshevSDPdata, ChebyshevArchimedeanSDP, Pull, RPull, TruncatedTMomentMatrix;
 
-local OrthogonalMatrixConstructor, DiagonalMatrixConstructor, esp, MonomialMultiply, TruncatedMonomialMomentMatrix, PrimalConstraintMatrix, DualConstraintMatrix, SolutionSet, MonomialExponent2, MonomialRewrite, MonomialHermiteMatrix, MonomialLocalizedPMI, CoeffInMatrix, THermiteEntries, RTHermiteEntriesOld, RTHermiteEntries;
+local Reflection, OrthogonalMatrixConstructor, DiagonalMatrixConstructor, RWeylGroup, ZWeylGroup, esp, MonomialMultiply, ChebyshevDegExp, TruncatedMonomialMomentMatrix, PrimalConstraintMatrix, DualConstraintMatrix, MonomialExponent, SolutionSet, MonomialExponent2, MonomialRewrite, MonomialHermiteMatrix, MonomialLocalizedPMI, CoeffInMatrix, THermiteEntries, RTHermiteEntriesOld, RTHermiteEntries;
 
 Base:=proc(Type,n) # base of a root system
 local i, j;
@@ -116,8 +114,8 @@ end proc:
 
 RWeylGroup:=proc(Type,n) option remember; # the Weyl group as a real orthogonal matrix group
  local W;
- W:=Group({op(RWeylGroupGen(Type,n))});
- [op(Elements(W))];
+ W:=GroupTheory[Group]({op(RWeylGroupGen(Type,n))});
+ return [op(Elements(W))];
 end proc:
 
 ZWeylGroupGen:=proc(Type,n) option remember; # the Weyl group as an integer matrix group
@@ -127,8 +125,8 @@ end proc:
 
 ZWeylGroup:=proc(Type,n) option remember; # the Weyl group as an integer matrix group
  local W;
- W:=Group({op(ZWeylGroupGen(Type,n))});
- [op(Elements(W))];
+ W:=GroupTheory[Group]({op(ZWeylGroupGen(Type,n))});
+ return [op(Elements(W))];
 end proc:
 
 Reflection:=proc(rho,omega)  
@@ -298,12 +296,12 @@ end proc:
 
 MonomialExponent:=proc(n,degbound)
  local LL, L, i;
- [seq(op({op(map(LL->op(permute(LL)),select(L->nops(L)=n,partition(i)))),op(map(LL->op(permute(LL-[seq(1,i=1..n)])),select(L->nops(L)=n,partition(i+n))))}),i=0..degbound)];
+ [seq(op({op(map(LL->op(combinat[permute](LL)),select(L->nops(L)=n,combinat[partition](i)))),op(map(LL->op(combinat[permute](LL-[seq(1,i=1..n)])),select(L->nops(L)=n,combinat[partition](i+n))))}),i=0..degbound)];
 end proc:
 
 MonomialExponent2:=proc(n,degbound)
  local LL, L, i;
- [seq(op({op(map(LL->op(permute(LL)),select(L->nops(L)=n,partition(i)))),op(map(LL->op(permute(LL-[seq(1,i=1..n)])),select(L->nops(L)=n,partition(i+n))))}),i=0..2*degbound)];
+ [seq(op({op(map(LL->op(combinat[permute](LL)),select(L->nops(L)=n,combinat[partition](i)))),op(map(LL->op(combinat[permute](LL-[seq(1,i=1..n)])),select(L->nops(L)=n,combinat[partition](i+n))))}),i=0..2*degbound)];
 end proc:
 
 ChebyshevDegExp:=proc(Type,n,l,bound) option remember;
