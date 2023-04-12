@@ -7,7 +7,7 @@ with(LinearAlgebra):
 
 export Base, coroot, WeightMatrix, FWeight, RWeylGroupGen, ZWeylGroupGen, FundomVertexCoefficient, VertexFundom, VertexTOrbitSpace, FundamentalInvariant, HighestRoot, ChebyshevLevel, ROrbit, ZOrbit, GeneralizedCosine, RGeneralizedCosine, TMultiply, TPoly, TPolyRecurrence, HermiteMatrix, RHermiteMatrix, InvariantRewrite, THermiteMatrix, RTHermiteMatrix, TLocalizedPMI, TArchimedeanPMI, ChebyshevSDPdata, ChebyshevArchimedeanSDP, Pull, RPull, TruncatedTMomentMatrix;
 
-local Reflection, OrthogonalMatrixConstructor, DiagonalMatrixConstructor, RWeylGroup, ZWeylGroup, esp, MonomialMultiply, ChebyshevDegExp, TruncatedMonomialMomentMatrix, PrimalConstraintMatrix, DualConstraintMatrix, MonomialExponent, SolutionSet, MonomialExponent2, MonomialRewrite, MonomialHermiteMatrix, MonomialLocalizedPMI, CoeffInMatrix, THermiteEntries, RTHermiteEntriesOld, RTHermiteEntries;
+local Reflection, RWeylGroup, ZWeylGroup, esp, MonomialMultiply, ChebyshevDegExp, TruncatedMonomialMomentMatrix, PrimalConstraintMatrix, DualConstraintMatrix, MonomialExponent, SolutionSet, MonomialExponent2, MonomialRewrite, MonomialHermiteMatrix, MonomialLocalizedPMI, CoeffInMatrix, THermiteEntries, RTHermiteEntriesOld, RTHermiteEntries;
 
 Base:=proc(Type,n) # base of a root system
 local i, j;
@@ -75,32 +75,16 @@ local i;
  [op(convert(Transpose(<op(HighestRoot(Type,n))>).WeightMatrix(Type,n),list)),1]
 end proc:
 
-OrthogonalMatrixConstructor:=proc(Type,n,i,j)
- if i=j then
-  Base(Type,n)[j]
- else
-  FWeight(Type,n)[j]
- fi;
-end proc:
-
-DiagonalMatrixConstructor:=proc(n,i,j)
- if i=j then
-  convert(Column(-IdentityMatrix(n),j),list)
- else
-  convert(Column( IdentityMatrix(n),j),list)
- fi;
-end proc:
-
 RWeylGroupGen:=proc(Type,n) option remember; # generators of the Weyl group as a real orthogonal matrix group
  local i, j, k, N, diag;
  if   Type = A then
-  [seq(seq(Matrix([seq(convert(Column(IdentityMatrix(n+1),k),list),k=1..i-1),convert(Column(IdentityMatrix(n+1),j),list),seq(convert(Column(IdentityMatrix(n+1),k),list),k=i+1..j-1),convert(Column(IdentityMatrix(n+1),i),list),seq(convert(Column(IdentityMatrix(n+1),k),list),k=j+1..n+1)]),i=1..j-1),j=1..n+1)];
+  [seq(Matrix([seq([seq(`if`(i=k,1,0),i=1..n+1)],k=1..j-1),[seq(`if`(i=j+1,1,0),i=1..n+1)],[seq(`if`(i=j,1,0),i=1..n+1)],seq([seq(`if`(i=k,1,0),i=1..n+1)],k=j+2..n+1)]),j=1..n)];
  elif Type = B or Type = C or Type = D or Type = F then
   for i from 1 to n do
-   N[i]:=Matrix([seq(OrthogonalMatrixConstructor(Type,n,i,j),j=1..n)]):
+   N[i]:=Matrix([seq(`if`(j=i,Base(Type,n)[j],FWeight(Type,n)[j]),j=1..n)]):
   od:
   for i from 1 to n do
-   diag[i]:=Matrix([seq(DiagonalMatrixConstructor(n,i,j),j=1..n)]):
+   diag[i]:=Matrix([seq(`if`(j=i,[seq(`if`(k=j,-1,0),k=1..n)],[seq(`if`(k=j,1,0),k=1..n)]),j=1..n)]):
   od:
   for i from 1 to n do
    [seq(Transpose(N[i]^(-1).diag[i].N[i]),i=1..n)]
@@ -334,7 +318,7 @@ TPolyRecurrence:=proc(Type,alpha) option remember; # input list with nonnegative
  local n, i, j, beta, orb, K, eq;
  n:=nops(alpha);
  j:=select(i->is(alpha[i]>0),[seq(i,i=1..n)])[1];
- beta:=convert(Column(IdentityMatrix(n),j),list);
+ beta:=[seq(`if`(i=j,1,0),i=1..n)];
  orb:=ZOrbit(Type,beta);
  K:=map(l->Pull(Type,alpha - beta + l),orb);
  eq:=convert([seq(T[op(K[i])],i=1..nops(K))],`+`);
@@ -704,13 +688,13 @@ ChebyshevSDPdata:=proc(Type,n,d,name) option remember; #This is for the SDP solv
 end proc:
 
 TArchimedeanPMI:=proc(Type,n,d) option remember; # works for Bn, Cn, D2n
- local i, j, l, ll, k, Y, N, Orbs, ExtraOrbs, H, h, yy;
+ local i, ii, j, l, ll, lll, k, Y, N, Orbs, ExtraOrbs, H, h, yy;
  global y;
  y:='y';
  Y:=[seq(op(ChebyshevLevel(Type,n,l)),l=0..d)];
  N:=nops(Y);
  Orbs:=[seq(ZOrbit(Type,Y[i]),i=1..N)];
- ExtraOrbs:=[seq(ZOrbit(Type,convert(Column(IdentityMatrix(n),k),list)),k=1..n)];
+ ExtraOrbs:=[seq(ZOrbit(Type,[seq(`if`(i=k,1,0),i=1..n)]),k=1..n)];
  if Type = B or Type = C or Type = D then
   <seq(
        Transpose(
@@ -719,7 +703,7 @@ TArchimedeanPMI:=proc(Type,n,d) option remember; # works for Bn, Cn, D2n
                                   [seq(
                                        (convert(
                                                 map(lll->op(map(ll->op(map(l->
-                                                                           y[op(Pull(Type,convert(Column(IdentityMatrix(n),k),list)+l+ll+lll))]
+                                                                           y[op(Pull(Type,[seq(`if`(ii=k,1,0),ii=1..n)]+l+ll+lll))]
                                                                            ,Orbs[i])),Orbs[j])),ExtraOrbs[k])
                                                 ,`+`))/nops(Orbs[i])/nops(Orbs[j])/nops(ExtraOrbs[k])
                                        ,k=1..n)]
@@ -733,7 +717,6 @@ TArchimedeanPMI:=proc(Type,n,d) option remember; # works for Bn, Cn, D2n
 end proc:
 
 ChebyshevArchimedeanSDP:=proc(Type,n,d,name) option remember; #This is for the SDP solver, d must be at least n
-
  local dH, dP, Y, N, MY, MHY, MPY, nY, nHY, nPY, M, i, k, Constraints;
  dP:=max(FundomVertexCoefficient(Type,n))/FundomVertexCoefficient(Type,n)[1];
  dH:=n;

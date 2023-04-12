@@ -116,7 +116,7 @@
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">read(&quot;GeneralizedChebyshev.mpl&quot;): with(GeneralizedChebyshev);</Text-field>
 </Input>
 </Group>
-<Group view="code" labelreference="L34190" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-input="false" labelreference="L34190" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
