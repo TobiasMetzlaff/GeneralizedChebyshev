@@ -37,10 +37,12 @@ In [5], we have constructed a Hermite matrix polynomial H with the property
     TOrbSpace = { z in R^n | H(z) is positive semi-definite}.
     
 The matrix entries of H are given through a closed formula that is available as a command in the package.
+Alternatively, one can use a "Procesi-Schwarz-type approach", which is described in section 4 of [7].
+Those matrices can be constructed with the file 'ProcesiSchwarzMatrices.mw'.
 
 Any root system can be decomposed into irreducible components which classify the 7 families of simple Lie algebras:
 
-    A (n>=1)    B C (n>=2)    D (n>=4)    E (n=6,7,8)    F (n=4)    G (n=2)
+    A (n>=1)    B    C (n>=2)    D (n>=4)    E (n=6,7,8)    F (n=4)    G (n=2)
 
 Any semi-simple Lie algebra admits a root system that decomposes into orthogonal, irreducible components which are of one of the above "simple Lie types". Hence, we only need to consider the latter.
 
@@ -53,10 +55,10 @@ The worksheet 'GeneralizedChebsyhevHelp.mw' is a guide through the available com
 The first time running 
 
     read("GeneralizedChebyshev.mpl"): 
-    with(GeneralizedChebyshev);
+    with(GeneralizedChebyshev):
 
 can output an error. In this case, save everything, close Maple and reopen it.
-To use 'GeneralizedChebsyhevHelp.mw' in any other Maple 2022 worksheet, place it in the same folder as the worksheet and run the above command.
+To use 'GeneralizedChebsyhevHelp.mw' in any other Maple 2022 worksheet, place it in the same folder as the current worksheet and run the above commands.
 
 
 Problems/Questions:
@@ -89,3 +91,8 @@ https://hal.science/hal-03590007
 
 [6] H. Munthe-Kaas, M. Nome and B. N. Ryland: Through the Kaleidoscope: Symmetries, Groups and Chebyshev-Approximations from a Computational Point of View
 https://www.cambridge.org/core/books/abs/foundations-of-computational-mathematics-budapest-2011/through-the-kaleidoscope-symmetries-groups-and-chebyshevapproximations-from-a-computational-point-of-view/5216EE38DB87E5688221552CD99BA9A6
+
+-The "Procesi-Schwarz-type approach":
+
+[7] C. Procesi and G. Schwarz: Inequalities defining orbit spaces
+https://link.springer.com/article/10.1007/BF01388587
