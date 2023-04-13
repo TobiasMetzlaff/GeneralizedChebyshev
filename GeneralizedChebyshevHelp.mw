@@ -116,7 +116,7 @@
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">read(&quot;GeneralizedChebyshev.mpl&quot;): with(GeneralizedChebyshev);</Text-field>
 </Input>
 </Group>
-<Group view="code" hide-input="false" labelreference="L34190" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Group view="code" hide-input="false" labelreference="L34215" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
 <Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
@@ -310,7 +310,7 @@
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L34000" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"><Font underline="true">RPull</Font>(type,n,omega)<Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYjLUkjbWlHRiQ2I1EhRic=</Equation></Text-field>
+<Input><Text-field style="Text" layout="Normal"><Font underline="true">RPull</Font>(type,n,omega)<Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">JSFH</Equation></Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L34001" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -359,7 +359,7 @@
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L351" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal"><Font underline="true">Pull</Font>(type,alpha)<Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">JSFH</Equation></Text-field>
+<Input><Text-field style="Text" layout="Normal"><Font underline="true">Pull</Font>(type,alpha)<Equation executable="true" style="2D Math" input-equation="" display="LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYlLUkjbWlHRiQ2I1EhRicvJStleGVjdXRhYmxlR1EmZmFsc2VGJy8lLG1hdGh2YXJpYW50R1Enbm9ybWFsRic=">LUklbXJvd0c2Iy9JK21vZHVsZW5hbWVHNiJJLFR5cGVzZXR0aW5nR0koX3N5c2xpYkdGJzYjLUkjbWlHRiQ2I1EhRic=</Equation></Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L350" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -610,11 +610,15 @@ plot3d(F,x=-1..1,y=-1..1,grid=[200,200],orientation=[142,-70,180],labelfont = [&
 </Input>
 </Group>
 <Group view="code" hide-input="false" labelreference="L672" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">f:=FundamentalInvariant(B,2)[1]+2*FundamentalInvariant(B,2)[2];</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">f:=FundamentalInvariant(B,2)[1]+2*FundamentalInvariant(B,2)[2]; #generate an invariants</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" labelreference="L34191" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">ChebyshevInvariantRewrite(B,2,f); #write it in the Chebyshev basis</Text-field>
 </Input>
 </Group>
 <Group view="code" hide-input="false" labelreference="L671" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">InvariantRewrite(B,2,f)</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">InvariantRewrite(B,2,f); #write it in the standard monomial basis</Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L674" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
@@ -753,17 +757,18 @@ Condition[3]:=-coeff(chi(u),u^2):
 </Input>
 </Group></Presentation-Block>
 <Group hide-input="false" labelreference="L30150" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">Type:=G: n:=2:
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">Type:=G: 
+n   :=2:
 
 theta:=FundamentalInvariant(Type,n):
 
 for i from 1 to n do
  for j from 1 to n do
-  if i=j then
-   D[i](x[j]):=x[j]
-  else
-   D[i](x[j]):=0;
-  fi;
+    if i=j then
+     D[i](x[j]):=x[j]
+    else
+     D[i](x[j]):=0
+    fi;
  od;
 od;
 
@@ -772,12 +777,14 @@ gradtheta:=[seq(&lt;seq(D[j](theta[i]),j=1..n)&gt;,i=1..n)]:
 S:=Transpose(WeightMatrix(Type,n)).WeightMatrix(Type,n):
 
 if Type=A then
- MM:=-Matrix( n , (i,j) -&gt; InvariantRewrite( Type,n,expand( Transpose(gradtheta[i]).S.gradtheta[n+1-j] ) ) ) ;
+ M:=-Matrix( n , (i,j) -&gt; InvariantRewrite(Type,n,expand( Transpose(gradtheta[i]).S.gradtheta[n+1-j] ) ) ) ;
+elif Type=D and is(n,odd) then
+ M:=-Matrix( n , (i,j) -&gt; InvariantRewrite(Type,n,expand( Transpose(gradtheta[i]).S.gradtheta[if j=n-1 then n elif j=n then n-1 else j fi] ) ) ) ;
+elif Type=E and n=6 then
+ M:=-Matrix( n , (i,j) -&gt; InvariantRewrite(Type,n,expand( Transpose(gradtheta[i]).S.gradtheta[if j=1 then 6 elif j=3 then 5 elif j=5 then 3 elif j=6 then 1 else j fi] ) ) ) ;
 else
- MM:=-Matrix( n , (i,j) -&gt; InvariantRewrite( Type,n,expand( Transpose(gradtheta[i]).S.gradtheta[    j] ) ) ) ;
-fi:
-
-MM:=subs([seq(seq(y[i,j]=TPoly(Type,[i,j]),i=0..2*n),j=0..2*n)],MM);
+ M:=-Matrix( n , (i,j) -&gt; InvariantRewrite(Type,n,expand( Transpose(gradtheta[i]).S.gradtheta[    j] ) ) ) ;
+fi;
 </Text-field>
 </Input>
 </Group>
@@ -804,7 +811,7 @@ Condition[2]:=-coeff(chi(u),u  ):  <Font foreground="[128,128,128]"># alternatin
 </Input>
 </Group></Presentation-Block>
 <Group hide-input="false" labelreference="L31509" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">simplify(Determinant(H)/Determinant(MM))</Text-field>
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">simplify(Determinant(H)/Determinant(M))</Text-field>
 </Input>
 </Group>
 <Group labelreference="L31343" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">

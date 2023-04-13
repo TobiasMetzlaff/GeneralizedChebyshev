@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Worksheet>
+<Version major="2022" minor="2"/>
+<Label-Scheme value="2" prefix=""/>
+<View-Properties presentation="true" autoexpanding_sections="true" UserProfileName="Maple Default Profile" NumericFormat-ApplyInteger="true" NumericFormat-ApplyRational="true" NumericFormat-ApplyExponent="false" editable="true">
+</View-Properties>
+<MapleNet-Properties prettyprint="3" warnlevel="3" compactdisplay="false" preplot="" helpbrowser="standard" displayprecision="-1" echo="1" scientificx="true" unitattributes="&quot;fontweight&quot; = &quot;bold&quot;" imaginaryunit="I" longdelim="true" elisiontermsthreshold="10000" elisiondigitsafter="100" elisiondigitsbefore="100" plotdevice="inline" errorbreak="1" plotoptions="" plotdriver="opengl" quiet="false" elisiontermsbefore="100" elisiontermsafter="100" historytimestamp="false" screenwidth="79" indentamount="4" plotoutput="terminal" screenpixelheight="1440" rtablesize="[10, 10]" useclientjvm="true" format="document" labelwidth="20" postplot="" typesetting="extended" ansi="false" ansicolor="[]" elisiondigitsthreshold="10000" showassumed="1" ansilprint="false" trailingsemicolon="true" errorcursor="false" labelling="true" screenheight="25" prompt="&gt; " verboseproc="1" latexwidth="8.0" ShowLabels="true"/>
+<Styles>
+<Font name="Heading 1" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="18" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Warning" background="[255,255,255]" bold="false" executable="false" family="Courier New" foreground="[0,0,255]" italic="false" opaque="false" readonly="true" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="2D Output" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,255]" italic="false" opaque="false" readonly="true" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Heading 4" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="true" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Line Printed Output" background="[255,255,255]" bold="false" executable="false" family="Courier New" foreground="[0,0,255]" italic="false" opaque="false" readonly="true" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Heading 2" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="16" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Maple Output" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="2D Inert Output" background="[255,255,255]" bold="false" executable="true" family="Times New Roman" foreground="[144,144,144]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Heading 3" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="true" opaque="false" readonly="false" size="14" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Diagnostic" background="[255,255,255]" bold="false" executable="false" family="Courier New" foreground="[40,120,40]" italic="false" opaque="false" readonly="true" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Ordered List 1" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Maple Input" background="[255,255,255]" bold="true" executable="true" family="Courier New" foreground="[120,0,14]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Text Output" background="[255,255,255]" bold="false" executable="false" family="Courier New" foreground="[0,0,255]" italic="false" opaque="false" readonly="true" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Ordered List 2" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Ordered List 3" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Ordered List 4" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Ordered List 5" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Annotation Title" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="18" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Header and Footer" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="10" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="HyperlinkError" background="[255,255,255]" bold="false" executable="false" family="Courier New" foreground="[255,0,255]" italic="false" opaque="false" readonly="true" size="12" subscript="false" superscript="false" underline="true" placeholder="false"/>
+<Font name="Atomic Variable" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[175,0,175]" italic="true" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="HyperlinkWarning" background="[255,255,255]" bold="false" executable="false" family="Courier New" foreground="[0,0,255]" italic="false" opaque="false" readonly="true" size="12" subscript="false" superscript="false" underline="true" placeholder="false"/>
+<Font name="Dictionary Hyperlink" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[147,0,15]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="true" placeholder="false"/>
+<Font name="2D Math" background="[255,255,255]" bold="false" executable="true" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Bullet Item" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Maple Plot" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Annotation Text" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="List Item" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Dash Item" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="2D Input" background="[255,255,255]" bold="false" executable="true" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Error" background="[255,255,255]" bold="false" executable="false" family="Courier New" foreground="[255,0,255]" italic="false" opaque="false" readonly="true" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Title" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="18" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Text" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Normal" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Caption Reference" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Code" background="[255,255,255]" bold="false" executable="false" family="Courier New" foreground="[255,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Maple Input Placeholder" background="[255,255,255]" bold="true" executable="true" family="Courier New" foreground="[200,0,200]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="true"/>
+<Font name="Equation Label" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Author" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Font name="Hyperlink" background="[255,255,255]" bold="false" executable="false" family="Times New Roman" foreground="[0,128,128]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="true" placeholder="false"/>
+<Font name="Caption Text" background="[255,255,255]" bold="true" executable="false" family="Times New Roman" foreground="[0,0,0]" italic="false" opaque="false" readonly="false" size="12" subscript="false" superscript="false" underline="false" placeholder="false"/>
+<Layout name="Heading 1" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="8" spacebelow="4" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Warning" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Heading 4" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Line Printed Output" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="any" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Heading 2" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="8" spacebelow="2" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Maple Output" alignment="centred" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.3" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Heading 3" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Diagnostic" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="any" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Ordered List 1" alignment="left" bullet="numeric" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="3" spacebelow="3" linebreak="space" pagebreak-before="false" initial="-1" bulletsuffix="."/>
+<Layout name="Text Output" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="newline" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Ordered List 2" alignment="left" bullet="alphabetic" firstindent="0" leftmargin="36" rightmargin="0" linespacing="0.0" spaceabove="3" spacebelow="3" linebreak="space" pagebreak-before="false" initial="-1" bulletsuffix="."/>
+<Layout name="Ordered List 3" alignment="left" bullet="roman" firstindent="0" leftmargin="72" rightmargin="0" linespacing="0.0" spaceabove="3" spacebelow="3" linebreak="space" pagebreak-before="false" initial="-1" bulletsuffix="."/>
+<Layout name="Ordered List 4" alignment="left" bullet="ALPHABETIC" firstindent="0" leftmargin="108" rightmargin="0" linespacing="0.0" spaceabove="3" spacebelow="3" linebreak="space" pagebreak-before="false" initial="-1" bulletsuffix="."/>
+<Layout name="Ordered List 5" alignment="left" bullet="ROMAN" firstindent="0" leftmargin="144" rightmargin="0" linespacing="0.0" spaceabove="3" spacebelow="3" linebreak="space" pagebreak-before="false" initial="-1" bulletsuffix="."/>
+<Layout name="Annotation Title" alignment="centred" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="12" spacebelow="12" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="HyperlinkError" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="HyperlinkWarning" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Bullet Item" alignment="left" bullet="dot" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="3" spacebelow="3" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Maple Plot" alignment="centred" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="List Item" alignment="left" bullet="indent" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="3" spacebelow="3" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Dash Item" alignment="left" bullet="dash" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="3" spacebelow="3" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Error" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Title" alignment="centred" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="12" spacebelow="12" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Normal" alignment="left" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="0" spacebelow="0" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Layout name="Author" alignment="centred" bullet="none" firstindent="0" leftmargin="0" rightmargin="0" linespacing="0.0" spaceabove="8" spacebelow="8" linebreak="space" pagebreak-before="false" initial="0" bulletsuffix=""/>
+<Pencil-style name="Pencil 1" pen-color="[0,0,0]" pen-height="1.0" pen-width="1.0" pen-opacity="1.0"/>
+<Pencil-style name="Pencil 2" pen-color="[0,0,255]" pen-height="1.0" pen-width="1.0" pen-opacity="1.0"/>
+<Pencil-style name="Pencil 3" pen-color="[0,0,0]" pen-height="3.0" pen-width="3.0" pen-opacity="1.0"/>
+<Pencil-style name="Pencil 4" pen-color="[0,0,255]" pen-height="3.0" pen-width="3.0" pen-opacity="1.0"/>
+<Pencil-style name="Pencil 5" pen-color="[255,0,0]" pen-height="5.0" pen-width="5.0" pen-opacity="1.0"/>
+<Highlighter-style name="Highlighter 5" pen-color="[255,255,0]" pen-height="48.0" pen-width="48.0" pen-opacity="0.8"/>
+<Highlighter-style name="Highlighter 3" pen-color="[51,255,0]" pen-height="24.0" pen-width="24.0" pen-opacity="0.8"/>
+<Highlighter-style name="Highlighter 4" pen-color="[0,255,255]" pen-height="32.0" pen-width="32.0" pen-opacity="0.8"/>
+<Highlighter-style name="Highlighter 1" pen-color="[255,153,255]" pen-height="12.0" pen-width="8.0" pen-opacity="0.8"/>
+<Highlighter-style name="Highlighter 2" pen-color="[255,204,0]" pen-height="14.0" pen-width="14.0" pen-opacity="0.8"/>
+</Styles>
+<Startup-Code startupcode=""/>
+<Task-table>
+    <Task-category name="&lt;default&gt;"/>
+</Task-table>
+<Task/><Presentation-Block>
+<Group view="code" hide-input="false" labelreference="L798" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" foreground="[128,0,0]" layout="Normal"><Font foreground="[128,0,0]">restart:
+</Font><Font foreground="[120,0,14]">
+with(LinearAlgebra):
+
+read(&quot;GeneralizedChebyshev.mpl&quot;):
+with(GeneralizedChebyshev):
+</Font></Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" labelreference="L804" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">Type:=A: 
+n   :=2:
+
+theta:=FundamentalInvariant(Type,n):
+
+for i from 1 to n do
+ for j from 1 to n do
+    if i=j then
+     D[i](x[j]):=x[j]
+    else
+     D[i](x[j]):=0
+    fi;
+ od;
+od;
+
+gradtheta:=[seq(&lt;seq(D[j](theta[i]),j=1..n)&gt;,i=1..n)]:
+
+#GP:=ZWeylGroup(Type,n): S:=convert(map(g-&gt;Transpose(g).g,GP),`+`)/nops(GP):   <Font foreground="[128,128,128]">#alternative invariant matrix</Font>
+S:=Transpose(WeightMatrix(Type,n)).WeightMatrix(Type,n):
+
+if Type=A then
+ MT:=-Matrix( n , (i,j) -&gt; ChebyshevInvariantRewrite(Type,n,expand( Transpose(gradtheta[i]).S.gradtheta[n+1-j] ) ) ) ;
+elif Type=D and is(n,odd) then
+ MT:=-Matrix( n , (i,j) -&gt; ChebyshevInvariantRewrite(Type,n,expand( Transpose(gradtheta[i]).S.gradtheta[if j=n-1 then n elif j=n then n-1 else j fi] ) ) ) ;
+elif Type=E and n=6 then
+ MT:=-Matrix( n , (i,j) -&gt; ChebyshevInvariantRewrite(Type,n,expand( Transpose(gradtheta[i]).S.gradtheta[if j=1 then 6 elif j=3 then 5 elif j=5 then 3 elif j=6 then 1 else j fi] ) ) ) ;
+else
+ MT:=-Matrix( n , (i,j) -&gt; ChebyshevInvariantRewrite(Type,n,expand( Transpose(gradtheta[i]).S.gradtheta[    j] ) ) ) ;
+fi:
+
+
+
+if Type=A then
+ MZ:=-Matrix( n , (i,j) -&gt; InvariantRewrite(Type,n,expand( Transpose(gradtheta[i]).S.gradtheta[n+1-j] ) ) ) ;
+elif Type=D and is(n,odd) then
+ MZ:=-Matrix( n , (i,j) -&gt; InvariantRewrite(Type,n,expand( Transpose(gradtheta[i]).S.gradtheta[if j=n-1 then n elif j=n then n-1 else j fi] ) ) ) ;
+elif Type=E and n=6 then
+ MZ:=-Matrix( n , (i,j) -&gt; InvariantRewrite(Type,n,expand( Transpose(gradtheta[i]).S.gradtheta[if j=1 then 6 elif j=3 then 5 elif j=5 then 3 elif j=6 then 1 else j fi] ) ) ) ;
+else
+ MZ:=-Matrix( n , (i,j) -&gt; InvariantRewrite(Type,n,expand( Transpose(gradtheta[i]).S.gradtheta[    j] ) ) ) ;
+fi:
+
+9/2*MT; <Font foreground="[128,128,128]">#scale at will</Font>
+3*MZ;
+</Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="code" hide-input="false" labelreference="L31" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#A2
+Matrix(2, 2, [[y[0, 0] - y[1, 1], -y[2, 0] + y[0, 1]], [y[1, 0] - y[0, 2], y[0, 0] - y[1, 1]]]);
+Matrix(2, 2, [[-z[1]*z[2] + 1, -2*z[1]^2 + 2*z[2]], [-2*z[2]^2 + 2*z[1], -z[1]*z[2] + 1]]);</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" labelreference="L31848" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#A3
+Matrix(3, 3, [[9*y[0, 0, 0] - 9*y[1, 0, 1], -12*y[1, 1, 0] + 12*y[0, 0, 1], -9*y[2, 0, 0] + 9*y[0, 1, 0]], [12*y[1, 0, 0] - 12*y[0, 1, 1], -8*y[0, 2, 0] + 8*y[0, 0, 0], -12*y[1, 1, 0] + 12*y[0, 0, 1]], [9*y[0, 1, 0] - 9*y[0, 0, 2], 12*y[1, 0, 0] - 12*y[0, 1, 1], 9*y[0, 0, 0] - 9*y[1, 0, 1]]]);
+Matrix(3, 3, [[-9*z[1]*z[3] + 9, -18*z[1]*z[2] + 18*z[3], -27*z[1]^2 + 27*z[2]], [-18*z[2]*z[3] + 18*z[1], 32*z[1]*z[3] - 36*z[2]^2 + 4, -18*z[1]*z[2] + 18*z[3]], [-27*z[3]^2 + 27*z[2], -18*z[2]*z[3] + 18*z[1], -9*z[1]*z[3] + 9]])</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" labelreference="L31849" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#A4
+Matrix(4, 4, [[4*y[0, 0, 0, 0] - 4*y[1, 0, 0, 1], 6*y[0, 0, 0, 1] - 6*y[1, 0, 1, 0], -6*y[1, 1, 0, 0] + 6*y[0, 0, 1, 0], 4*y[0, 1, 0, 0] - 4*y[2, 0, 0, 0]], [6*y[1, 0, 0, 0] - 6*y[0, 1, 0, 1], -6*y[0, 1, 1, 0] + 3*y[0, 0, 0, 0] + 3*y[1, 0, 0, 1], 6*y[0, 0, 0, 1] - 3*y[0, 2, 0, 0] - 3*y[1, 0, 1, 0], -6*y[1, 1, 0, 0] + 6*y[0, 0, 1, 0]], [6*y[0, 1, 0, 0] - 6*y[0, 0, 1, 1], 6*y[1, 0, 0, 0] - 3*y[0, 0, 2, 0] - 3*y[0, 1, 0, 1], -6*y[0, 1, 1, 0] + 3*y[0, 0, 0, 0] + 3*y[1, 0, 0, 1], 6*y[0, 0, 0, 1] - 6*y[1, 0, 1, 0]], [4*y[0, 0, 1, 0] - 4*y[0, 0, 0, 2], 6*y[0, 1, 0, 0] - 6*y[0, 0, 1, 1], 6*y[1, 0, 0, 0] - 6*y[0, 1, 0, 1], 4*y[0, 0, 0, 0] - 4*y[1, 0, 0, 1]]]);
+Matrix(4, 4, [[-4*z[1]*z[4] + 4, -8*z[1]*z[3] + 8*z[4], -12*z[1]*z[2] + 12*z[3], -16*z[1]^2 + 16*z[2]], [-8*z[2]*z[4] + 8*z[1], 15*z[1]*z[4] - 16*z[2]*z[3] + 1, 20*z[1]*z[3] - 24*z[2]^2 + 4*z[4], -12*z[1]*z[2] + 12*z[3]], [-12*z[3]*z[4] + 12*z[2], 20*z[2]*z[4] - 24*z[3]^2 + 4*z[1], 15*z[1]*z[4] - 16*z[2]*z[3] + 1, -8*z[1]*z[3] + 8*z[4]], [-16*z[4]^2 + 16*z[3], -12*z[3]*z[4] + 12*z[2], -8*z[2]*z[4] + 8*z[1], -4*z[1]*z[4] + 4]]);</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" labelreference="L31850" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#B2
+Matrix(2, 2, [[-2*y[2, 0] + 2*y[0, 0], 2*y[0, 1] - 2*y[1, 1]], [2*y[0, 1] - 2*y[1, 1], y[0, 0] - y[0, 2]]]);
+Matrix(2, 2, [[-4*z[1]^2 + 8*z[2]^2 - 4*z[1], -2*z[1]*z[2] + 2*z[2]], [-2*z[1]*z[2] + 2*z[2], -2*z[2]^2 + z[1] + 1]]);</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" labelreference="L31851" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#B3
+Matrix(3, 3, [[-16*y[2, 0, 0] + 16*y[0, 0, 0], -32*y[1, 1, 0] + 32*y[1, 0, 0], 24*y[0, 0, 1] - 24*y[1, 0, 1]], [-32*y[1, 1, 0] + 32*y[1, 0, 0], 32*y[0, 1, 0] - 16*y[0, 2, 0] + 16*y[0, 0, 0] - 32*y[1, 0, 2], 24*y[0, 0, 1] - 24*y[0, 1, 1]], [24*y[0, 0, 1] - 24*y[1, 0, 1], 24*y[0, 0, 1] - 24*y[0, 1, 1], 9*y[1, 0, 0] - 9*y[0, 1, 0] - 9*y[0, 0, 2] + 9*y[0, 0, 0]]]);
+Matrix(3, 3, [[-48*z[1]^2 + 32*z[2] + 16, -48*z[1]*z[2] + 128*z[3]^2 - 16*z[1] - 48*z[2] - 16, -24*z[1]*z[3] + 24*z[3]], [-48*z[1]*z[2] + 128*z[3]^2 - 16*z[1] - 48*z[2] - 16, 256*z[1]*z[3]^2 - 96*z[1]*z[2] - 96*z[2]^2 - 32*z[1] - 32*z[2], 48*z[1]*z[3] - 48*z[2]*z[3]], [-24*z[1]*z[3] + 24*z[3], 48*z[1]*z[3] - 48*z[2]*z[3], -36*z[3]^2 + 18*z[1] + 9*z[2] + 9]])</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" labelreference="L31852" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#B4
+Matrix(4, 4, [[-12*y[2, 0, 0, 0] + 12*y[0, 0, 0, 0], -24*y[1, 1, 0, 0] + 24*y[1, 0, 0, 0], 36*y[0, 1, 0, 0] - 36*y[1, 0, 1, 0], 24*y[0, 0, 0, 1] - 24*y[1, 0, 0, 1]], [-24*y[1, 1, 0, 0] + 24*y[1, 0, 0, 0], 32*y[0, 1, 0, 0] - 8*y[0, 2, 0, 0] - 32*y[1, 0, 1, 0] + 8*y[0, 0, 0, 0], 24*y[1, 0, 0, 0] + 24*y[0, 0, 1, 0] - 24*y[0, 1, 1, 0] - 24*y[1, 0, 0, 2], 24*y[0, 0, 0, 1] - 24*y[0, 1, 0, 1]], [36*y[0, 1, 0, 0] - 36*y[1, 0, 1, 0], 24*y[1, 0, 0, 0] + 24*y[0, 0, 1, 0] - 24*y[0, 1, 1, 0] - 24*y[1, 0, 0, 2], 36*y[0, 1, 0, 0] + 9*y[2, 0, 0, 0] - 9*y[0, 2, 0, 0] - 9*y[0, 0, 2, 0] - 36*y[0, 1, 0, 2] + 9*y[0, 0, 0, 0], 18*y[0, 0, 0, 1] - 18*y[0, 0, 1, 1] - 18*y[0, 1, 0, 1] + 18*y[1, 0, 0, 1]], [24*y[0, 0, 0, 1] - 24*y[1, 0, 0, 1], 24*y[0, 0, 0, 1] - 24*y[0, 1, 0, 1], 18*y[0, 0, 0, 1] - 18*y[0, 0, 1, 1] - 18*y[0, 1, 0, 1] + 18*y[1, 0, 0, 1], 12*y[1, 0, 0, 0] - 12*y[0, 0, 1, 0] - 6*y[0, 0, 0, 2] + 6*y[0, 0, 0, 0]]]);
+Matrix(4, 4, [[-72*z[1]^2 + 54*z[2] + 18, -72*z[1]*z[2] + 36*z[1] + 36*z[3], -72*z[1]*z[3] + 288*z[4]^2 - 72*z[1] - 54*z[2] - 72*z[3] - 18, -36*z[1]*z[4] + 36*z[4]], [-72*z[1]*z[2] + 36*z[1] + 36*z[3], 96*z[1]^2 + 64*z[1]*z[3] - 144*z[2]^2 + 128*z[4]^2 - 32*z[1] - 72*z[2] - 32*z[3] - 8, 576*z[1]*z[4]^2 - 144*z[1]^2 - 72*z[1]*z[2] - 144*z[1]*z[3] - 144*z[2]*z[3] - 36*z[1] - 36*z[3], 72*z[1]*z[4] - 72*z[2]*z[4]], [-72*z[1]*z[3] + 288*z[4]^2 - 72*z[1] - 54*z[2] - 72*z[3] - 18, 576*z[1]*z[4]^2 - 144*z[1]^2 - 72*z[1]*z[2] - 144*z[1]*z[3] - 144*z[2]*z[3] - 36*z[1] - 36*z[3], 864*z[2]*z[4]^2 - 216*z[1]*z[2] - 144*z[1]*z[3] - 216*z[2]*z[3] - 216*z[3]^2 - 288*z[4]^2 + 72*z[1] + 54*z[2] + 72*z[3] + 18, 108*z[2]*z[4] - 108*z[3]*z[4]], [-36*z[1]*z[4] + 36*z[4], 72*z[1]*z[4] - 72*z[2]*z[4], 108*z[2]*z[4] - 108*z[3]*z[4], -72*z[4]^2 + 27*z[1] + 27*z[2] + 9*z[3] + 9]]);</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" labelreference="L2" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#C2
+Matrix(2, 2, [[-y[2, 0] + y[0, 0], -2*y[1, 1] + 2*y[1, 0]], [-2*y[1, 1] + 2*y[1, 0], 2*y[0, 0] - 2*y[0, 2]]]);
+Matrix(2, 2, [[-2*z[1]^2 + z[2] + 1, -2*z[1]*z[2] + 2*z[1]], [-2*z[1]*z[2] + 2*z[1], 8*z[1]^2 - 4*z[2]^2 - 4*z[2]]]);</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" labelreference="L28" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#C3
+Matrix(3, 3, [[-4*y[2, 0, 0] + 4*y[0, 0, 0], -8*y[1, 1, 0] + 8*y[1, 0, 0], 12*y[0, 1, 0] - 12*y[1, 0, 1]], [-8*y[1, 1, 0] + 8*y[1, 0, 0], 8*y[0, 1, 0] - 4*y[0, 2, 0] + 4*y[0, 0, 0] - 8*y[1, 0, 1], 12*y[1, 0, 0] - 12*y[0, 1, 1]], [12*y[0, 1, 0] - 12*y[1, 0, 1], 12*y[1, 0, 0] - 12*y[0, 1, 1], 9*y[2, 0, 0] - 9*y[0, 2, 0] - 9*y[0, 0, 2] + 9*y[0, 0, 0]]]);
+Matrix(3, 3, [[-3*z[1]^2 + 2*z[2] + 1, -3*z[1]*z[2] + 2*z[1] + z[3], -3*z[1]*z[3] + 3*z[2]], [-3*z[1]*z[2] + 2*z[1] + z[3], 6*z[1]^2 + 2*z[1]*z[3] - 6*z[2]^2 - 2*z[2], 9*z[1]*z[2] - 6*z[2]*z[3] - 3*z[3]], [-3*z[1]*z[3] + 3*z[2], 9*z[1]*z[2] - 6*z[2]*z[3] - 3*z[3], -18*z[1]*z[3] + 27*z[2]^2 - 9*z[3]^2]]);</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" labelreference="L31855" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#C4
+Matrix(4, 4, [[-12*y[2, 0, 0, 0] + 12*y[0, 0, 0, 0], -24*y[1, 1, 0, 0] + 24*y[1, 0, 0, 0], 36*y[0, 1, 0, 0] - 36*y[1, 0, 1, 0], 48*y[0, 0, 1, 0] - 48*y[1, 0, 0, 1]], [-24*y[1, 1, 0, 0] + 24*y[1, 0, 0, 0], 32*y[0, 1, 0, 0] - 8*y[0, 2, 0, 0] - 32*y[1, 0, 1, 0] + 8*y[0, 0, 0, 0], 24*y[1, 0, 0, 0] + 24*y[0, 0, 1, 0] - 24*y[0, 1, 1, 0] - 24*y[1, 0, 0, 1], 48*y[0, 1, 0, 0] - 48*y[0, 1, 0, 1]], [36*y[0, 1, 0, 0] - 36*y[1, 0, 1, 0], 24*y[1, 0, 0, 0] + 24*y[0, 0, 1, 0] - 24*y[0, 1, 1, 0] - 24*y[1, 0, 0, 1], 36*y[0, 1, 0, 0] + 9*y[2, 0, 0, 0] - 9*y[0, 2, 0, 0] - 9*y[0, 0, 2, 0] - 36*y[0, 1, 0, 1] + 9*y[0, 0, 0, 0], 36*y[1, 1, 0, 0] + 36*y[1, 0, 0, 0] - 36*y[0, 0, 1, 1] - 36*y[0, 1, 1, 0]], [48*y[0, 0, 1, 0] - 48*y[1, 0, 0, 1], 48*y[0, 1, 0, 0] - 48*y[0, 1, 0, 1], 36*y[1, 1, 0, 0] + 36*y[1, 0, 0, 0] - 36*y[0, 0, 1, 1] - 36*y[0, 1, 1, 0], 48*y[2, 0, 0, 0] + 24*y[0, 0, 0, 0] - 24*y[0, 0, 0, 2] - 48*y[0, 0, 2, 0]]]);
+Matrix(4, 4, [[-36*z[1]^2 + 27*z[2] + 9, -36*z[1]*z[2] + 18*z[1] + 18*z[3], -36*z[1]*z[3] + 27*z[2] + 9*z[4], -36*z[1]*z[4] + 36*z[3]], [-36*z[1]*z[2] + 18*z[1] + 18*z[3], 48*z[1]^2 + 32*z[1]*z[3] - 72*z[2]^2 - 12*z[2] + 4*z[4], 72*z[1]*z[2] + 18*z[1]*z[4] - 72*z[2]*z[3] - 18*z[3], 96*z[1]*z[3] - 72*z[2]*z[4] - 24*z[4]], [-36*z[1]*z[3] + 27*z[2] + 9*z[4], 72*z[1]*z[2] + 18*z[1]*z[4] - 72*z[2]*z[3] - 18*z[3], -72*z[1]*z[3] + 162*z[2]^2 + 27*z[2]*z[4] - 108*z[3]^2 - 9*z[4], -108*z[1]*z[4] + 216*z[2]*z[3] - 108*z[3]*z[4]], [-36*z[1]*z[4] + 36*z[3], 96*z[1]*z[3] - 72*z[2]*z[4] - 24*z[4], -108*z[1]*z[4] + 216*z[2]*z[3] - 108*z[3]*z[4], -432*z[2]*z[4] + 576*z[3]^2 - 144*z[4]^2]]);</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" labelreference="L31856" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#D4
+Matrix(4, 4, [[-3*y[2, 0, 0, 0] + 3*y[0, 0, 0, 0], -6*y[1, 1, 0, 0] + 6*y[1, 0, 0, 0], 6*y[0, 0, 0, 1] - 6*y[1, 0, 1, 0], 6*y[0, 0, 1, 0] - 6*y[1, 0, 0, 1]], [-6*y[1, 1, 0, 0] + 6*y[1, 0, 0, 0], 8*y[0, 1, 0, 0] - 2*y[0, 2, 0, 0] + 2*y[0, 0, 0, 0] - 8*y[1, 0, 1, 1], 6*y[0, 0, 1, 0] - 6*y[0, 1, 1, 0], 6*y[0, 0, 0, 1] - 6*y[0, 1, 0, 1]], [6*y[0, 0, 0, 1] - 6*y[1, 0, 1, 0], 6*y[0, 0, 1, 0] - 6*y[0, 1, 1, 0], 3*y[0, 0, 0, 0] - 3*y[0, 0, 2, 0], 6*y[1, 0, 0, 0] - 6*y[0, 0, 1, 1]], [6*y[0, 0, 1, 0] - 6*y[1, 0, 0, 1], 6*y[0, 0, 0, 1] - 6*y[0, 1, 0, 1], 6*y[1, 0, 0, 0] - 6*y[0, 0, 1, 1], -3*y[0, 0, 0, 2] + 3*y[0, 0, 0, 0]]]);
+Matrix(4, 4, [[-36*z[1]^2 + 27*z[2] + 9, -36*z[1]*z[2] + 36*z[3]*z[4], -18*z[1]*z[3] + 18*z[4], -18*z[1]*z[4] + 18*z[3]], [-36*z[1]*z[2] + 36*z[3]*z[4], 64*z[1]*z[3]*z[4] + 16*z[1]^2 - 72*z[2]^2 + 16*z[3]^2 + 16*z[4]^2 - 36*z[2] - 4, 36*z[1]*z[4] - 36*z[2]*z[3], 36*z[1]*z[3] - 36*z[2]*z[4]], [-18*z[1]*z[3] + 18*z[4], 36*z[1]*z[4] - 36*z[2]*z[3], -36*z[3]^2 + 27*z[2] + 9, -18*z[3]*z[4] + 18*z[1]], [-18*z[1]*z[4] + 18*z[3], 36*z[1]*z[3] - 36*z[2]*z[4], -18*z[3]*z[4] + 18*z[1], -36*z[4]^2 + 27*z[2] + 9]]);</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" labelreference="L31857" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#E6
+Matrix(6, 6, [[640*y[0, 1, 0, 0, 0, 0] - 800*y[1, 0, 0, 0, 0, 1] + 160*y[0, 0, 0, 0, 0, 0], 720*y[1, 0, 0, 0, 0, 0] - 720*y[1, 1, 0, 0, 0, 0], 800*y[0, 0, 1, 0, 0, 0] + 400*y[0, 0, 0, 0, 0, 1] - 800*y[1, 0, 0, 0, 1, 0] - 400*y[0, 1, 0, 0, 0, 1], 720*y[0, 0, 0, 0, 1, 0] + 720*y[1, 1, 0, 0, 0, 0] - 720*y[0, 1, 0, 0, 1, 0] - 720*y[1, 0, 0, 1, 0, 0], 800*y[0, 1, 0, 0, 0, 0] - 800*y[0, 0, 0, 1, 0, 0] - 400*y[1, 0, 1, 0, 0, 0] + 400*y[1, 0, 0, 0, 0, 1], -640*y[0, 0, 1, 0, 0, 0] + 800*y[0, 0, 0, 0, 0, 1] - 160*y[2, 0, 0, 0, 0, 0]], [720*y[0, 0, 0, 0, 0, 1] - 720*y[0, 1, 0, 0, 0, 1], 900*y[0, 1, 0, 0, 0, 0] - 900*y[0, 0, 0, 1, 0, 0] - 90*y[0, 2, 0, 0, 0, 0] + 90*y[0, 0, 0, 0, 0, 0], 450*y[1, 0, 0, 0, 0, 0] + 900*y[0, 0, 0, 0, 1, 0] - 900*y[0, 0, 1, 0, 0, 1] - 450*y[0, 1, 0, 0, 1, 0], 270*y[0, 1, 0, 0, 0, 0] + 810*y[0, 0, 0, 1, 0, 0] - 810*y[1, 1, 0, 0, 0, 1] + 810*y[1, 0, 0, 0, 0, 1] - 270*y[0, 1, 0, 1, 0, 0] - 810*y[0, 0, 1, 0, 1, 0], 900*y[0, 0, 1, 0, 0, 0] + 450*y[0, 0, 0, 0, 0, 1] - 450*y[0, 1, 1, 0, 0, 0] - 900*y[1, 0, 0, 0, 1, 0], 720*y[1, 0, 0, 0, 0, 0] - 720*y[1, 1, 0, 0, 0, 0]], [400*y[1, 0, 0, 0, 0, 0] + 800*y[0, 0, 0, 0, 1, 0] - 400*y[1, 1, 0, 0, 0, 0] - 800*y[0, 0, 1, 0, 0, 1], 900*y[0, 0, 1, 0, 0, 0] + 450*y[0, 0, 0, 0, 0, 1] - 450*y[0, 1, 1, 0, 0, 0] - 900*y[1, 0, 0, 0, 1, 0], 700*y[0, 1, 0, 0, 0, 0] + 300*y[0, 0, 0, 1, 0, 0] - 200*y[1, 0, 1, 0, 0, 0] - 50*y[0, 2, 0, 0, 0, 0] - 1000*y[1, 1, 0, 0, 0, 1] - 200*y[0, 0, 0, 0, 1, 1] + 50*y[0, 0, 0, 0, 0, 0] + 800*y[1, 0, 0, 0, 0, 1] - 400*y[0, 0, 1, 0, 1, 0], 810*y[0, 0, 1, 0, 0, 0] + 180*y[0, 0, 0, 0, 0, 1] - 540*y[0, 0, 0, 1, 0, 1] - 180*y[0, 2, 0, 0, 0, 1] + 90*y[2, 0, 0, 0, 0, 0] - 180*y[0, 0, 1, 1, 0, 0] - 90*y[2, 1, 0, 0, 0, 0] + 630*y[1, 0, 0, 0, 1, 0] + 720*y[0, 1, 0, 0, 0, 1] - 810*y[1, 1, 0, 0, 1, 0] - 540*y[1, 0, 1, 0, 0, 1] - 90*y[0, 0, 0, 0, 2, 0], 400*y[1, 0, 0, 0, 0, 0] + 1000*y[0, 0, 0, 0, 1, 0] + 400*y[1, 1, 0, 0, 0, 0] - 50*y[0, 0, 2, 0, 0, 0] - 300*y[0, 0, 1, 0, 0, 1] - 600*y[0, 1, 0, 0, 1, 0] - 200*y[2, 0, 0, 0, 0, 1] + 50*y[0, 0, 0, 0, 0, 2] - 700*y[1, 0, 0, 1, 0, 0], 800*y[0, 1, 0, 0, 0, 0] - 800*y[0, 0, 0, 1, 0, 0] - 400*y[1, 0, 1, 0, 0, 0] + 400*y[1, 0, 0, 0, 0, 1]], [720*y[0, 0, 1, 0, 0, 0] - 720*y[0, 0, 0, 1, 0, 1] - 720*y[0, 1, 1, 0, 0, 0] + 720*y[0, 1, 0, 0, 0, 1], 270*y[0, 1, 0, 0, 0, 0] + 810*y[0, 0, 0, 1, 0, 0] - 810*y[1, 1, 0, 0, 0, 1] + 810*y[1, 0, 0, 0, 0, 1] - 270*y[0, 1, 0, 1, 0, 0] - 810*y[0, 0, 1, 0, 1, 0], 180*y[1, 0, 0, 0, 0, 0] + 810*y[0, 0, 0, 0, 1, 0] + 720*y[1, 1, 0, 0, 0, 0] - 90*y[0, 0, 2, 0, 0, 0] - 180*y[1, 2, 0, 0, 0, 0] + 630*y[0, 0, 1, 0, 0, 1] - 180*y[0, 0, 0, 1, 1, 0] - 540*y[1, 0, 0, 0, 1, 1] + 90*y[0, 0, 0, 0, 0, 2] - 810*y[0, 1, 1, 0, 0, 1] - 540*y[1, 0, 0, 1, 0, 0] - 90*y[0, 1, 0, 0, 0, 2], 405*y[0, 1, 0, 0, 0, 0] + 999*y[0, 0, 0, 1, 0, 0] + 324*y[1, 0, 1, 0, 0, 0] + 81*y[0, 2, 0, 0, 0, 0] - 324*y[0, 1, 0, 0, 1, 1] + 486*y[1, 1, 0, 0, 0, 1] - 162*y[0, 0, 2, 0, 0, 1] + 324*y[0, 0, 0, 0, 1, 1] - 162*y[1, 0, 0, 0, 2, 0] - 324*y[1, 2, 0, 0, 0, 1] - 27*y[0, 3, 0, 0, 0, 0] - 27*y[0, 0, 0, 2, 0, 0] - 81*y[2, 0, 0, 0, 0, 2] - 405*y[0, 1, 1, 0, 1, 0] - 972*y[1, 0, 0, 1, 0, 1] + 27*y[0, 0, 0, 0, 0, 0] + 648*y[1, 0, 0, 0, 0, 1] - 162*y[0, 1, 0, 1, 0, 0] - 324*y[1, 1, 1, 0, 0, 0] - 162*y[2, 0, 0, 0, 1, 0] - 162*y[0, 0, 1, 0, 0, 2], 810*y[0, 0, 1, 0, 0, 0] + 180*y[0, 0, 0, 0, 0, 1] - 540*y[0, 0, 0, 1, 0, 1] - 180*y[0, 2, 0, 0, 0, 1] + 90*y[2, 0, 0, 0, 0, 0] - 180*y[0, 0, 1, 1, 0, 0] - 90*y[2, 1, 0, 0, 0, 0] + 630*y[1, 0, 0, 0, 1, 0] + 720*y[0, 1, 0, 0, 0, 1] - 810*y[1, 1, 0, 0, 1, 0] - 540*y[1, 0, 1, 0, 0, 1] - 90*y[0, 0, 0, 0, 2, 0], 720*y[0, 0, 0, 0, 1, 0] + 720*y[1, 1, 0, 0, 0, 0] - 720*y[0, 1, 0, 0, 1, 0] - 720*y[1, 0, 0, 1, 0, 0]], [800*y[0, 1, 0, 0, 0, 0] - 800*y[0, 0, 0, 1, 0, 0] - 400*y[0, 0, 0, 0, 1, 1] + 400*y[1, 0, 0, 0, 0, 1], 450*y[1, 0, 0, 0, 0, 0] + 900*y[0, 0, 0, 0, 1, 0] - 900*y[0, 0, 1, 0, 0, 1] - 450*y[0, 1, 0, 0, 1, 0], 1000*y[0, 0, 1, 0, 0, 0] + 400*y[0, 0, 0, 0, 0, 1] - 700*y[0, 0, 0, 1, 0, 1] + 50*y[2, 0, 0, 0, 0, 0] - 200*y[1, 0, 0, 0, 0, 2] - 600*y[0, 1, 1, 0, 0, 0] - 300*y[1, 0, 0, 0, 1, 0] + 400*y[0, 1, 0, 0, 0, 1] - 50*y[0, 0, 0, 0, 2, 0], 180*y[1, 0, 0, 0, 0, 0] + 810*y[0, 0, 0, 0, 1, 0] + 720*y[1, 1, 0, 0, 0, 0] - 90*y[0, 0, 2, 0, 0, 0] - 180*y[1, 2, 0, 0, 0, 0] + 630*y[0, 0, 1, 0, 0, 1] - 180*y[0, 0, 0, 1, 1, 0] - 540*y[1, 0, 0, 0, 1, 1] + 90*y[0, 0, 0, 0, 0, 2] - 810*y[0, 1, 1, 0, 0, 1] - 540*y[1, 0, 0, 1, 0, 0] - 90*y[0, 1, 0, 0, 0, 2], 700*y[0, 1, 0, 0, 0, 0] + 300*y[0, 0, 0, 1, 0, 0] - 200*y[1, 0, 1, 0, 0, 0] - 50*y[0, 2, 0, 0, 0, 0] - 1000*y[1, 1, 0, 0, 0, 1] - 200*y[0, 0, 0, 0, 1, 1] + 50*y[0, 0, 0, 0, 0, 0] + 800*y[1, 0, 0, 0, 0, 1] - 400*y[0, 0, 1, 0, 1, 0], 800*y[0, 0, 1, 0, 0, 0] + 400*y[0, 0, 0, 0, 0, 1] - 800*y[1, 0, 0, 0, 1, 0] - 400*y[0, 1, 0, 0, 0, 1]], [800*y[1, 0, 0, 0, 0, 0] - 640*y[0, 0, 0, 0, 1, 0] - 160*y[0, 0, 0, 0, 0, 2], 720*y[0, 0, 0, 0, 0, 1] - 720*y[0, 1, 0, 0, 0, 1], 800*y[0, 1, 0, 0, 0, 0] - 800*y[0, 0, 0, 1, 0, 0] - 400*y[0, 0, 0, 0, 1, 1] + 400*y[1, 0, 0, 0, 0, 1], 720*y[0, 0, 1, 0, 0, 0] - 720*y[0, 0, 0, 1, 0, 1] - 720*y[0, 1, 1, 0, 0, 0] + 720*y[0, 1, 0, 0, 0, 1], 400*y[1, 0, 0, 0, 0, 0] + 800*y[0, 0, 0, 0, 1, 0] - 400*y[1, 1, 0, 0, 0, 0] - 800*y[0, 0, 1, 0, 0, 1], 640*y[0, 1, 0, 0, 0, 0] - 800*y[1, 0, 0, 0, 0, 1] + 160*y[0, 0, 0, 0, 0, 0]]]);
+M:=Matrix(6, 6, [[-1800*z[1]*z[6] + 1600*z[2] + 200, -2700*z[1]*z[2] + 1200*z[1] + 1500*z[5], -3600*z[1]*z[5] + 4500*z[2]*z[6] - 500*z[3] - 400*z[6], 2700*z[1]*z[2] - 5400*z[1]*z[4] + 8640*z[2]*z[5] - 3240*z[3]*z[6] - 6480*z[6]^2 + 1440*z[1] + 2340*z[5], -4500*z[1]*z[3] + 5400*z[1]*z[6] - 1700*z[2] + 1000*z[4] - 200, -3600*z[1]^2 + 1600*z[3] + 2000*z[6]], [-2700*z[2]*z[6] + 1500*z[3] + 1200*z[6], 6075*z[1]*z[6] - 5400*z[2]^2 - 1350*z[2] + 750*z[4] - 75, -5400*z[2]*z[5] + 4050*z[3]*z[6] + 4050*z[6]^2 - 1050*z[1] - 1650*z[5], -3645*z[1]*z[6] + 4050*z[2]^2 - 8100*z[2]*z[4] + 7290*z[3]*z[5] + 810*z[2] - 450*z[4] + 45, 4050*z[1]^2 + 4050*z[1]*z[5] - 5400*z[2]*z[3] - 1650*z[3] - 1050*z[6], -2700*z[1]*z[2] + 1200*z[1] + 1500*z[5]], [4500*z[1]*z[2] - 3600*z[3]*z[6] - 400*z[1] - 500*z[5], 4050*z[1]^2 + 4050*z[1]*z[5] - 5400*z[2]*z[3] - 1650*z[3] - 1050*z[6], 12150*z[1]*z[2]*z[6] - 7425*z[1]*z[6] + 1800*z[2]^2 - 7200*z[3]*z[5] + 2200*z[2] - 1750*z[4] + 225, 21870*z[1]*z[2]*z[5] - 43740*z[1]*z[6]^2 + 12150*z[2]^2*z[6] + 7290*z[1]^2 + 10530*z[1]*z[5] - 270*z[2]*z[3] + 10800*z[2]*z[6] - 10800*z[3]*z[4] - 10800*z[4]*z[6] + 4050*z[5]^2 - 1170*z[3] + 90*z[6], 18225*z[1]^2*z[6] - 4050*z[1]*z[2] + 2250*z[1]*z[4] + 3600*z[2]*z[5] - 9000*z[3]^2 - 8100*z[3]*z[6] - 2700*z[6]^2 - 325*z[1] + 100*z[5], -4500*z[1]*z[3] + 5400*z[1]*z[6] - 1700*z[2] + 1000*z[4] - 200], [-6480*z[1]^2 - 3240*z[1]*z[5] + 8640*z[2]*z[3] + 2700*z[2]*z[6] - 5400*z[4]*z[6] + 2340*z[3] + 1440*z[6], -3645*z[1]*z[6] + 4050*z[2]^2 - 8100*z[2]*z[4] + 7290*z[3]*z[5] + 810*z[2] - 450*z[4] + 45, -43740*z[1]^2*z[6] + 12150*z[1]*z[2]^2 + 21870*z[2]*z[3]*z[6] + 10800*z[1]*z[2] - 10800*z[1]*z[4] - 270*z[2]*z[5] + 4050*z[3]^2 + 10530*z[3]*z[6] - 10800*z[4]*z[5] + 7290*z[6]^2 + 90*z[1] - 1170*z[5], -177147*z[1]^2*z[6]^2 + 78732*z[1]*z[2]^2*z[6] + 26244*z[1]^3 + 26244*z[1]^2*z[5] - 34992*z[1]*z[2]*z[3] + 21870*z[1]*z[2]*z[6] - 65610*z[1]*z[4]*z[6] + 26244*z[1]*z[5]^2 + 11664*z[2]^3 + 34992*z[2]*z[3]*z[5] - 34992*z[2]*z[5]*z[6] + 26244*z[3]^2*z[6] + 26244*z[3]*z[6]^2 + 26244*z[6]^3 - 2916*z[1]*z[3] - 8019*z[1]*z[6] + 5832*z[2]^2 + 9720*z[2]*z[4] + 20412*z[3]*z[5] - 16200*z[4]^2 - 2916*z[5]*z[6] + 972*z[2] + 1080*z[4] + 54, 21870*z[1]*z[2]*z[5] - 43740*z[1]*z[6]^2 + 12150*z[2]^2*z[6] + 7290*z[1]^2 + 10530*z[1]*z[5] - 270*z[2]*z[3] + 10800*z[2]*z[6] - 10800*z[3]*z[4] - 10800*z[4]*z[6] + 4050*z[5]^2 - 1170*z[3] + 90*z[6], 2700*z[1]*z[2] - 5400*z[1]*z[4] + 8640*z[2]*z[5] - 3240*z[3]*z[6] - 6480*z[6]^2 + 1440*z[1] + 2340*z[5]], [5400*z[1]*z[6] - 4500*z[5]*z[6] - 1700*z[2] + 1000*z[4] - 200, -5400*z[2]*z[5] + 4050*z[3]*z[6] + 4050*z[6]^2 - 1050*z[1] - 1650*z[5], 18225*z[1]*z[6]^2 - 2700*z[1]^2 - 8100*z[1]*z[5] + 3600*z[2]*z[3] - 4050*z[2]*z[6] + 2250*z[4]*z[6] - 9000*z[5]^2 + 100*z[3] - 325*z[6], -43740*z[1]^2*z[6] + 12150*z[1]*z[2]^2 + 21870*z[2]*z[3]*z[6] + 10800*z[1]*z[2] - 10800*z[1]*z[4] - 270*z[2]*z[5] + 4050*z[3]^2 + 10530*z[3]*z[6] - 10800*z[4]*z[5] + 7290*z[6]^2 + 90*z[1] - 1170*z[5], 12150*z[1]*z[2]*z[6] - 7425*z[1]*z[6] + 1800*z[2]^2 - 7200*z[3]*z[5] + 2200*z[2] - 1750*z[4] + 225, -3600*z[1]*z[5] + 4500*z[2]*z[6] - 500*z[3] - 400*z[6]], [-3600*z[6]^2 + 2000*z[1] + 1600*z[5], -2700*z[2]*z[6] + 1500*z[3] + 1200*z[6], 5400*z[1]*z[6] - 4500*z[5]*z[6] - 1700*z[2] + 1000*z[4] - 200, -6480*z[1]^2 - 3240*z[1]*z[5] + 8640*z[2]*z[3] + 2700*z[2]*z[6] - 5400*z[4]*z[6] + 2340*z[3] + 1440*z[6], 4500*z[1]*z[2] - 3600*z[3]*z[6] - 400*z[1] - 500*z[5], -1800*z[1]*z[6] + 1600*z[2] + 200]]);</Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L31858" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#E7
+#TODO
+</Text-field>
+</Input>
+</Group>
+<Group view="code" labelreference="L31859" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#E8
+#Good luck
+</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" labelreference="L31860" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#F4
+Matrix(4, 4, [[2*y[0, 0, 0, 0] + 8*y[1, 0, 0, 0] - 8*y[0, 1, 0, 0] - 2*y[2, 0, 0, 0], -24*y[1, 1, 0, 0] + 24*y[1, 0, 0, 0] + 24*y[0, 1, 0, 0] + 24*y[0, 0, 0, 2] - 24*y[0, 0, 2, 0] - 24*y[1, 0, 0, 2], 24*y[0, 0, 1, 0] + 24*y[0, 0, 0, 1] - 24*y[0, 0, 1, 1] - 24*y[1, 0, 1, 0], 6*y[0, 0, 0, 1] - 6*y[1, 0, 0, 1]], [-24*y[1, 1, 0, 0] + 24*y[1, 0, 0, 0] + 24*y[0, 1, 0, 0] + 24*y[0, 0, 0, 2] - 24*y[0, 0, 2, 0] - 24*y[1, 0, 0, 2], 24*y[0, 0, 0, 0] - 48*y[1, 1, 0, 0] + 120*y[1, 0, 0, 0] + 168*y[0, 1, 0, 0] + 24*y[2, 0, 0, 0] - 24*y[0, 2, 0, 0] - 120*y[1, 0, 2, 0] + 96*y[0, 0, 0, 2] - 24*y[0, 0, 0, 4] - 96*y[2, 0, 0, 2] - 24*y[3, 0, 0, 0] + 48*y[1, 0, 0, 2] - 144*y[0, 1, 0, 2], 144*y[0, 0, 1, 0] + 48*y[0, 0, 0, 1] + 48*y[0, 0, 1, 1] - 48*y[0, 1, 1, 0] - 48*y[0, 1, 0, 1] + 96*y[1, 0, 0, 1] - 48*y[0, 0, 1, 2] - 48*y[2, 0, 0, 1] - 144*y[1, 0, 1, 1], 24*y[0, 0, 1, 0] - 24*y[0, 1, 0, 1] - 24*y[1, 0, 1, 0] + 24*y[1, 0, 0, 1]], [24*y[0, 0, 1, 0] + 24*y[0, 0, 0, 1] - 24*y[0, 0, 1, 1] - 24*y[1, 0, 1, 0], 144*y[0, 0, 1, 0] + 48*y[0, 0, 0, 1] + 48*y[0, 0, 1, 1] - 48*y[0, 1, 1, 0] - 48*y[0, 1, 0, 1] + 96*y[1, 0, 0, 1] - 48*y[0, 0, 1, 2] - 48*y[2, 0, 0, 1] - 144*y[1, 0, 1, 1], 12*y[0, 0, 0, 0] + 48*y[1, 0, 0, 0] - 12*y[2, 0, 0, 0] + 84*y[0, 0, 1, 0] + 60*y[0, 0, 0, 1] + 12*y[0, 0, 0, 2] - 24*y[0, 0, 1, 1] - 12*y[0, 0, 2, 0] - 60*y[0, 1, 0, 1] - 72*y[1, 0, 1, 0] + 24*y[1, 0, 0, 1] - 12*y[0, 0, 0, 3] - 48*y[1, 0, 0, 2], 12*y[1, 0, 0, 0] - 12*y[0, 1, 0, 0] + 12*y[0, 0, 1, 0] + 12*y[0, 0, 0, 1] - 12*y[0, 0, 1, 1] - 12*y[1, 0, 0, 1]], [6*y[0, 0, 0, 1] - 6*y[1, 0, 0, 1], 24*y[0, 0, 1, 0] - 24*y[0, 1, 0, 1] - 24*y[1, 0, 1, 0] + 24*y[1, 0, 0, 1], 12*y[1, 0, 0, 0] - 12*y[0, 1, 0, 0] + 12*y[0, 0, 1, 0] + 12*y[0, 0, 0, 1] - 12*y[0, 0, 1, 1] - 12*y[1, 0, 0, 1], y[0, 0, 0, 0] - 4*y[0, 0, 1, 0] + 4*y[0, 0, 0, 1] - y[0, 0, 0, 2]]]);
+Matrix(4, 4, [[-24*z[1]^2 + 144*z[4]^2 - 24*z[1] + 4*z[2] - 48*z[3] - 48*z[4] - 4, -1152*z[1]*z[4]^2 - 6912*z[4]^3 + 144*z[1]^2 - 144*z[1]*z[2] + 384*z[1]*z[3] + 1248*z[1]*z[4] - 288*z[2]*z[4] + 576*z[3]^2 + 3456*z[3]*z[4] + 1152*z[4]^2 + 240*z[1] - 96*z[2] + 576*z[3] + 768*z[4] + 48, -96*z[1]*z[3] - 48*z[1]*z[4] + 144*z[3]*z[4] - 288*z[4]^2 + 54*z[1] - 18*z[2] + 120*z[3] + 120*z[4] + 12, -12*z[1]*z[4] + 6*z[3] + 6*z[4]], [-1152*z[1]*z[4]^2 - 6912*z[4]^3 + 144*z[1]^2 - 144*z[1]*z[2] + 384*z[1]*z[3] + 1248*z[1]*z[4] - 288*z[2]*z[4] + 576*z[3]^2 + 3456*z[3]*z[4] + 1152*z[4]^2 + 240*z[1] - 96*z[2] + 576*z[3] + 768*z[4] + 48, -110592*z[1]*z[4]^3 + 13824*z[1]^2*z[4] - 4608*z[1]*z[2]*z[4] + 9216*z[1]*z[3]^2 + 55296*z[1]*z[3]*z[4] - 27648*z[1]*z[4]^2 - 9216*z[2]*z[4]^2 - 55296*z[4]^3 + 10368*z[1]^2 - 1152*z[1]*z[2] + 24576*z[1]*z[3] + 34560*z[1]*z[4] - 1152*z[2]^2 + 3072*z[2]*z[3] + 768*z[2]*z[4] + 4608*z[3]^2 + 27648*z[3]*z[4] + 16128*z[4]^2 + 3072*z[1] + 192*z[2] + 2304*z[3] + 3840*z[4] + 192, 2304*z[1]*z[3]*z[4] - 4608*z[1]*z[4]^2 + 864*z[1]^2 - 288*z[1]*z[2] + 1536*z[1]*z[3] + 1728*z[1]*z[4] - 768*z[2]*z[3] - 384*z[2]*z[4] - 576*z[3]*z[4] + 1152*z[4]^2 - 24*z[1] + 72*z[2] - 480*z[3] - 480*z[4] - 48, 96*z[1]*z[3] + 48*z[1]*z[4] - 96*z[2]*z[4] - 24*z[3] - 24*z[4]], [-96*z[1]*z[3] - 48*z[1]*z[4] + 144*z[3]*z[4] - 288*z[4]^2 + 54*z[1] - 18*z[2] + 120*z[3] + 120*z[4] + 12, 2304*z[1]*z[3]*z[4] - 4608*z[1]*z[4]^2 + 864*z[1]^2 - 288*z[1]*z[2] + 1536*z[1]*z[3] + 1728*z[1]*z[4] - 768*z[2]*z[3] - 384*z[2]*z[4] - 576*z[3]*z[4] + 1152*z[4]^2 - 24*z[1] + 72*z[2] - 480*z[3] - 480*z[4] - 48, 1152*z[1]*z[4]^2 + 3456*z[4]^3 - 192*z[1]*z[3] - 720*z[1]*z[4] + 48*z[2]*z[4] - 576*z[3]^2 - 1728*z[3]*z[4] - 1152*z[4]^2 - 24*z[1] + 24*z[2] - 96*z[3] - 192*z[4], 48*z[1]*z[4] - 72*z[3]*z[4] + 144*z[4]^2 - 21*z[1] + 3*z[2] - 48*z[3] - 48*z[4] - 6], [-12*z[1]*z[4] + 6*z[3] + 6*z[4], 96*z[1]*z[3] + 48*z[1]*z[4] - 96*z[2]*z[4] - 24*z[3] - 24*z[4], 48*z[1]*z[4] - 72*z[3]*z[4] + 144*z[4]^2 - 21*z[1] + 3*z[2] - 48*z[3] - 48*z[4] - 6, -12*z[4]^2 + 3*z[1] + 2*z[3] + 6*z[4] + 1]])</Text-field>
+</Input>
+</Group>
+<Group view="code" hide-input="false" labelreference="L4" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal">#G2
+Matrix(2, 2, [[y[1, 0] - y[0, 1] - y[2, 0] + y[0, 0], -3*y[1, 1] + 3*y[1, 0]], [-3*y[1, 1] + 3*y[1, 0], 3*y[0, 0] + 3*y[0, 1] - 3*y[0, 2] - 3*y[3, 0]]]);
+Matrix(2, 2, [[-6*z[1]^2 + 3*z[1] + z[2] + 2, 18*z[1]^2 - 9*z[1]*z[2] - 6*z[2] - 3], [18*z[1]^2 - 9*z[1]*z[2] - 6*z[2] - 3, 108*z[1]^3 - 54*z[1]*z[2] - 18*z[2]^2 - 27*z[1] - 9*z[2]]]);</Text-field>
+</Input>
+</Group></Presentation-Block><Presentation-Block>
+<Group view="code" labelreference="L31891" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
+<Input><Text-field prompt="&gt; " style="Maple Input" layout="Normal"></Text-field>
+</Input>
+</Group></Presentation-Block>
+</Worksheet>

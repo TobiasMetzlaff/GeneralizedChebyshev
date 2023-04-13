@@ -5,9 +5,9 @@ option package;
 
 with(LinearAlgebra):
 
-export Base, coroot, WeightMatrix, FWeight, RWeylGroupGen, ZWeylGroupGen, FundomVertexCoefficient, VertexFundom, VertexTOrbitSpace, FundamentalInvariant, HighestRoot, ChebyshevLevel, ROrbit, ZOrbit, GeneralizedCosine, RGeneralizedCosine, TMultiply, TPoly, TPolyRecurrence, HermiteMatrix, RHermiteMatrix, InvariantRewrite, THermiteMatrix, RTHermiteMatrix, TLocalizedPMI, TArchimedeanPMI, ChebyshevSDPdata, ChebyshevArchimedeanSDP, Pull, RPull, TruncatedTMomentMatrix;
+export Base, coroot, WeightMatrix, FWeight, RWeylGroupGen, ZWeylGroupGen, FundomVertexCoefficient, VertexFundom, VertexTOrbitSpace, VertexRTOrbitSpace, FundamentalInvariant, HighestRoot, ChebyshevLevel, ROrbit, ZOrbit, GeneralizedCosine, RGeneralizedCosine, TMultiply, TPoly, TPolyRecurrence, HermiteMatrix, RHermiteMatrix, InvariantRewrite, ChebyshevInvariantRewrite, THermiteMatrix, RTHermiteMatrix, TLocalizedPMI, TArchimedeanPMI, ChebyshevSDPdata, ChebyshevArchimedeanSDP, Pull, RPull, TruncatedTMomentMatrix;
 
-local Reflection, RWeylGroup, ZWeylGroup, esp, MonomialMultiply, ChebyshevDegExp, TruncatedMonomialMomentMatrix, PrimalConstraintMatrix, DualConstraintMatrix, MonomialExponent, SolutionSet, MonomialExponent2, MonomialRewrite, MonomialHermiteMatrix, MonomialLocalizedPMI, CoeffInMatrix, THermiteEntries, RTHermiteEntriesOld, RTHermiteEntries;
+local Reflection, RWeylGroup, ZWeylGroup, esp, MonomialMultiply, ChebyshevDegExp, TruncatedMonomialMomentMatrix, PrimalConstraintMatrix, DualConstraintMatrix, MonomialExponent, SolutionSet, MonomialExponent2, MonomialRewrite, MonomialHermiteMatrix, MonomialLocalizedPMI, CoeffInMatrix, ProcesiSchwarzMatrix, THermiteEntries, RTHermiteEntriesOld, RTHermiteEntries;
 
 Base:=proc(Type,n) # base of a root system
 local i, j;
@@ -180,7 +180,7 @@ esp:=proc(L,r) # r-th elementary symmetric polynomials, evaluated in list L
 end proc:
 
 GeneralizedCosine:=proc(Type,n,u::list) # generalized cosine evaluated in u
-local i, j, orb, v;
+ local i, j, orb, v;
  if   Type = A then
   [seq( simplify(1/binomial(n+1,j)*esp([seq(exp(-2*Pi*I*u[i]),i=1..n+1)],j)) , j=1..n)]
  elif Type = B then
@@ -195,34 +195,31 @@ local i, j, orb, v;
    cos((3*Pi*u[1])/2)*cos(Pi*u[2]/2)*cos(Pi*u[3]/2)*cos(Pi*u[4]/2)/6 + cos(Pi*u[1])*cos(Pi*u[2])*cos(Pi*u[3])/12 + cos(Pi*u[1])*cos(Pi*u[2])*cos(Pi*u[4])/12 + cos(Pi*u[1])*cos(Pi*u[3])*cos(Pi*u[4])/12 + cos(Pi*u[2])*cos(Pi*u[3])*cos(Pi*u[4])/12 + cos(Pi*u[1]/2)*cos((3*Pi*u[2])/2)*cos(Pi*u[3]/2)*cos(Pi*u[4]/2)/6 + cos(Pi*u[1]/2)*cos(Pi*u[2]/2)*cos((3*Pi*u[3])/2)*cos(Pi*u[4]/2)/6 + cos(Pi*u[1]/2)*cos(Pi*u[2]/2)*cos(Pi*u[3]/2)*cos((3*Pi*u[4])/2)/6,
    cos(Pi*u[1])/12 + cos(Pi*u[2])/12 + cos(Pi*u[3])/12 + cos(Pi*u[4])/12 + (2*cos(Pi*u[1]/2)*cos(Pi*u[2]/2)*cos(Pi*u[3]/2)*cos(Pi*u[4]/2))/3]
  elif Type = E then
-  orb:=[seq(ROrbit(Type,n,FWeight(E,6)[i]),i=1..n)];
+  orb:=[seq(ROrbit(Type,n,FWeight(E,n)[i]),i=1..n)];
   [seq(simplify(1/nops(orb[i])*convert(map(v->exp(-2*Pi*I*(<v>.<u>)),orb[i]),`+`)),i=1..n)]
  elif Type = G and n = 2 then
   [cos(2*Pi*(u[1] - u[2]))/3 + cos(2*Pi*(u[1] - u[3]))/3 + cos(2*Pi*(u[2] - u[3]))/3, cos(2*Pi*(u[1] - 2*u[2] + u[3]))/3 + cos(2*Pi*(u[1] + u[2] - 2*u[3]))/3 + cos((4*u[1] - 2*u[2] - 2*u[3])*Pi)/3]
  else
-  printf("Error: root system must be of Type A, B, C, D, F, G")
+  printf("Error: root system must be of Type A, B, C, D, E, F, G")
  fi;
 end proc:
 
 RGeneralizedCosine:=proc(Type,n,u::list) # real generalized cosine evaluated in u
-local i, j;
+ local i, j, GenCos;
+ GenCos:=GeneralizedCosine(Type,n,u);
  if Type = A then
-  [seq( simplify(GeneralizedCosine(Type,n,u)[j]+GeneralizedCosine(Type,n,u)[n+1-j])/2 , j=1..floor(n/2)) , seq(simplify(GeneralizedCosine(Type,n,u)[j]),j=ceil((n+1)/2)..floor((n+1)/2)) , seq( simplify(GeneralizedCosine(Type,n,u)[n+1-j]-GeneralizedCosine(Type,n,u)[j])/(2*I) , j=ceil((n+2)/2)..n)]
- elif Type = B or Type = C or (Type = G and n = 2) or (Type = F and n = 4) then
-  GeneralizedCosine(Type,n,u)
- elif Type = D then
-  if is(n::even) then 
-   GeneralizedCosine(Type,n,u)
-  else
-   [seq(GeneralizedCosine(Type,n,u)[j],j=1..n-2),simplify((GeneralizedCosine(Type,n,u)[n]-GeneralizedCosine(Type,n,u)[n-1])/(2*I)),simplify((GeneralizedCosine(Type,n,u)[n]+GeneralizedCosine(Type,n,u)[n-1])/2)]
-  fi;
+  return [seq( simplify(GenCos[j]+GenCos[n+1-j])/2 , j=1..floor(n/2)) , seq(simplify(GenCos[j]),j=ceil((n+1)/2)..floor((n+1)/2)) , seq( simplify(GenCos[n+1-j]-GenCos[j])/(2*I) , j=ceil((n+2)/2)..n)]
+ elif Type = D and is(n::odd) then
+  return [seq(GenCos[j],j=1..n-2),simplify((GenCos[n]-GenCos[n-1])/(2*I)),simplify((GenCos[n]+GenCos[n-1])/2)]
+ elif Type = E and n = 6 then
+  return [(GenCos[1]+GenCos[6])/2,GenCos[2],(GenCos[3]+GenCos[5])/2,GenCos[4],(GenCos[3]-GenCos[5])/2/I,(GenCos[1]-GenCos[6])/2/I]
  else
-  printf("Error: root system must be of Type A, B, C, D, F, G")
+  return GenCos;
  fi;
 end proc:
 
 VertexFundom:=proc(Type,n) # list of vertices of the fundamental domain of orthogonal Weyl group
-local i, L, f;
+ local i, L, f;
  L:=FundomVertexCoefficient(Type,n);
  f:=FWeight(Type,n);
  if Type = A or (Type = G and n = 2) then
@@ -235,8 +232,13 @@ local i, L, f;
 end proc:
 
 VertexTOrbitSpace:=proc(Type,n) # list of vertices of the T-orbit space
-local i;
- [seq(GeneralizedCosine(Type,n,VertexFundom(Type,n)[i]),i=1..n+1)];
+ local i;
+ return [seq(GeneralizedCosine(Type,n,VertexFundom(Type,n)[i]),i=1..n+1)];
+end proc:
+
+VertexRTOrbitSpace:=proc(Type,n) # list of vertices of the T-orbit space
+ local i;
+ return [seq(RGeneralizedCosine(Type,n,VertexFundom(Type,n)[i]),i=1..n+1)];
 end proc:
 
 RPull:=proc(Type,n,omega) option remember;
@@ -369,6 +371,33 @@ SolutionSet:=proc(H::list,permuts) option remember;
  Solutions[nops(H)];
 end proc:
 
+ProcesiSchwarzMatrix:=proc(Type,n)
+ option remember;
+ local i, j, S, theta, gradtheta, D, x;
+ theta:=FundamentalInvariant(Type,n):
+ for i from 1 to n do
+  for j from 1 to n do
+   if i=j then
+    D[i](x[j]):=x[j]
+   else
+    D[i](x[j]):=0
+   fi;
+  od;
+ od;
+ gradtheta:=[seq(<seq(D[j](theta[i]),j=1..n)>,i=1..n)]:
+ #GP:=ZWeylGroup(Type,n): S:=convert(map(g->Transpose(g).g,GP),`+`)/nops(GP):   #alternative invariant matrix
+ S:=Transpose(WeightMatrix(Type,n)).WeightMatrix(Type,n):
+ if Type=A then
+  return -Matrix( n , (i,j) -> InvariantRewrite(Type,n,expand( Transpose(gradtheta[i]).S.gradtheta[n+1-j] ) ) ) ;
+ elif Type=D and is(n,odd) then
+  return -Matrix( n , (i,j) -> InvariantRewrite(Type,n,expand( Transpose(gradtheta[i]).S.gradtheta[if j=n-1 then n elif j=n then n-1 else j fi] ) ) ) ;
+ elif Type=E and n=6 then
+  return -Matrix( n , (i,j) -> InvariantRewrite(Type,n,expand( Transpose(gradtheta[i]).S.gradtheta[if j=1 then 6 elif j=3 then 5 elif j=5 then 3 elif j=6 then 1 else j fi] ) ) ) ;
+ else
+  return -Matrix( n , (i,j) -> InvariantRewrite(Type,n,expand( Transpose(gradtheta[i]).S.gradtheta[    j] ) ) ) ;
+ fi:
+end proc:
+
 HermiteMatrix:=proc(Type,n) # polynomial matrix which characterizes the T-orbit space, careful: for Type A the matrix is complex
  local Y, f, k, i, j, CompMat;
  global z;
@@ -487,7 +516,7 @@ RHermiteMatrix:=proc(Type,n)
  fi;
 end proc:
 
-InvariantRewrite:=proc(Type,n,invariant) option remember; # This proc will give an output regardless if the input is invariant or not. Input must be Laurent polynomial in x[i]
+ChebyshevInvariantRewrite:=proc(Type,n,invariant) option remember; # This proc will give an output regardless if the input is invariant or not. Input must be Laurent polynomial in x[i]
 local W, TermsMatrixEntry, ExponentsMatrixEntry, SplitTermsMatrixEntry, PositiveTerms, OrbCard, i, j, k, l;
 global y;
  y:='y';
@@ -499,6 +528,20 @@ global y;
   OrbCard[i]:=nops(ZOrbit(Type,PositiveTerms[i,2]));
  od;
  convert([seq(PositiveTerms[i,1]*OrbCard[i]*y[op(PositiveTerms[i,2])],i=1..nops(PositiveTerms))],`+`);
+end proc:
+
+InvariantRewrite:=proc(Type,n,invariant) option remember; # This proc will give an output regardless if the input is invariant or not. Input must be Laurent polynomial in x[i]
+local W, TermsMatrixEntry, ExponentsMatrixEntry, SplitTermsMatrixEntry, PositiveTerms, OrbCard, i, j, k, l;
+global y;
+ y:='y';
+ TermsMatrixEntry:=[op(expand(simplify(invariant)))];
+ ExponentsMatrixEntry:=[seq([seq(degree(op(TermsMatrixEntry)[j],x[i]),i=1..n)],j=1..nops(TermsMatrixEntry))];
+ SplitTermsMatrixEntry:=[seq([TermsMatrixEntry[j]*convert([seq(x[i]^(-ExponentsMatrixEntry[j][i]),i=1..n)],`*`),[seq(degree(op(TermsMatrixEntry)[j],x[i]),i=1..n)]],j=1..nops(TermsMatrixEntry))];
+ PositiveTerms:=select(l->`and`(seq(is(l[2][i]>=0),i=1..n)),SplitTermsMatrixEntry);
+ for i from 1 to nops(PositiveTerms) do
+  OrbCard[i]:=nops(ZOrbit(Type,PositiveTerms[i,2]));
+ od;
+ convert([seq(PositiveTerms[i,1]*OrbCard[i]*TPoly(Type,PositiveTerms[i,2]),i=1..nops(PositiveTerms))],`+`);
 end proc:
 
 MonomialRewrite:=proc(n,invariant)
@@ -741,3 +784,4 @@ end proc:
 
 end module: #GeneralizedChebyshevNULL;
 
+NULL;
