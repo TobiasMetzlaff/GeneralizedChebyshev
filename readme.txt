@@ -11,7 +11,7 @@ Definition:
 
 A Euclidean reflection group W that leaves a full-dimensional lattice Omega invariant is called Weyl group.
 The reflections can be defined through a crystallographic root system, which is a set of points with "nice" properties in the sense of [1,2,3].
-The invariant lattice  is spanned by the fundamental weights omega_1...omega_n of the root system and also called weight lattice.
+The invariant lattice Omega is spanned by the fundamental weights omega_1...omega_n of the root system and also called weight lattice.
 A theorem from multiplicative invariant theory states that those elements of the group ring Q[Omega], which are invariant under the induced action of W, form a polynomial algebra:
  
 (*) Q[Omega]^W = Q[theta_{omega_1}, ..., theta_{omega_n}],
