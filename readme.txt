@@ -38,7 +38,6 @@ In [5], we have constructed a Hermite matrix polynomial H with the property
     
 The matrix entries of H are given through a closed formula that is available as a command in the package.
 Alternatively, one can use a "Procesi-Schwarz-type approach", which is described in section 4 of [7], which we conjecture to be applicable for multiplicative actions in [5].
-Those matrices can be constructed with the file 'ProcesiSchwarzMatrices.mw'.
 
 Any root system can be decomposed into irreducible components which classify the 7 families of simple Lie algebras:
 
