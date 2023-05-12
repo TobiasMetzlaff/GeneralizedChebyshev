@@ -4,7 +4,7 @@ The main purpose of this package is to produce matrices for semi-definite progra
 Beyond that, it features several functionalities for computations with Weyl groups of simple Lie type and polynomial descriptions for the orbit space [5].
 
 If you are specifically interested in Weyl groups acting on minuscule weights:
-Those are not covered here (yet), but there is a Maple 2008 worksheet by Michael Singer (https://singer.math.ncsu.edu/papers/minuscule/).
+This is covered in a Maple 2008 worksheet by Michael Singer (https://singer.math.ncsu.edu/papers/minuscule/).
 
 
 Definition:
