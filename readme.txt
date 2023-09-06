@@ -7,6 +7,22 @@ If you are specifically interested in Weyl groups acting on minuscule weights:
 This is covered in a Maple 2008 worksheet by Michael Singer (https://singer.math.ncsu.edu/papers/minuscule/).
 
 
+
+Installation:
+
+Download the two files 'GeneralizedChebsyhev.mpl' and 'GeneralizedChebsyhevHelp.mw'.
+Place both in the SAME folder open the file 'GeneralizedChebsyhevHelp.mw' with Maple2022.
+The worksheet 'GeneralizedChebsyhevHelp.mw' is a guide through the available commands of the package.
+The first time running 
+
+    read("GeneralizedChebyshev.mpl"): 
+    with(GeneralizedChebyshev):
+
+can output an error. In this case, save everything, close Maple and reopen it.
+To use 'GeneralizedChebsyhevHelp.mw' in any other Maple 2022 worksheet, place it in the same folder as the current worksheet and run the above commands.
+
+
+
 Definition:
 
 A Euclidean reflection group W that leaves a full-dimensional lattice Omega invariant is called Weyl group.
@@ -46,23 +62,11 @@ Any root system can be decomposed into irreducible components which classify the
 Any semi-simple Lie algebra admits a root system that decomposes into orthogonal, irreducible components which are of one of the above "simple Lie types". Hence, we only need to consider the latter.
 
 
-Installation:
-
-Download the two files 'GeneralizedChebsyhev.mpl' and 'GeneralizedChebsyhevHelp.mw'.
-Place both in the SAME folder open the file 'GeneralizedChebsyhevHelp.mw' with Maple2022.
-The worksheet 'GeneralizedChebsyhevHelp.mw' is a guide through the available commands of the package.
-The first time running 
-
-    read("GeneralizedChebyshev.mpl"): 
-    with(GeneralizedChebyshev):
-
-can output an error. In this case, save everything, close Maple and reopen it.
-To use 'GeneralizedChebsyhevHelp.mw' in any other Maple 2022 worksheet, place it in the same folder as the current worksheet and run the above commands.
-
 
 Problems/Questions:
 
 Feel free to contact 'tobias.metzlaff@rptu.de'.
+
 
 
 Literature:
