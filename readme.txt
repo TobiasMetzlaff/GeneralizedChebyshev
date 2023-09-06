@@ -8,22 +8,22 @@ This is covered in a Maple 2008 worksheet by Michael Singer (https://singer.math
 
 
 
-Installation:
+How to use this package:
 
-Download the two files 'GeneralizedChebsyhev.mpl' and 'GeneralizedChebsyhevHelp.mw'.
-Place both in the SAME folder open the file 'GeneralizedChebsyhevHelp.mw' with Maple2022.
+Open/Create a Maple worksheet.
+Download the file 'GeneralizedChebsyhev.mpl' and place a copy in the same folder as your worksheet. 
+In your worksheet, type
+
+>    read("GeneralizedChebyshev.mpl"): 
+>    with(GeneralizedChebyshev);
+
+(The first time executing this command can output an error. In this case, save and restart Maple.)
+
 The worksheet 'GeneralizedChebsyhevHelp.mw' is a guide through the available commands of the package.
-The first time running 
-
-    read("GeneralizedChebyshev.mpl"): 
-    with(GeneralizedChebyshev):
-
-can output an error. In this case, save everything, close Maple and reopen it.
-To use 'GeneralizedChebsyhevHelp.mw' in any other Maple 2022 worksheet, place it in the same folder as the current worksheet and run the above commands.
 
 
 
-Definition:
+Mathematical Background:
 
 A Euclidean reflection group W that leaves a full-dimensional lattice Omega invariant is called Weyl group.
 The reflections can be defined through a crystallographic root system, which is a set of points with "nice" properties in the sense of [1,2,3].
