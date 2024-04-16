@@ -573,7 +573,7 @@ end proc:
 ChebyshevLevel:=proc(Type,n,l) option remember;
  local F, L, i;
  F:=FundomVertexCoefficient(Type,n);
- if Type=F and n=4 then
+ if Type='F' and n=4 then
   select( L-> l = convert([seq(F[1..n][i]*L[i],i=1..n)],`+`),MonomialExponent(n,l))
  else
   select( L-> l*F[1] = convert([seq(F[1..n][i]*L[i],i=1..n)],`+`),MonomialExponent(n,l))
@@ -768,22 +768,23 @@ local i, j;
 global y;
  if Type = A then
   if is(k::odd) then
-   n/2^k*(convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*(y[k-2*j,seq(0,i=1..n-2)]+y[seq(0,i=1..n-2),k-2*j]),j=1..(k-1)/2)],`+`)-(y[k,seq(0,i=1..n-2)]+y[seq(0,i=1..n-2),k]) )
+   (convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*(y[k-2*j,seq(0,i=1..n-2)]+y[seq(0,i=1..n-2),k-2*j]),j=1..(k-1)/2)],`+`)-(y[k,seq(0,i=1..n-2)]+y[seq(0,i=1..n-2),k]) )
   else
-   n/2^k*(convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*(y[k-2*j,seq(0,i=1..n-2)]+y[seq(0,i=1..n-2),k-2*j]),j=1..k/2-1  )],`+`)-(y[k,seq(0,i=1..n-2)]+y[seq(0,i=1..n-2),k])
+   (convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*(y[k-2*j,seq(0,i=1..n-2)]+y[seq(0,i=1..n-2),k-2*j]),j=1..k/2-1  )],`+`)-(y[k,seq(0,i=1..n-2)]+y[seq(0,i=1..n-2),k])
    +(4*binomial(k-2,k/2-1)-binomial(k,k/2))*y[0,seq(0,i=1..n-2)])
   fi;
  elif Type = B or Type = C or Type = D then
   if is(k::odd) then
-   2*n*(convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*y[k-2*j,seq(0,i=1..n-1)],j=1..(k-1)/2)],`+`)-y[k,seq(0,i=1..n-1)])
+   (convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*y[k-2*j,seq(0,i=1..n-1)],j=1..(k-1)/2)],`+`)-y[k,seq(0,i=1..n-1)])
   else
-   2*n*(convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*y[k-2*j,seq(0,i=1..n-1)],j=1..k/2-1)],`+`)-y[k,seq(0,i=1..n-1)]+(-binomial(k,k/2)+4*binomial(k-2,k/2-1))/2*y[0,seq(0,i=1..n-1)])
+   (convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*y[k-2*j,seq(0,i=1..n-1)],j=1..k/2-1)],`+`)-y[k,seq(0,i=1..n-1)]
+   +(-binomial(k,k/2)+4*binomial(k-2,k/2-1))/2*y[0,seq(0,i=1..n-1)])
   fi;
  elif Type = G then
   if is(k::odd) then
-   6*(convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*y[k-2*j,0],j=1..(k-1)/2)],`+`)-y[k,0])
+   (convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*y[k-2*j,0],j=1..(k-1)/2)],`+`)-y[k,0])
   else
-   6*(convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*y[k-2*j,0],j=1..k/2-1  )],`+`)-y[k,0]+(-binomial(k,k/2)+4*binomial(k-2,k/2-1))/2*y[0,0])
+   (convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*y[k-2*j,0],j=1..k/2-1  )],`+`)-y[k,0]+(-binomial(k,k/2)+4*binomial(k-2,k/2-1))/2*y[0,0])
   fi;
  else
   printf("Error: root system must be of Type A, B, C, D, G")
@@ -809,9 +810,9 @@ RTHermiteEntriesOld:=proc(Type,n,k)
  global y;
  if Type = A then
   if is(k::odd) then
-   2*n/2^k*(convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*(y[k-2*j,seq(0,i=1..n-2)]),j=1..(k-1)/2)],`+`)-(y[k,seq(0,i=1..n-2)]))
+   convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*(y[k-2*j,seq(0,i=1..n-2)]),j=1..(k-1)/2)],`+`)-(y[k,seq(0,i=1..n-2)])
   else
-   2*n/2^k*(convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*(y[k-2*j,seq(0,i=1..n-2)]),j=1..k/2-1)],`+`)-(y[k,seq(0,i=1..n-2)])+(-binomial(k,k/2)+4*binomial(k-2,k/2-1))/2*y[0,seq(0,i=1..n-2)])
+   convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*(y[k-2*j,seq(0,i=1..n-2)]),j=1.. k/2 -1)],`+`)-(y[k,seq(0,i=1..n-2)])+(-binomial(k,k/2)+4*binomial(k-2,k/2-1))/2*y[0,seq(0,i=1..n-2)]
   fi;
  elif Type = B or Type = C or Type = D then
   THermiteEntries(Type,n,k)
@@ -824,17 +825,17 @@ RTHermiteEntries:=proc(n,k)
  local i, j;
  global y;
   if is(k::odd) then
-   1/2^k*(convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*(y[k-2*j,seq(0,i=1..n-1)]),j=1..(k-1)/2)],`+`)-(y[k,seq(0,i=1..n-1)]))
+   convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*(y[k-2*j,seq(0,i=1..n-1)]),j=1..(k-1)/2)],`+`)-(y[k,seq(0,i=1..n-1)])
   else
-   1/2^k*(convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*(y[k-2*j,seq(0,i=1..n-1)]),j=1..k/2-1)],`+`)-(y[k,seq(0,i=1..n-1)])
-   +(-binomial(k,k/2)+4*binomial(k-2,k/2-1))/2*y[0,seq(0,i=1..n-1)])
+   convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*(y[k-2*j,seq(0,i=1..n-1)]),j=1.. k/2 -1)],`+`)-(y[k,seq(0,i=1..n-1)])
+   +(-binomial(k,k/2)+4*binomial(k-2,k/2-1))/2*y[0,seq(0,i=1..n-1)]
   fi;
 end proc:
 
 RTHermiteMatrix:=proc(Type,n)
  local i, j;
  global y;
- if Type = A or (Type=G and n=2) then 
+ if Type = A or (Type = G and n = 2) then 
   Matrix(n+1,(i,j)->RTHermiteEntries(n,i+j));
  elif Type = B or Type = C or Type = D then
   Matrix(n  ,(i,j)->RTHermiteEntries(n,i+j));
@@ -1029,25 +1030,23 @@ BigRepGen:=proc(Type,n,d) option remember;
 end proc: 
 
 IrredRepGen:=proc(Type,n) option remember;
- local a;
  if Type = A and n = 2 then 
-  [[Matrix([[ 1]]),
-    Matrix([[ 1]])],
-   [Matrix([[-1,1],[0,1]]),
-    Matrix([[1,0],[1,-1]])],
-   [Matrix([[-1]]),
-    Matrix([[-1]])]]
+  [[Matrix([[ 1]]),Matrix([[ 1]])],
+   [Matrix([[-1]]),Matrix([[-1]])],
+   [Matrix([[-1,1],[0,1]]),Matrix([[1,0],[1,-1]])]]
  elif (Type = B or Type = C) and n = 2 then
-  [[Matrix([[ 1]]),
-    Matrix([[ 1]])],
-   [Matrix([[-1]]),
-    Matrix([[ 1]])],
-   [Matrix([[-1]]),
-    Matrix([[-1]])],
-   [Matrix([[0,1],[1,0]]),
-    Matrix([[1,0],[0,-1]])],
-   [Matrix([[ 1]]),
-    Matrix([[-1]])]]
+  [[Matrix([[ 1]]),Matrix([[ 1]])],
+   [Matrix([[-1]]),Matrix([[ 1]])],
+   [Matrix([[ 1]]),Matrix([[-1]])],
+   [Matrix([[-1]]),Matrix([[-1]])],
+   [Matrix([[0,1],[1,0]]),Matrix([[1,0],[0,-1]])]]
+ elif Type = G and n = 2 then
+  [[Matrix([[ 1]]),Matrix([[ 1]])],
+   [Matrix([[-1]]),Matrix([[ 1]])],
+   [Matrix([[-1]]),Matrix([[-1]])],
+   [Matrix([[ 1]]),Matrix([[-1]])],
+   [Matrix([[-1, 0],[ 1, 1]]),Matrix([[ 1, 3],[ 0,-1]])],
+   [Matrix([[-2,-3],[ 1, 2]]),Matrix([[ 1, 3],[ 0,-1]])]]
  elif Type = D and n = 3 then
   [[Matrix([[ 1]]),
     Matrix([[ 1]]),
@@ -1065,7 +1064,6 @@ IrredRepGen:=proc(Type,n) option remember;
     Matrix([[ 0, 1, 0],[ 1, 0, 0],[ 0, 0,-1]]),
     Matrix([[ 0,-1, 0],[-1, 0, 0],[ 0, 0,-1]])]]
  elif Type = B and n = 3 then
-  a:=exp(-2*Pi*I/3);
   [[Matrix([[ 1]]),Matrix([[ 1]]),Matrix([[ 1]])],
    [Matrix([[ 1]]),Matrix([[ 1]]),Matrix([[-1]])],
    [Matrix([[-1]]),Matrix([[-1]]),Matrix([[ 1]])],
@@ -1077,7 +1075,7 @@ IrredRepGen:=proc(Type,n) option remember;
    [Matrix([[-1,0,0],[0,0,1],[0,1,0]]),Matrix([[0,1,0],[1,0,0],[0,0,-1]]),Matrix([[-1,0,0],[0,1,0],[0,0,1]])],
    [Matrix([[-1,0,0],[0,0,1],[0,1,0]]),Matrix([[0,1,0],[1,0,0],[0,0,-1]]),Matrix([[1,0,0],[0,-1,0],[0,0,-1]])]]
  else
-  printf("Error: Only works for A2, B2, B3, C2, D3")
+  printf("Error: Only works for A2, B2, B3, C2, D3, G2")
  fi;
 end proc:
 
@@ -1093,8 +1091,10 @@ GroupStructure:=proc(Type,n,L) option remember;
  elif Type = B and n = 3 then
   L1:=L[1]: L2:=L[2]: L3:=L[3]: 
   [L1^2,L1, L2, L3,L1.L2, L1.L3, L2.L1, L2.L3, L3.L2,L1.L2.L1, L1.L2.L3, L1.L3.L2, L2.L1.L3, L2.L3.L2, L3.L2.L1, L3.L2.L3,L1.L2.L3.L1, L1.L2.L3.L2, L1.L3.L2.L1, L1.L3.L2.L3, L2.L1.L3.L2, L2.L3.L2.L1, L2.L3.L2.L3, L3.L2.L1.L3,L1.L2.L1.L3.L2, L1.L2.L3.L2.L1, L1.L2.L3.L2.L3, L1.L3.L2.L1.L3, L2.L1.L3.L2.L1, L2.L1.L3.L2.L3, L2.L3.L2.L1.L3, L3.L2.L1.L3.L2,L1.L2.L1.L3.L2.L1, L1.L2.L1.L3.L2.L3, L1.L2.L3.L2.L1.L3, L1.L3.L2.L1.L3.L2, L2.L1.L3.L2.L1.L3, L2.L3.L2.L1.L3.L2, L3.L2.L1.L3.L2.L3,L1.L2.L1.L3.L2.L1.L3, L1.L2.L3.L2.L1.L3.L2, L2.L1.L3.L2.L1.L3.L2, L2.L3.L2.L1.L3.L2.L3, L3.L2.L1.L2.L3.L2.L3, L3.L2.L1.L3.L2.L3.L1.L2, L3.L2.L1.L3.L2.L3.L2.L1,L1.L2.L1.L3.L2.L1.L3.L2,L1.L2.L1.L3.L2.L1.L3.L2.L3];
+ elif Type = G and n = 2 then
+  [L[1]^2,L[1],L[2],L[1].L[2],L[2].L[1],L[1].L[2].L[1],L[2].L[1].L[2],L[1].L[2].L[1].L[2],L[2].L[1].L[2].L[1],L[1].L[2].L[1].L[2].L[1],L[2].L[1].L[2].L[1].L[2].L[1],L[1].L[2].L[1].L[2].L[1].L[2].L[1]]
  else
-  printf("Error: Only works for A2, B2, B3, C2, D3")
+  printf("Error: Only works for A2, B2, B3, C2, D3, G2")
  fi;
 end proc:
 
@@ -1115,7 +1115,7 @@ CharTable:=proc(Type,n) option remember;
  Irr:=IrredRepGen(Type,n);
  h:=nops(Irr);
  g:=WeylGroupOrder(Type,n);
- Transpose(Matrix(h,g,(i,j)->Trace(IrredRep(Type,n)[i][j])));
+ Transpose(Matrix(h,g,(i,j)->simplify(Trace(IrredRep(Type,n)[i][j]))));
 end proc:
 
 CoinvariantMultiplicities:=proc(Type,n,d) option remember;
@@ -1126,11 +1126,11 @@ CoinvariantMultiplicities:=proc(Type,n,d) option remember;
 end proc:
 
 CoinvariantBasis:=proc(Type,n,d) option remember;
- local s, i, j, h, l, L, BigRep, Irr, IrredRep, CharTable, BigChar, mm, dd, PPP , ColSpace, SymVec, T, PolyBasis;
+ local s, i, j, h, l, L, BigRep, Irr, IrredRep, CharTable, BigChar, mm, dd, PPP , ColSpace, SymVec, T, PolyBasis, output;
 
  L:=WeightList(Type,n,d);
 
- if ((Type = A or Type = B or Type = C) and n = 2) or ((Type = B or Type = D) and n = 3) then 
+ if ((Type = A or Type = B or Type = C or Type = G) and n = 2) or ((Type = B or Type = D) and n = 3) then 
 
   BigRep:=GroupStructure(Type,n,BigRepGen(Type,n,d)):
  
@@ -1148,7 +1148,7 @@ CoinvariantBasis:=proc(Type,n,d) option remember;
  
   for i from 1 to h do
    for l from 1 to dd[i] do
-    PPP[i,l]:=dd[i]/nops(W)*convert([seq((IrredRep[i][j]^(-1))[1,l]*BigRep[j],j=1..nops(BigRep))],`+`)
+    PPP[i,l]:=simplify(dd[i]/nops(W)*convert([seq((IrredRep[i][j]^(-1))[1,l]*BigRep[j],j=1..nops(BigRep))],`+`))
    od;
   od;
 
@@ -1161,16 +1161,25 @@ CoinvariantBasis:=proc(Type,n,d) option remember;
     od; 
    od; 
   od:
+  
+  T:=Matrix([seq(seq(seq(SymVec[i,l,j],l=1..dd[i]),j=1..mm[i]),i=1..nops(dd))]): 
+  # blockdiagonalizes the matrices of the "big" representation, 
+  # columns correspond to the irreducible representations as they occur in the isotypic components
+  
+  #Matrix([seq(seq(seq(SymVec[i,l,j],j=1..mm[i]),l=1..dd[i]),i=1..nops(dd))]): 
+  # blockdiagonalizes equivariant matrices
 
-  T:=Matrix([seq(seq(seq(SymVec[i,l,j],l=1..dd[i]),j=1..mm[i]),i=1..nops(dd))]): #blockdiagonalizes the matrices of the "big" representation, columns correspond to the irreducible representations as they occur in the isotypic components
-  #  Matrix([seq(seq(seq(SymVec[i,l,j],j=1..mm[i]),l=1..dd[i]),i=1..nops(dd))]): #blockdiagonalizes equivariant matrices
+  PolyBasis:=<map(weight->convert([seq(x[i]^weight[i],i=1..n)],`*`),L)>; 
+  # basis of Laurent polynomials up to degree d
 
-  PolyBasis:=<map(weight->convert([seq(x[i]^weight[i],i=1..n)],`*`),L)>; #basis of Laurent polynomials up to degree d
+  output:=Transpose(T).PolyBasis;
+  output:=map(s->s/subs([seq(x[i]=1,i=1..n)],convert(s,list)[1]),output);
 
-  [Transpose(T).PolyBasis,map(l->T^(-1).l.T,BigRepGen(Type,n,d))]; #the coinvariant basis
+  return [output,map(l->T^(-1).l.T,BigRepGen(Type,n,d))]; 
+  # the coinvariant basis
 
  else
-  printf("Error: Only works for A2, B2, B3, C2 and D3")
+  printf("Error: Only works for A2, B2, B3, C2, D3, G2")
  fi;
 
 end proc:
