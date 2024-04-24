@@ -121,7 +121,7 @@
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L36295" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
-<Input><Text-field style="Text" layout="Normal">Download this Maple worksheet at TODO</Text-field>
+<Input><Text-field style="Text" layout="Normal">Download this Maple worksheet at <Hyperlink linktarget="https://github.com/TobiasMetzlaff/GeneralizedChebyshev/blob/main/Maple%20Worksheets/chromatic_coroot_lattice.mw" tooltip="" hyperlink="true"><Font style="Hyperlink">https://github.com/TobiasMetzlaff/GeneralizedChebyshev/blob/main/Maple%20Worksheets/chromatic_coroot_lattice.mw</Font></Hyperlink></Text-field>
 </Input>
 </Group></Presentation-Block><Presentation-Block>
 <Group view="presentation" inline-output="false" labelreference="L36296" drawlabel="true" applyint="true" applyrational="true" applyexponent="false">
