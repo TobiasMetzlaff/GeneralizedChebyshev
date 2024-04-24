@@ -1,0 +1,89 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=Cp1252">
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script><title>generating_SDP_data6.html</title>
+<!-- Created by Maple 2023.2, Windows 10 -->
+</head>
+<dl style="margin-left:40px"><a name="MapleAutoBookmark6" />
+<p align="left"><font color="#000000" size="5" face="Times New Roman"><strong>MinMax Problems for optimal coefficients</strong></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">Not only do we now minimize f but also maximize over the coefficients.</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">This implies that a finite set S of nonzero weights \mu is defined and the coefficients c_\mu supported on S satisfy some affine constraints, here given by lower and upper bounds \ell_\mu and u_\mu.</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"><img src="images/generating_SDP_data_6.gif" width="616" height="160" alt="Image" align="center" border="0"></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">The matrices A_0 and A_\mu are the same as above.</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">As an example, take the following set and constraints.</font>&nbsp;</p>
+<p align="left"><table>
+<tr>
+<td valign="top" align="center"><font color="#78000e" size="3" face="Courier New"><strong>&gt; </strong></font></td>
+<td valign="top"><font color="#78000e" size="3" face="Courier New"><strong>Type,n := 'G',2; </strong></font><font color="#808080" size="3" face="Courier New"><strong>#type, dimension
+<br></strong></font><font color="#800000" size="3" face="Courier New"><strong>S:=</strong></font><font color="#78000e" size="3" face="Courier New" style="background-color: #00ff00"><strong>ChebyshevLevel</strong></font><font color="#78000e" size="3" face="Courier New"><strong>(Type,n,2); </strong></font><font color="#808080" size="3" face="Courier New"><strong>#set of weights S</strong></font><font color="#78000e" size="3" face="Courier New"><strong>
+<br>b:=[3,-5]; #[seq(1,i=1..nops(S))]; </strong></font><font color="#808080" size="3" face="Courier New"><strong>#coefficients b_\mu</strong></font><font color="#78000e" size="3" face="Courier New"><strong>
+<br>LU:=[[-3,2],[6,8]]; #[seq([0,1],i=1..nops(S))]; </strong></font><font color="#808080" size="3" face="Courier New"><strong>#lower, upper bounds l_\mu, u_\mu</td>
+</tr>
+</table></strong></font>&nbsp;</p>
+<p align="center"><table width='100%'>
+<tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><math xmlns='http://www.w3.org/TR/MathML'><mstyle fontfamily='Times New Roman' mathsize='12pt' mathcolor='#0000ff' veryverythinmathspace='0.0555556em' verythinmathspace='0.111111em' thinmathspace='0.166667em' mediummathspace='0.222222em' thickmathspace='0.277778em' verythickmathspace='0.333333em' veryverythickmathspace='0.388889em' scriptlevel='0' scriptsizemultiplier='0.71' scriptminsize='8.0pt'><mrow><mi mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal'>Type</mi><mo mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal' separator='true' lspace='0.0em' rspace='0.3333333em'>&comma;</mo><mi mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal'>n</mi><mo mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal' lspace='0.2777778em' rspace='0.2777778em'>&Assign;</mo><mi mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal'>G</mi><mo mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal' separator='true' lspace='0.0em' rspace='0.3333333em'>&comma;</mo><mn mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal'>2</mn></mrow></mstyle></math></td>
+</tr></font>&nbsp;</p>
+<p align="center"><tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><math xmlns='http://www.w3.org/TR/MathML'><mstyle fontfamily='Times New Roman' mathsize='12pt' mathcolor='#0000ff' veryverythinmathspace='0.0555556em' verythinmathspace='0.111111em' thinmathspace='0.166667em' mediummathspace='0.222222em' thickmathspace='0.277778em' verythickmathspace='0.333333em' veryverythickmathspace='0.388889em' scriptlevel='0' scriptsizemultiplier='0.71' scriptminsize='8.0pt'><mrow><mi mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal'>S</mi><mo mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal' lspace='0.2777778em' rspace='0.2777778em'>&Assign;</mo><mfenced open='&lsqb;' close='&rsqb;' separators=','><mrow><mfenced open='&lsqb;' close='&rsqb;' separators=','><mrow><mn mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal'>0</mn><mo mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal' separator='true' lspace='0.0em' rspace='0.3333333em'>&amp;comma;</mo><mn mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal'>1</mn></mrow></mfenced><mo mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal' separator='true' lspace='0.0em' rspace='0.3333333em'>&amp;comma;</mo><mfenced open='&lsqb;' close='&rsqb;' separators=','><mrow><mn mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal'>2</mn><mo mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal' separator='true' lspace='0.0em' rspace='0.3333333em'>&amp;comma;</mo><mn mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal'>0</mn></mrow></mfenced></mrow></mfenced></mrow></mstyle></math></td>
+</tr></font>&nbsp;</p>
+<p align="center"><tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><math xmlns='http://www.w3.org/TR/MathML'><mstyle fontfamily='Times New Roman' mathsize='12pt' mathcolor='#0000ff' veryverythinmathspace='0.0555556em' verythinmathspace='0.111111em' thinmathspace='0.166667em' mediummathspace='0.222222em' thickmathspace='0.277778em' verythickmathspace='0.333333em' veryverythickmathspace='0.388889em' scriptlevel='0' scriptsizemultiplier='0.71' scriptminsize='8.0pt'><mrow><mi mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal'>b</mi><mo mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal' lspace='0.2777778em' rspace='0.2777778em'>&Assign;</mo><mfenced open='&lsqb;' close='&rsqb;' separators=','><mrow><mn mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal'>3</mn><mo mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal' separator='true' lspace='0.0em' rspace='0.3333333em'>&amp;comma;</mo><mn mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal'>&minus;5</mn></mrow></mfenced></mrow></mstyle></math></td>
+</tr></font>&nbsp;</p>
+<p align="center"><tr>
+<td valign="top" align="center"><font color="#0000ff" size="3" face="Times New Roman"><math xmlns='http://www.w3.org/TR/MathML'><mstyle fontfamily='Times New Roman' mathsize='12pt' mathcolor='#0000ff' veryverythinmathspace='0.0555556em' verythinmathspace='0.111111em' thinmathspace='0.166667em' mediummathspace='0.222222em' thickmathspace='0.277778em' verythickmathspace='0.333333em' veryverythickmathspace='0.388889em' scriptlevel='0' scriptsizemultiplier='0.71' scriptminsize='8.0pt'><mrow><mi mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal'>LU</mi><mo mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal' lspace='0.2777778em' rspace='0.2777778em'>&Assign;</mo><mfenced open='&lsqb;' close='&rsqb;' separators=','><mrow><mfenced open='&lsqb;' close='&rsqb;' separators=','><mrow><mn mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal'>&minus;3</mn><mo mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal' separator='true' lspace='0.0em' rspace='0.3333333em'>&amp;comma;</mo><mn mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal'>2</mn></mrow></mfenced><mo mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal' separator='true' lspace='0.0em' rspace='0.3333333em'>&amp;comma;</mo><mfenced open='&lsqb;' close='&rsqb;' separators=','><mrow><mn mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal'>6</mn><mo mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal' separator='true' lspace='0.0em' rspace='0.3333333em'>&amp;comma;</mo><mn mathcolor='#0000ff' color='#0000ff' fontstyle='2D Output' fontweight='normal'>8</mn></mrow></mfenced></mrow></mfenced></mrow></mstyle></math></td>
+<td width='5%' align='center'>(2.1)</td>
+</tr>
+</table></font>&nbsp;</p>
+<dl style="margin-left:40px"><a href="generating_SDP_data7.html" target="Content"><p align="left"><font color="#000000" size="5" face="Times New Roman"><strong>Step 1: Choose the hierarchy order "d"</strong></font>&nbsp;</p>
+</a></dl>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+<dl style="margin-left:40px"><a href="generating_SDP_data8.html" target="Content"><p align="left"><font color="#000000" size="4" face="Times New Roman"><strong>Step 2: SDP matrices "A"</strong></font>&nbsp;</p>
+</a></dl>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+<dl style="margin-left:40px"><a href="generating_SDP_data9.html" target="Content"><p align="left"><font color="#000000" size="4" face="Times New Roman"><strong>Step 3: List of supporting weights "S"</strong></font>&nbsp;</p>
+</a></dl>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">If you followed steps 1-3, you should have two files, "SDP_matrices_G_2_3.py" and "SDP_coefficients_S.py".</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"><img src="images/generating_SDP_data_10.gif" width="342" height="44" alt="Image" align="center" border="0"></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">To solve the SDP with, for example, python and Mosek (https://docs.mosek.com/latest/pythonapi/index.html), one can use the following code:</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman">(Make sure that the packages cvxpy, numpy, math and the solver MOSEK are installed).</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman" style="background-color: #ff0000"></font><font color="#000000" size="3" face="Times New Roman" style="background-color: #ffcc00">import os; os.chdir('</font><font color="#000000" size="3" face="Times New Roman" style="background-color: #ff0000">/Users/metzlaff/Documents/Maple/GeneralizedChebyshev Package</font><font color="#000000" size="3" face="Times New Roman" style="background-color: #ffcc00">')</font><font color="#000000" size="3" face="Times New Roman"> &nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#ff0000" size="3" face="Times New Roman">#go to the correct directory</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman" style="background-color: #ffcc00">import cvxpy as cp
+<br>import numpy as np
+<br>import math</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman" style="background-color: #ffcc00">
+<br>from </font><font color="#000000" size="3" face="Times New Roman" style="background-color: #ff0000">SDP_matrices_G_2_3</font><font color="#000000" size="3" face="Times New Roman" style="background-color: #ffcc00"> import A0,A</font><font color="#ff0000" size="3" face="Times New Roman"> &nbsp;&nbsp;&nbsp;&nbsp;# replace with file name</font><font color="#000000" size="3" face="Times New Roman" style="background-color: #ffcc00">
+<br>n,m=len(A0),len(A)</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman" style="background-color: #ffcc00">A0 = np.array(A0)
+<br>A = [np.array(A[i]) for i in range(m)]</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman" style="background-color: #ffcc00">
+<br>from </font><font color="#000000" size="3" face="Times New Roman" style="background-color: #ff0000">SDP_coefficients_S</font><font color="#000000" size="3" face="Times New Roman" style="background-color: #ffcc00"> import b,L,U</font><font color="#ff0000" size="3" face="Times New Roman"> &nbsp;&nbsp;&nbsp;&nbsp;# replace with file name</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman" style="background-color: #ffcc00">X = cp.Variable((n, n), PSD=True)</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman" style="background-color: #ffcc00"></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman" style="background-color: #ffcc00">objectiveP = -cp.trace(A0@X)</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman" style="background-color: #ffcc00">constraintsP = [cp.trace((sum([b[i]*A[i] for i in range(m)]))@X) == 1]</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"><font style="background-color: #ffcc00">for i in range(m): constraintsP.append(cp.trace(A[i]@X) &gt;= L[i])</font></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"><font style="background-color: #ffcc00">for i in range(m): constraintsP.append(cp.trace(A[i]@X) &lt;= U[i])</font></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman" style="background-color: #ffcc00">probP = cp.Problem(cp.Maximize(objectiveP), constraintsP)</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman" style="background-color: #ffcc00"></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman" style="background-color: #ffcc00">vP=probP.solve(solver='MOSEK')</font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"><font style="background-color: #ffcc00">vP</font></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"></font>&nbsp;</p>
+<p align="left"><font color="#000000" size="3" face="Times New Roman"><font style="background-color: #ffcc00">c=np.array([np.trace(A[i]@X.value) for i in L])
+<br>for i in range(len(L)): c[i]</font></font>&nbsp;</p>
+</dl>
+
+</html>
