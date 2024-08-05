@@ -1,4 +1,4 @@
-This is a Maple 2024 (https://maplesoft.com) package for computations with generalized Chebyshev polynomials associated to the simple Lie algebras. 
+This is a Maple 2024 (https://maplesoft.com) package for computations with generalized Chebyshev polynomials associated to the simple complex Lie algebras (https://en.wikipedia.org/wiki/Simple_Lie_algebra). 
 
 The main purpose of this package is to produce matrices for semi-definite programs that appear in polynomial optimization [4]. 
 Beyond that, it features several functionalities for computations with Weyl groups of simple Lie type and polynomial descriptions for the orbit space [5]. 
