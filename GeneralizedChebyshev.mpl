@@ -5,9 +5,9 @@ option package;
 
 with(LinearAlgebra):
 
-export Base, coroot, WeightMatrix, FWeight, WeylGroupOrder, RWeylGroupGen, ZWeylGroupGen, FundomVertexCoefficient, VertexFundom, VertexTOrbitSpace, VertexRTOrbitSpace, FundamentalInvariant, HighestRoot, WeightList, ChebyshevLevel, ROrbit, ZOrbit, ZOrbitCardinality, GeneralizedCosine, RGeneralizedCosine, TMultiply, TPoly, TPolyRecurrence, SubsXtoY, SubsYtoX, HermiteMatrix, RHermiteMatrix, InvariantRewrite, ChebyshevInvariantRewrite, THermiteMatrix, RTHermiteMatrix, TLocalizedPMI, TArchimedeanPMI, ChebyshevSDPdata, ChebyshevArchimedeanSDP, Pull, RPull, TruncatedTMomentMatrix, BigRepGen, IrredRepGen, IrredRepDim, CharTable, CoinvariantMultiplicities, CoinvariantBasis;
+export Base, coroot, WeightMatrix, FWeight, WeylGroupOrder, RWeylGroupGen, ZWeylGroupGen, VertexFundomCoefficient, VertexFundom, VertexTOrbitSpace, VertexRTOrbitSpace, FundamentalInvariant, HighestRoot, WeightList, ChebyshevLevel, ROrbit, ZOrbit, ZOrbitCardinality, GeneralizedCosine, RGeneralizedCosine, TMultiply, TPoly, TPolyRecurrence, SubsXtoY, SubsYtoX, HermiteMatrix, RHermiteMatrix, InvariantRewrite, ChebyshevInvariantRewrite, THermiteMatrix, RTHermiteMatrix, CoefficientListPoly, CoefficientListLaurentPoly, DegreePoly, DegreeLaurentPoly, DegreeWeightSet, RPull, Pull, TMomentMatrix, TLocalizedMomentMatrix, SDPMatrices, SDPCoefficients, SDPMinMaxCoefficients, TArchimedeanPMI, ChebyshevArchimedeanSDP, BigRepGenMultiplicative, IrredRepGenMultiplicative, IrredRepDimMultiplicative, CharTableMultiplicative, IsotypicDecompositionMultiplicitiesMultiplicative, IsotypicDecompositionBasisMultiplicative, BigRepGenLinear, IrredRepGenLinear, IrredRepDimLinear, CharTableLinear, IsotypicDecompositionMultiplicitiesLinear, IsotypicDecompositionBasisLinear, BigRepGenDiagonal, IrredRepGenDiagonal, IrredRepDimDiagonal, CharTableDiagonal, IsotypicDecompositionMultiplicitiesDiagonal, IsotypicDecompositionBasisDiagonal;
 
-local Reflection, RWeylGroup, ZWeylGroup, esp, MonomialMultiply, ChebyshevDegExp, TruncatedMonomialMomentMatrix, PrimalConstraintMatrix, DualConstraintMatrix, MonomialExponent, SolutionSet, MonomialExponent2, MonomialRewrite, MonomialHermiteMatrix, MonomialLocalizedPMI, CoeffInMatrix, ProcesiSchwarzMatrix, THermiteEntries, RTHermiteEntriesOld, RTHermiteEntries, InvariantDegrees, ZeroArrangement, EntryNameVec, GroupStructure, IrredRep;
+local Reflection, RWeylGroup, ZWeylGroup, esp, MonomialMultiply, ChebyshevDegExp, TruncatedMonomialMomentMatrix, PrimalConstraintMatrix, DualConstraintMatrix, MonomialExponent, SolutionSet, MonomialExponent2, MonomialRewrite, MonomialHermiteMatrix, MonomialLocalizedPMI, CoeffInMatrix, ProcesiSchwarzMatrix, THermiteEntries, RTHermiteEntriesOld, RTHermiteEntries, InvariantDegrees, ZeroArrangement, EntryNameVecMultiplicative, GroupStructureMultiplicative, IrredRepMultiplicative, EntryNameVecLinear, GroupStructureLinear, IrredRepLinear, EntryNameVecDiagonal, GroupStructureDiagonal, IrredRepDiagonal;
 
 ########
 #BASICS#
@@ -74,7 +74,7 @@ local i, j;
  fi;
 end proc:
 
-FundomVertexCoefficient:=proc(Type,n) # fundamental domain is convex hull of 0 and fundamental weights, divided by some scalars. this is the list of scalar divisors (!!!)
+VertexFundomCoefficient:=proc(Type,n) # fundamental domain is convex hull of 0 and fundamental weights, divided by some scalars. this is the list of scalar divisors (!!!)
 local i;
  [op(convert(Transpose(<op(HighestRoot(Type,n))>).WeightMatrix(Type,n),list)),1]
 end proc:
@@ -341,7 +341,7 @@ FundamentalInvariant:=proc(Type,n) option remember; # as Laurent polynomials
  elif Type=G and n=2 then
   [x[1]/6 + x[2]/(6*x[1]) + x[1]^2/(6*x[2]) + x[2]/(6*x[1]^2) + x[1]/(6*x[2]) + 1/(6*x[1]),x[2]/6 + x[2]^2/(6*x[1]^3) + x[1]^3/(6*x[2]) + x[1]^3/(6*x[2]^2) + x[2]/(6*x[1]^3) + 1/(6*x[2])]
  else
-  printf("Error: root system must be of Type A, B, C, D, F, G")
+  printf("Error: root system must be of simple Lie Type A, B, C, D, F, G")
  fi;
 end proc:
 
@@ -372,7 +372,7 @@ GeneralizedCosine:=proc(Type,n,u::list) # generalized cosine evaluated in u
  elif Type = G and n = 2 then
   [cos(2*Pi*(u[1] - u[2]))/3 + cos(2*Pi*(u[1] - u[3]))/3 + cos(2*Pi*(u[2] - u[3]))/3, cos(2*Pi*(u[1] - 2*u[2] + u[3]))/3 + cos(2*Pi*(u[1] + u[2] - 2*u[3]))/3 + cos((4*u[1] - 2*u[2] - 2*u[3])*Pi)/3]
  else
-  printf("Error: root system must be of Type A, B, C, D, E, F, G")
+  printf("Error: root system must be of simple Lie Type A, B, C, D, E, F, G")
  fi;
 end proc:
 
@@ -392,7 +392,7 @@ end proc:
 
 VertexFundom:=proc(Type,n) # list of vertices of the fundamental domain of orthogonal Weyl group
  local i, L, f;
- L:=FundomVertexCoefficient(Type,n);
+ L:=VertexFundomCoefficient(Type,n);
  f:=FWeight(Type,n);
  if Type = A or (Type = G and n = 2) then
   [seq(f[i]/L[i],i=1..n),[seq(0,i=1..n+1)]]
@@ -471,7 +471,7 @@ TPoly:=proc(Type,alpha)
   fi;
  od;
  #Now comes the actual procedure
- index:=select(i->is(alpha[i]>0),[seq(1..n)])[1];
+ index:=select(i->is(beta[i]>0),[seq(1..n)])[1];
  gamma:=[seq(`if`(j=index,1,0),j=1..n)];
  orb:=ZOrbit(Type,gamma);
  K:=map(l->Pull(Type,beta - gamma + l),orb);
@@ -483,14 +483,14 @@ end proc:
 
 ChebyshevInvariantRewrite:=proc(Type,n,invariant) option remember; # This proc will give an output regardless if the input is invariant or not. Input must be Laurent polynomial in x[i]
 local W, Var, Terms, Expo, Split, NewTerms, Coset, i, j, k, l;
-global y; 
- y:='y'; 
+global T; 
+ T:='T'; 
  Var:=[seq(x[i],i=1..n)]; 
  Terms:=[op(expand(invariant))]; 
  Expo:=map(k->map(l->degree(k,l),Var), Terms); 
  Split:=[seq([Terms[j]*convert([seq(Var[i]^(-Expo[j][i]),i=1..n)],`*`),map(l->degree(Terms[j],l),Var)], j=1..nops(Terms))]; 
  NewTerms:=select(l->`and`(seq(is(l[2][i]>=0),i=1..n)), Split); 
- convert(map(l->ZOrbitCardinality(Type,l[2])*l[1]*y[op(l[2])], NewTerms),`+`);  # nops(ZOrbit(Type,map(k->if k>=1 then 1 else 0 fi,l[2])))
+ convert(map(l->ZOrbitCardinality(Type,l[2])*l[1]*T[op(l[2])], NewTerms),`+`);  # nops(ZOrbit(Type,map(k->if k>=1 then 1 else 0 fi,l[2])))
 end proc:
 
 InvariantRewrite:=proc(Type,n,invariant) option remember; # This proc will give an output regardless if the input is invariant or not. Input must be Laurent polynomial in x[i]
@@ -562,7 +562,7 @@ end proc:
 
 ChebyshevDegExp:=proc(Type,n,l,bound) option remember;
  local i, L;
- select( L-> l*FundomVertexCoefficient(Type,n)[1] = convert([seq(L[i],i=1..n)],`+`) and convert([seq(FundomVertexCoefficient(Type,n)[1..n][i]*L[i],i=1..n)],`+`) <= bound,MonomialExponent(n,bound));
+ select( L-> l*VertexFundomCoefficient(Type,n)[1] = convert([seq(L[i],i=1..n)],`+`) and convert([seq(VertexFundomCoefficient(Type,n)[1..n][i]*L[i],i=1..n)],`+`) <= bound,MonomialExponent(n,bound));
 end proc:
 
 WeightList:=proc(Type,n,d)
@@ -572,7 +572,7 @@ end proc:
 
 ChebyshevLevel:=proc(Type,n,l) option remember;
  local F, L, i;
- F:=FundomVertexCoefficient(Type,n);
+ F:=VertexFundomCoefficient(Type,n);
  if Type='F' and n=4 then
   select( L-> l = convert([seq(F[1..n][i]*L[i],i=1..n)],`+`),MonomialExponent(n,l))
  else
@@ -620,6 +620,73 @@ ProcesiSchwarzMatrix:=proc(Type,n)
   return -Matrix( n , (i,j) -> InvariantRewrite(Type,n,expand( Transpose(gradtheta[i]).S.gradtheta[    j] ) ) ) ;
  fi:
 end proc:
+
+CoefficientListPoly:=proc(Type,n,d,poly) option remember;
+local Var, Inv, i, k, N, L, Weights;
+global x; 
+if type(poly,list) then
+ N:=max(map(k->Transpose(WeightMatrix(Type,n).<k[1]>).<HighestRoot(Type,n)>/VertexFundomCoefficient(Type,n)[1],poly));
+ L:=[seq(op(ChebyshevLevel(Type,n,k)),k=0..N)];
+ L:=map(l -> if nops(l) = 1 then l[1] else 0 fi, map(l -> map(k -> k[2], select(k -> is(k[1] = l), poly)), L)); 
+ Weights:=[seq(op(ChebyshevLevel(Type,n,k)),k=0..2*d)];
+ return [op(L),seq(0,i=nops(L)+1..nops(Weights))];
+else
+ x:='x'; 
+ Var:=[seq(x[i],i=1..n)]; 
+ Inv:=expand(subs([seq(z[i]=FundamentalInvariant(Type,n)[i],i=1..n)],poly));
+ return CoefficientListLaurentPoly(Type,n,d,Inv)
+fi;
+end proc:
+
+CoefficientListLaurentPoly:=proc(Type,n,d,Inv) option remember;
+local Var, Terms, Expo, Split, NewTerms, i, j, k, l, fun, N, L, Weights;
+global x; 
+ x:='x'; 
+ Var:=[seq(x[i],i=1..n)]; 
+ Terms:=[op(expand(Inv))]; 
+ Expo:=map(k->map(l->degree(k,l),Var),Terms); 
+ Split:=[seq([Terms[j]*convert([seq(Var[i]^(-Expo[j][i]),i=1..n)],`*`),map(l->degree(Terms[j],l),Var)],j=1..nops(Terms))]; 
+ NewTerms:=select(l->`and`(seq(is(l[2][i]>=0),i=1..n)), Split); 
+ fun:=map(l->[ZOrbitCardinality(Type,l[2])*l[1],l[2]],NewTerms);
+ N:=max(map(k->Transpose(WeightMatrix(Type,n).<k[2]>).<HighestRoot(Type,n)>/VertexFundomCoefficient(Type,n)[1],fun));
+ L:=[seq(op(ChebyshevLevel(Type,n,k)),k=0..N)];
+ L:=map(l -> if nops(l) = 1 then l[1] else 0 fi, map(l -> map(k -> k[1], select(k -> is(k[2] = l), fun)), L)); 
+ Weights:=[seq(op(ChebyshevLevel(Type,n,k)),k=0..2*d)];
+ return [op(L),seq(0,i=nops(L)+1..nops(Weights))];
+end proc:
+
+DegreePoly:=proc(Type,n,poly) option remember;
+local Var, Inv, VertCoeff, i, k, N, L;
+global x; 
+if type(poly,list) then
+ VertCoeff:=[seq(VertexFundomCoefficient(Type,n)[i],i=1..n)]/VertexFundomCoefficient(Type,n)[1];
+ return max(map(k-><k[1]>.<VertCoeff>,poly));
+else
+ x:='x'; 
+ Var:=[seq(x[i],i=1..n)]; 
+ Inv:=expand(subs([seq(z[i]=FundamentalInvariant(Type,n)[i],i=1..n)],poly));
+ return DegreeLaurentPoly(Type,n,Inv)
+fi;
+end proc:
+
+DegreeLaurentPoly:=proc(Type,n,Inv) option remember;
+local Var, Terms, Expo, VertCoeff, i, j, k, l, fun, N, L;
+global x; 
+ x:='x'; 
+ Var:=[seq(x[i],i=1..n)]; 
+ Terms:=[op(expand(Inv))]; 
+ Expo:=map(k->map(l->degree(k,l),Var),Terms); 
+ VertCoeff:=[seq(VertexFundomCoefficient(Type,n)[i],i=1..n)]/VertexFundomCoefficient(Type,n)[1];
+ return max(map(k-><Pull(Type,k)>.<VertCoeff>,Expo));
+end proc:
+
+DegreeWeightSet:=proc(Type,n,Set) option remember;
+local Var, Inv, VertCoeff, i, k, N, L;
+global x; 
+ VertCoeff:=[seq(VertexFundomCoefficient(Type,n)[i],i=1..n)]/VertexFundomCoefficient(Type,n)[1];
+ return max(map(k-><k>.<VertCoeff>,Set));
+end proc:
+
 
 #############
 #TORBITSPACE#
@@ -700,7 +767,7 @@ HermiteMatrix:=proc(Type,n) # polynomial matrix which characterizes the T-orbit 
                               fi):
   Matrix(n+1,(i,j)->expand(Trace(CompMat^(i+j-2))-Trace(CompMat^(i+j))))
  else
-  printf("Error: root system must be of Type A, B, C, D, G")
+  printf("Error: root system must be of simple Lie Type A, B, C, D, G")
  fi;
 end proc:
 
@@ -749,7 +816,7 @@ RHermiteMatrix:=proc(Type,n)
   if is((n+1)::odd) then CompMat:=CompMat else CompMat:=subs(Y||((n+1)/2)=z[(n+1)/2],CompMat) fi;
   Matrix(n+1,(i,j)->expand(Trace(CompMat^(i+j-2))-Trace(CompMat^(i+j))))
  else
-  printf("Error: root system must be of Type A, B, C, D, G")
+  printf("Error: root system must be of simple Lie Type A, B, C, D, G")
  fi;
 end proc:
 
@@ -765,35 +832,35 @@ end proc:
 
 THermiteEntries:=proc(Type,n,k) option remember;
 local i, j;
-global y;
+global T;
  if Type = A then
   if is(k::odd) then
-   (convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*(y[k-2*j,seq(0,i=1..n-2)]+y[seq(0,i=1..n-2),k-2*j]),j=1..(k-1)/2)],`+`)-(y[k,seq(0,i=1..n-2)]+y[seq(0,i=1..n-2),k]) )
+   (convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*(T[k-2*j,seq(0,i=1..n-2)]+T[seq(0,i=1..n-2),k-2*j]),j=1..(k-1)/2)],`+`)-(T[k,seq(0,i=1..n-2)]+T[seq(0,i=1..n-2),k]) )
   else
-   (convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*(y[k-2*j,seq(0,i=1..n-2)]+y[seq(0,i=1..n-2),k-2*j]),j=1..k/2-1  )],`+`)-(y[k,seq(0,i=1..n-2)]+y[seq(0,i=1..n-2),k])
-   +(4*binomial(k-2,k/2-1)-binomial(k,k/2))*y[0,seq(0,i=1..n-2)])
+   (convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*(T[k-2*j,seq(0,i=1..n-2)]+T[seq(0,i=1..n-2),k-2*j]),j=1..k/2-1  )],`+`)-(T[k,seq(0,i=1..n-2)]+T[seq(0,i=1..n-2),k])
+   +(4*binomial(k-2,k/2-1)-binomial(k,k/2))*T[0,seq(0,i=1..n-2)])
   fi;
  elif Type = B or Type = C or Type = D then
   if is(k::odd) then
-   (convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*y[k-2*j,seq(0,i=1..n-1)],j=1..(k-1)/2)],`+`)-y[k,seq(0,i=1..n-1)])
+   (convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*T[k-2*j,seq(0,i=1..n-1)],j=1..(k-1)/2)],`+`)-T[k,seq(0,i=1..n-1)])
   else
-   (convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*y[k-2*j,seq(0,i=1..n-1)],j=1..k/2-1)],`+`)-y[k,seq(0,i=1..n-1)]
-   +(-binomial(k,k/2)+4*binomial(k-2,k/2-1))/2*y[0,seq(0,i=1..n-1)])
+   (convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*T[k-2*j,seq(0,i=1..n-1)],j=1..k/2-1)],`+`)-T[k,seq(0,i=1..n-1)]
+   +(-binomial(k,k/2)+4*binomial(k-2,k/2-1))/2*T[0,seq(0,i=1..n-1)])
   fi;
  elif Type = G then
   if is(k::odd) then
-   (convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*y[k-2*j,0],j=1..(k-1)/2)],`+`)-y[k,0])
+   (convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*T[k-2*j,0],j=1..(k-1)/2)],`+`)-T[k,0])
   else
-   (convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*y[k-2*j,0],j=1..k/2-1  )],`+`)-y[k,0]+(-binomial(k,k/2)+4*binomial(k-2,k/2-1))/2*y[0,0])
+   (convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*T[k-2*j,0],j=1..k/2-1  )],`+`)-T[k,0]+(-binomial(k,k/2)+4*binomial(k-2,k/2-1))/2*T[0,0])
   fi;
  else
-  printf("Error: root system must be of Type A, B, C, D, G")
+  printf("Error: root system must be of simple Lie Type A, B, C, D, G")
  fi;
 end proc:
 
 THermiteMatrix:=proc(Type,n)
 local i, j;
-global y;
+global T;
  if Type = B or Type = C or Type = D then
   Matrix(n  ,(i,j)->THermiteEntries(Type,n,  i+j));
  elif Type = A then 
@@ -801,13 +868,13 @@ global y;
  elif Type = G and n = 2 then
   Matrix(3  ,(i,j)->THermiteEntries(Type,2  ,i+j));
  else
-  printf("Error: root system must be of Type A, B, C, D, G")
+  printf("Error: root system must be of simple Lie Type A, B, C, D, G")
  fi;
 end proc:
 
 RTHermiteEntriesOld:=proc(Type,n,k)
  local i, j;
- global y;
+ global T;
  if Type = A then
   if is(k::odd) then
    convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*(y[k-2*j,seq(0,i=1..n-2)]),j=1..(k-1)/2)],`+`)-(y[k,seq(0,i=1..n-2)])
@@ -817,18 +884,18 @@ RTHermiteEntriesOld:=proc(Type,n,k)
  elif Type = B or Type = C or Type = D then
   THermiteEntries(Type,n,k)
  else
-  printf("Error: root system must be of Type A, B, C, D")
+  printf("Error: root system must be of simple Lie Type A, B, C, D")
  fi;
 end proc:
 
 RTHermiteEntries:=proc(n,k)
  local i, j;
- global y;
+ global T;
   if is(k::odd) then
-   convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*(y[k-2*j,seq(0,i=1..n-1)]),j=1..(k-1)/2)],`+`)-(y[k,seq(0,i=1..n-1)])
+   convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*(T[k-2*j,seq(0,i=1..n-1)]),j=1..(k-1)/2)],`+`)-(T[k,seq(0,i=1..n-1)])
   else
-   convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*(y[k-2*j,seq(0,i=1..n-1)]),j=1.. k/2 -1)],`+`)-(y[k,seq(0,i=1..n-1)])
-   +(-binomial(k,k/2)+4*binomial(k-2,k/2-1))/2*y[0,seq(0,i=1..n-1)]
+   convert([seq((4*binomial(k-2,j-1)-binomial(k,j))*(T[k-2*j,seq(0,i=1..n-1)]),j=1.. k/2 -1)],`+`)-(T[k,seq(0,i=1..n-1)])
+   +(-binomial(k,k/2)+4*binomial(k-2,k/2-1))/2*T[0,seq(0,i=1..n-1)]
   fi;
 end proc:
 
@@ -840,7 +907,7 @@ RTHermiteMatrix:=proc(Type,n)
  elif Type = B or Type = C or Type = D then
   Matrix(n  ,(i,j)->RTHermiteEntries(n,i+j));
  else
-  printf("Error: root system must be of Type A, B, C, D, G")
+  printf("Error: root system must be of simple Lie Type A, B, C, D, G")
  fi;
 end proc:
 
@@ -848,7 +915,7 @@ end proc:
 #Moments#
 #########
 
-TruncatedTMomentMatrix:=proc(Type,n,d) option remember; # moment matrix in Chebyshev basis up to degree degbound
+TMomentMatrix:=proc(Type,n,d) option remember; # moment matrix in Chebyshev basis up to degree degbound
  local i, j, L, l;
  L:=[seq(op(ChebyshevLevel(Type,n,l)),l=0..d)];
  Matrix(nops(L),(i,j)->TMultiply(Type,L[i],L[j]));
@@ -891,7 +958,7 @@ MonomialLocalizedPMI:=proc(Type,n,d) option remember;
  <seq(Transpose(<seq(convert(map(k->k[1]*y[op(Pull(Type,k[2]+Y[i]+Y[j]))],H),`+`),i=1..binomial(n+d,n))>),j=1..binomial(n+d,n))>;
 end proc:
 
-TLocalizedPMI:=proc(Type,n,d) option remember; # works for Bn, Cn, D2n
+TLocalizedMomentMatrix:=proc(Type,n,d) option remember; # works for Bn, Cn, D2n
  local i, j, k, l, ll, Y, N, Orbs, H, h, yy;
  global y;
  y:='y';
@@ -899,7 +966,7 @@ TLocalizedPMI:=proc(Type,n,d) option remember; # works for Bn, Cn, D2n
  N:=nops(Y);
  Orbs:=[seq(ZOrbit(Type,Y[i]),i=1..N)];
  #Y:=MonomialExponent(n,d)
- #Y:=[seq(op(select(yy->Transpose(WeightMatrix(Type,n).<yy>).<HighestRoot(Type,n)> = FundomVertexCoefficient(Type,n)[1]*k,Y)),k=0..d)]
+ #Y:=[seq(op(select(yy->Transpose(WeightMatrix(Type,n).<yy>).<HighestRoot(Type,n)> = VertexFundomCoefficient(Type,n)[1]*k,Y)),k=0..d)]
  if Type = B or Type = C or Type = D then
   H:=[seq([Matrix(n,(i,j) -> if   (is(k-i-j,odd) or (k > i+j)) then 0  # following the formula for the matrix entries 
                              elif k = i+j then -1
@@ -930,29 +997,45 @@ TLocalizedPMI:=proc(Type,n,d) option remember; # works for Bn, Cn, D2n
   <seq(Transpose(<seq((convert(map(h -> h[1]*(convert(map(ll->op(map(l->y[op(Pull(Type,h[2]+l+ll))],Orbs[i])),Orbs[j]),`+`)),
                                    H),`+`))/nops(Orbs[i])/nops(Orbs[j]),i=1..N)>),j=1..N)>;
  else
-  printf("Error: root system must be of Type A, B, C, D, G")
+  printf("Error: root system must be of simple Lie Type A, B, C, D, G")
  fi;
 end proc:
 
-ChebyshevSDPdata:=proc(Type,n,d,name) option remember; #This is for the SDP solver, d must be at least n
+SDPMatrices:=proc(Type,n,d,name) option remember; #This is for the SDP solver, d must be at least n
 
- local Y, N, MY, MHY, M, i, k, Constraints;
+ local Y, N, MY, MHY, M, i, k, Constraints, Mat;
 
  #Y:=MonomialExponent2(n,d);
- #Y:=select(yy->Transpose(WeightMatrix(Type,n).<yy>).<HighestRoot(Type,n)> <= FundomVertexCoefficient(Type,n)[1]*2*d,Y);
+ #Y:=select(yy->Transpose(WeightMatrix(Type,n).<yy>).<HighestRoot(Type,n)> <= VertexFundomCoefficient(Type,n)[1]*2*d,Y);
  Y:=[seq(op(ChebyshevLevel(Type,n,i)),i=0..2*d)];
  N:=nops(Y);
- MY:=TruncatedTMomentMatrix(Type,n,d);
+ MY:=TMomentMatrix(Type,n,d);
  if Type = B or Type = C or Type = D then
-  MHY:=TLocalizedPMI(Type,n,d-n);
+  MHY:=TLocalizedMomentMatrix(Type,n,d-n);
  elif Type = A or Type = G then
-  MHY:=TLocalizedPMI(Type,n,d-n-1);
+  MHY:=TLocalizedMomentMatrix(Type,n,d-n-1);
  fi;
  M:=<<MY|Matrix(RowDimension(MY),RowDimension(MHY))>,<Matrix(RowDimension(MHY),RowDimension(MY))|MHY>>;
 
- Constraints := [ seq(CoeffInMatrix(y[op(Y[i])],M),i=1..N) ] ;
+ Constraints := map(Mat->convert(Mat,listlist),[seq(CoeffInMatrix(y[op(Y[i])],M),i=1..N)]);
 
- Export(name,[Constraints]);
+ Export(name,['A0,A'=op([Constraints[1],[seq(Constraints[i],i=2..nops(Constraints))]])]);
+end proc:
+
+SDPCoefficients:=proc(Type,n,d,poly,name)
+ local Coef, i;
+ Coef:=CoefficientListPoly(Type,n,d,poly);
+ Export(name,['C0,C'=op([Coef[1],[seq(Coef[i],i=2..nops(Coef))]])]);
+end proc:
+
+SDPMinMaxCoefficients:=proc(Type,n,d,SS,bb,LU,name)
+ local i, L, l, s, Input;
+ Input:=[seq([SS[i],LU[i],bb[i]], i=1..nops(SS))];
+ L:=[seq(op(ChebyshevLevel(Type,n,i)), i=0..2*d)]:
+ L:=[seq([L[i],i],i=1..nops(L))]:
+ L:=map(l->select(s->is(s[1] = l[1]),Input),L):
+ L:=[seq(if nops(L[i])=0 then [[0,0],0] else [op(L[i])[2],op(L[i])[3]] fi, i=1..nops(L))];
+ Export(name,['b,L,U' = op([[seq(L[i][2],i=2..nops(L))],[seq(L[i][1][1],i=2..nops(L))],[seq(L[i][1][2],i=2..nops(L))]])]);
 end proc:
 
 TArchimedeanPMI:=proc(Type,n,d) option remember; # works for Bn, Cn, D2n
@@ -980,22 +1063,22 @@ TArchimedeanPMI:=proc(Type,n,d) option remember; # works for Bn, Cn, D2n
                  )
        ,j=1..N)>;
  else
-  printf("Error: root system must be of Type B, C, D")
+  printf("Error: root system must be of simple Lie Type B, C, D")
  fi;
 end proc:
 
 ChebyshevArchimedeanSDP:=proc(Type,n,d,name) option remember; #This is for the SDP solver, d must be at least n
  local dH, dP, Y, N, MY, MHY, MPY, nY, nHY, nPY, M, i, k, Constraints;
- dP:=max(FundomVertexCoefficient(Type,n))/FundomVertexCoefficient(Type,n)[1];
+ dP:=max(VertexFundomCoefficient(Type,n))/VertexFundomCoefficient(Type,n)[1];
  dH:=n;
  Y:=[seq(op(ChebyshevLevel(Type,n,i)),i=0..2*d)];
  N:=nops(Y);
- MY:=TruncatedTMomentMatrix(Type,n,d);
+ MY:=TMomentMatrix(Type,n,d);
  if Type=B or Type=C or Type=D then
-  MHY:=TLocalizedPMI(Type,n,d-dH);
+  MHY:=TLocalizedMomentMatrix(Type,n,d-dH);
   MPY:=TArchimedeanPMI(Type,n,d-dP);
  else
-  printf("Error: root system must be of Type B, C, D")
+  printf("Error: root system must be of simple Lie Type B, C, D")
  fi;
  nY :=RowDimension(MY);
  nHY:=RowDimension(MHY);
@@ -1003,15 +1086,16 @@ ChebyshevArchimedeanSDP:=proc(Type,n,d,name) option remember; #This is for the S
  M:=<<MY|Matrix(nY,nHY)|Matrix(nY,nPY)>,<Matrix(nHY,nY)|MHY|Matrix(nHY,nPY)>,<Matrix(nPY,nY)|Matrix(nPY,nHY)|MPY>>;
 
  Constraints := [ seq(CoeffInMatrix(y[op(Y[i])],M),i=1..N) ] ;
-
+ 
  Export(name,[Constraints]);
 end proc:
+
 
 ####################
 #SYMMETRYADAPTATION#
 ####################
 
-EntryNameVec:=proc(Type,n,d,k) option remember;
+EntryNameVecMultiplicative:=proc(Type,n,d,k) option remember;
  local i, L;
  L:=WeightList(Type,n,d);
  for i from 1 to nops(L) do
@@ -1021,15 +1105,15 @@ EntryNameVec:=proc(Type,n,d,k) option remember;
  od;
 end proc:
 
-BigRepGen:=proc(Type,n,d) option remember;
+BigRepGenMultiplicative:=proc(Type,n,d) option remember;
  local i, j, k, l, listy, L, s, W; 
  s:=ZWeylGroupGen(Type,n); 
  L:=WeightList(Type,n,d); 
- listy:=[seq([seq([EntryNameVec(Type,n,d,L[k]),EntryNameVec(Type,n,d,convert(s[l].<L[k]>,list))],k=1..nops(L))],l=1..n)]; 
+ listy:=[seq([seq([EntryNameVecMultiplicative(Type,n,d,L[k]),EntryNameVecMultiplicative(Type,n,d,convert(s[l].<L[k]>,list))],k=1..nops(L))],l=1..n)]; 
  [seq(Matrix(nops(L),(i,j)->if `or`(seq(is([i,j]=listy[l][k]),k=1..nops(listy[l]))) then 1 else 0 fi),l=1..n)]; 
 end proc: 
 
-IrredRepGen:=proc(Type,n) option remember;
+IrredRepGenMultiplicative:=proc(Type,n) option remember;
  if Type = A and n = 2 then 
   [[Matrix([[ 1]]),Matrix([[ 1]])],
    [Matrix([[-1]]),Matrix([[-1]])],
@@ -1079,7 +1163,7 @@ IrredRepGen:=proc(Type,n) option remember;
  fi;
 end proc:
 
-GroupStructure:=proc(Type,n,L) option remember;
+GroupStructureMultiplicative:=proc(Type,n,L) option remember;
  local L1, L2, L3:
  if Type = A and n = 2 then
   [L[1]^2,L[1],L[2],L[1].L[2],L[2].L[1],L[1].L[2].L[1]];
@@ -1098,48 +1182,48 @@ GroupStructure:=proc(Type,n,L) option remember;
  fi;
 end proc:
 
-IrredRep:=proc(Type,n) option remember;
+IrredRepMultiplicative:=proc(Type,n) option remember;
  local Irr, h, i;
- Irr:=IrredRepGen(Type,n);
+ Irr:=IrredRepGenMultiplicative(Type,n);
  h:=nops(Irr);
- return [seq(GroupStructure(Type,n,Irr[i]),i=1..h)];
+ return [seq(GroupStructureMultiplicative(Type,n,Irr[i]),i=1..h)];
 end proc:
 
-IrredRepDim:=proc(Type,n) option remember;
+IrredRepDimMultiplicative:=proc(Type,n) option remember;
  local s;
- map(s->ColumnDimension(s[1]),IrredRepGen(Type,n));
+ map(s->ColumnDimension(s[1]),IrredRepGenMultiplicative(Type,n));
 end proc:
 
-CharTable:=proc(Type,n) option remember;
+CharTableMultiplicative:=proc(Type,n) option remember;
  local Irr, BigRep, h, g, i, j;
- Irr:=IrredRepGen(Type,n);
+ Irr:=IrredRepGenMultiplicative(Type,n);
  h:=nops(Irr);
  g:=WeylGroupOrder(Type,n);
- Transpose(Matrix(h,g,(i,j)->simplify(Trace(IrredRep(Type,n)[i][j]))));
+ Transpose(Matrix(h,g,(i,j)->simplify(Trace(IrredRepMultiplicative(Type,n)[i][j]))));
 end proc:
 
-CoinvariantMultiplicities:=proc(Type,n,d) option remember;
+IsotypicDecompositionMultiplicitiesMultiplicative:=proc(Type,n,d) option remember;
  local BigRep, BigChar, i;
- BigRep:=GroupStructure(Type,n,BigRepGen(Type,n,d)):
+ BigRep:=GroupStructureMultiplicative(Type,n,BigRepGenMultiplicative(Type,n,d)):
  BigChar:=Vector(nops(BigRep),i->Trace(BigRep[i])): 
- convert(LinearSolve(CharTable(Type,n),BigChar),list);
+ convert(LinearSolve(CharTableMultiplicative(Type,n),BigChar),list);
 end proc:
 
-CoinvariantBasis:=proc(Type,n,d) option remember;
+IsotypicDecompositionBasisMultiplicative:=proc(Type,n,d) option remember;
  local s, i, j, h, l, L, BigRep, Irr, IrredRep, CharTable, BigChar, mm, dd, PPP , ColSpace, SymVec, T, PolyBasis, output;
 
  L:=WeightList(Type,n,d);
 
  if ((Type = A or Type = B or Type = C or Type = G) and n = 2) or ((Type = B or Type = D) and n = 3) then 
 
-  BigRep:=GroupStructure(Type,n,BigRepGen(Type,n,d)):
+  BigRep:=GroupStructureMultiplicative(Type,n,BigRepGenMultiplicative(Type,n,d)):
  
-  Irr:=IrredRepGen(Type,n);
+  Irr:=IrredRepGenMultiplicative(Type,n);
   h:=nops(Irr);
-  dd:=map(s->ColumnDimension(s[1]),IrredRepGen(Type,n)): #dimensions
+  dd:=map(s->ColumnDimension(s[1]),IrredRepGenMultiplicative(Type,n)): #dimensions
 
   for i from 1 to h do
-   IrredRep[i]:=GroupStructure(Type,n,Irr[i])
+   IrredRep[i]:=GroupStructureMultiplicative(Type,n,Irr[i])
   od:
  
   CharTable:=Transpose(Matrix(h,nops(BigRep),(i,j)->Trace(IrredRep[i][j]))): #character table
@@ -1175,7 +1259,7 @@ CoinvariantBasis:=proc(Type,n,d) option remember;
   output:=Transpose(T).PolyBasis;
   output:=map(s->s/subs([seq(x[i]=1,i=1..n)],convert(s,list)[1]),output);
 
-  return [output,map(l->T^(-1).l.T,BigRepGen(Type,n,d))]; 
+  return [output,map(l->T^(-1).l.T,BigRepGenMultiplicative(Type,n,d))]; 
   # the coinvariant basis
 
  else
@@ -1184,6 +1268,243 @@ CoinvariantBasis:=proc(Type,n,d) option remember;
 
 end proc:
 
+
+
+### For linear invariants (so far only G2)
+
+EntryNameVecLinear:=proc(n,d,k) option remember;
+ local i, L;
+ L:=[seq(op(ChebyshevLevel('C',n,i)),i=0..d)];
+ for i from 1 to nops(L) do
+  if k=L[i] then
+   return i
+  fi;
+ od;
+end proc:
+
+IrredRepGenLinear:=proc(n) option remember;
+ local a; 
+ a:=exp(2*Pi*I/6); 
+  [[Matrix([[ 1]]),Matrix([[ 1]])],
+   [Matrix([[ 1]]),Matrix([[-1]])],
+   [Matrix([[-1]]),Matrix([[-1]])],
+   [Matrix([[-1]]),Matrix([[ 1]])],
+   [Matrix([[a,0],[0,1-a]]),Matrix([[0,1-a],[a,0]])],
+   [Matrix([[a-1,0],[0,-a]]),Matrix([[0,-a],[a-1,0]])]]
+end proc:
+
+GroupStructureLinear:=proc(n,L) option remember;
+  [L[1]^6,L[1]^5,L[1]^4,L[1]^3,L[1]^2,L[1],L[2].L[1]^6,L[2].L[1]^5,L[2].L[1]^4,L[2].L[1]^3,L[2].L[1]^2,L[2].L[1]]
+end proc:
+
+IrredRepLinear:=proc(n) option remember;
+ local Irr, h, i;
+ Irr:=IrredRepGenLinear(n);
+ h:=nops(Irr);
+ return [seq(GroupStructureLinear(n,Irr[i]),i=1..h)];
+end proc:
+
+IrredRepDimLinear:=proc(n) option remember;
+ local s;
+ map(s->ColumnDimension(s[1]),IrredRepGenLinear(n));
+end proc:
+
+CharTableLinear:=proc(n) option remember;
+ local Irr, BigRep, h, g, i, j;
+ Irr:=IrredRepGenLinear(n);
+ h:=nops(Irr);
+ g:=12;
+ Transpose(Matrix(h,g,(i,j)->simplify(Trace(IrredRepLinear(n)[i][j]))));
+end proc:
+
+BigRepGenLinear:=proc(n,d) option remember; #ONLY FOR DIHEDRAL GROUP D6=G2
+ local a, i, j, k, l, listy, L, s, W; 
+ a:=exp(2*Pi*I/6);
+ s:=[Matrix([[1,0],[0,1]]),Matrix([[0,1],[1,0]])];
+ L:=[seq(op(ChebyshevLevel('C',n,i)),i=0..d)]; 
+ listy:=[seq([seq([k,EntryNameVecLinear(n,d,convert(s[l].<L[k]>,list))],k=1..nops(L))],l=1..nops(s))]; 
+ [seq(Transpose(map(expand,Matrix(nops(L),(i,j)->if `or`(seq(is([i,j]=listy[l][k]),k=1..nops(listy[l]))) then (a)^(L[i][1])*(1-a)^(L[i][2]) else 0 fi))),l=1..nops(s))]; 
+end proc: 
+
+IsotypicDecompositionMultiplicitiesLinear:=proc(n,d) option remember;
+ local BigRep, BigChar, i;
+ BigRep:=GroupStructureLinear(n,BigRepGenLinear(n,d)):
+ BigChar:=Vector(nops(BigRep),i->Trace(BigRep[i])): 
+ convert(LinearSolve(CharTableLinear(n),BigChar),list);
+end proc:
+
+IsotypicDecompositionBasisLinear:=proc(n,d) option remember;
+ local s, i, j, h, l, L, BigRep, Irr, IrredRep, CharTable, BigChar, mm, dd, PPP , ColSpace, SymVec, T, PolyBasis, output;
+
+ L:=[seq(op(ChebyshevLevel('C',n,i)),i=0..d)];
+
+  BigRep:=GroupStructureLinear(n,BigRepGenLinear(n,d)):
+ 
+  Irr:=IrredRepGenLinear(n);
+  h:=nops(Irr);
+  dd:=map(s->ColumnDimension(s[1]),IrredRepGenLinear(n)): #dimensions
+
+  for i from 1 to h do
+   IrredRep[i]:=GroupStructureLinear(n,Irr[i])
+  od:
+ 
+  CharTable:=Transpose(Matrix(h,nops(BigRep),(i,j)->Trace(IrredRep[i][j]))): #character table
+  BigChar:=Vector(nops(BigRep),i->Trace(BigRep[i])): 
+  mm:=convert(LinearSolve(CharTable,BigChar),list): #multiplicities
+ 
+  for i from 1 to h do
+   for l from 1 to dd[i] do
+    PPP[i,l]:=simplify(dd[i]/nops(W)*convert([seq((IrredRep[i][j]^(-1))[1,l]*BigRep[j],j=1..nops(BigRep))],`+`))
+   od;
+  od;
+
+  for i from 1 to nops(dd) do 
+   ColSpace[i]:=ColumnSpace(PPP[i,1]); 
+   for j from 1 to mm[i] do 
+    SymVec[i,1,j]:=ColSpace[i][j]; 
+    for l from 2 to dd[i] do 
+     SymVec[i,l,j]:=PPP[i,l].SymVec[i,1,j] 
+    od; 
+   od; 
+  od:
+  
+  T:=Matrix([seq(seq(seq(SymVec[i,l,j],l=1..dd[i]),j=1..mm[i]),i=1..nops(dd))]): 
+  # blockdiagonalizes the matrices of the "big" representation, 
+  # columns correspond to the irreducible representations as they occur in the isotypic components
+  
+  #Matrix([seq(seq(seq(SymVec[i,l,j],j=1..mm[i]),l=1..dd[i]),i=1..nops(dd))]): 
+  # blockdiagonalizes equivariant matrices
+
+  PolyBasis:=<map(weight->convert([seq(z[i]^weight[i],i=1..n)],`*`),L)>; 
+  # basis of Laurent polynomials up to degree d
+
+  output:=Transpose(T).PolyBasis;
+  output:=map(s->s/subs([seq(z[i]=1,i=1..n)],convert(s,list)[1]),output);
+
+  return [output,T,map(l->T^(-1).l.T,BigRepGenLinear(n,d))]; 
+  # the coinvariant basis
+
+end proc:
+
+
+
+### For diagonal invariants (so far only G2)
+
+EntryNameVecDiagonal:=proc(n,d,k) option remember;
+ local i, L;
+ L:=[seq(op(ChebyshevLevel('C',2*n,i)),i=0..d)];
+ for i from 1 to nops(L) do
+  if k=L[i] then
+   return i
+  fi;
+ od;
+end proc:
+
+IrredRepGenDiagonal:=proc(n) option remember;
+ local a; 
+ a:=exp(2*Pi*I/6); 
+  [[Matrix([[ 1]]),Matrix([[ 1]])],
+   [Matrix([[ 1]]),Matrix([[-1]])],
+   [Matrix([[-1]]),Matrix([[-1]])],
+   [Matrix([[-1]]),Matrix([[ 1]])],
+   [Matrix([[a,0],[0,1-a]]),Matrix([[0,1-a],[a,0]])],
+   [Matrix([[a-1,0],[0,-a]]),Matrix([[0,-a],[a-1,0]])]]
+end proc:
+
+GroupStructureDiagonal:=proc(n,L) option remember;
+  [L[1]^6,L[1]^5,L[1]^4,L[1]^3,L[1]^2,L[1],L[2].L[1]^6,L[2].L[1]^5,L[2].L[1]^4,L[2].L[1]^3,L[2].L[1]^2,L[2].L[1]]
+end proc:
+
+IrredRepDiagonal:=proc(n) option remember;
+ local Irr, h, i;
+ Irr:=IrredRepGenDiagonal(n);
+ h:=nops(Irr);
+ return [seq(GroupStructureDiagonal(n,Irr[i]),i=1..h)];
+end proc:
+
+IrredRepDimDiagonal:=proc(n) option remember;
+ local s;
+ map(s->ColumnDimension(s[1]),IrredRepGenDiagonal(n));
+end proc:
+
+CharTableDiagonal:=proc(n) option remember;
+ local Irr, BigRep, h, g, i, j;
+ Irr:=IrredRepGenDiagonal(n);
+ h:=nops(Irr);
+ g:=12;
+ Transpose(Matrix(h,g,(i,j)->simplify(Trace(IrredRepDiagonal(n)[i][j]))));
+end proc:
+
+BigRepGenDiagonal:=proc(n,d) option remember; #ONLY FOR DIHEDRAL GROUP D6=G2 
+ local a, i, j, k, l, listy, L, s, W; 
+ a:=exp(2*Pi*I/6); 
+ s:=[Matrix([[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]]),Matrix([[0,1,0,0],[1,0,0,0],[0,0,0,1],[0,0,1,0]])]; 
+ L:=[seq(op(ChebyshevLevel('C',2*n,i)),i=0..d)]; 
+ listy:=[seq([seq([k,EntryNameVecDiagonal(n,d,convert(s[l].<L[k]>,list))],k=1..nops(L))],l=1..nops(s))]; 
+ [seq(Transpose(map(expand,Matrix(nops(L),(i,j)->if `or`(seq(is([i,j]=listy[l][k]),k=1..nops(listy[l]))) then (a)^(L[i][1]+L[i][4])*(1-a)^(L[i][2]+L[i][3]) else 0 fi))),l=1..nops(s))]; 
+end proc: 
+
+IsotypicDecompositionMultiplicitiesDiagonal:=proc(n,d) option remember;
+ local BigRep, BigChar, i;
+ BigRep:=GroupStructureDiagonal(n,BigRepGenDiagonal(n,d)):
+ BigChar:=Vector(nops(BigRep),i->Trace(BigRep[i])): 
+ convert(LinearSolve(CharTableDiagonal(n),BigChar),list);
+end proc:
+
+IsotypicDecompositionBasisDiagonal:=proc(n,d) option remember;
+ local s, i, j, h, l, L, BigRep, Irr, IrredRep, CharTable, BigChar, mm, dd, PPP , ColSpace, SymVec, T, PolyBasis, output;
+
+ L:=[seq(op(ChebyshevLevel('C',2*n,i)),i=0..d)];
+
+  BigRep:=GroupStructureDiagonal(n,BigRepGenDiagonal(n,d)):
+ 
+  Irr:=IrredRepGenDiagonal(n);
+  h:=nops(Irr);
+  dd:=map(s->ColumnDimension(s[1]),IrredRepGenDiagonal(n)): #dimensions
+
+  for i from 1 to h do
+   IrredRep[i]:=GroupStructureDiagonal(n,Irr[i])
+  od:
+ 
+  CharTable:=Transpose(Matrix(h,nops(BigRep),(i,j)->Trace(IrredRep[i][j]))): #character table
+  BigChar:=Vector(nops(BigRep),i->Trace(BigRep[i])): 
+  mm:=convert(LinearSolve(CharTable,BigChar),list): #multiplicities
+ 
+  for i from 1 to h do
+   for l from 1 to dd[i] do
+    PPP[i,l]:=simplify(dd[i]/nops(W)*convert([seq((IrredRep[i][j]^(-1))[1,l]*BigRep[j],j=1..nops(BigRep))],`+`))
+   od;
+  od;
+
+  for i from 1 to nops(dd) do 
+   ColSpace[i]:=ColumnSpace(PPP[i,1]); 
+   for j from 1 to mm[i] do 
+    SymVec[i,1,j]:=ColSpace[i][j]; 
+    for l from 2 to dd[i] do 
+     SymVec[i,l,j]:=PPP[i,l].SymVec[i,1,j] 
+    od; 
+   od; 
+  od:
+  
+  T:=Matrix([seq(seq(seq(SymVec[i,l,j],l=1..dd[i]),j=1..mm[i]),i=1..nops(dd))]): 
+  # blockdiagonalizes the matrices of the "big" representation, 
+  # columns correspond to the irreducible representations as they occur in the isotypic components
+  
+  #Matrix([seq(seq(seq(SymVec[i,l,j],j=1..mm[i]),l=1..dd[i]),i=1..nops(dd))]): 
+  # blockdiagonalizes equivariant matrices
+
+  PolyBasis:=<map(weight->convert([seq(x[i]^weight[i],i=1..n)],`*`)*convert([seq(y[i]^weight[n+i],i=1..n)],`*`),L)>; 
+  # basis of Laurent polynomials up to degree d
+
+  output:=Transpose(T).PolyBasis;
+  output:=map(s->s/subs([seq(x[i]=1,i=1..n),seq(y[i]=1,i=1..n)],convert(s,list)[1]),output);
+
+  return [output,T,map(l->T^(-1).l.T,BigRepGenDiagonal(n,d))]; 
+  # the coinvariant basis
+
+end proc:
+
 end module:
+
 
 NULL;
