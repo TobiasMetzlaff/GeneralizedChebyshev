@@ -5,9 +5,12 @@ option package;
 
 with(LinearAlgebra):
 
-export Base, coroot, WeightMatrix, FWeight, WeylGroupOrder, RWeylGroupGen, ZWeylGroupGen, VertexFundomCoefficient, VertexFundom, VertexTOrbitSpace, VertexRTOrbitSpace, FundamentalInvariant, HighestRoot, WeightList, ChebyshevLevel, ROrbit, ZOrbit, ZOrbitCardinality, GeneralizedCosine, RGeneralizedCosine, TMultiply, TPoly, TPolyRecurrence, SubsXtoY, SubsYtoX, HermiteMatrix, RHermiteMatrix, InvariantRewrite, ChebyshevInvariantRewrite, THermiteMatrix, RTHermiteMatrix, CoefficientListPoly, CoefficientListLaurentPoly, DegreePoly, DegreeLaurentPoly, DegreeWeightSet, RPull, Pull, TMomentMatrix, TLocalizedMomentMatrix, SDPMatrices, SDPCoefficients, SDPMinMaxCoefficients, TArchimedeanPMI, ChebyshevArchimedeanSDP, BigRepGenMultiplicative, IrredRepGenMultiplicative, IrredRepDimMultiplicative, CharTableMultiplicative, IsotypicDecompositionMultiplicitiesMultiplicative, IsotypicDecompositionBasisMultiplicative, BigRepGenLinear, IrredRepGenLinear, IrredRepDimLinear, CharTableLinear, IsotypicDecompositionMultiplicitiesLinear, IsotypicDecompositionBasisLinear, BigRepGenDiagonal, IrredRepGenDiagonal, IrredRepDimDiagonal, CharTableDiagonal, IsotypicDecompositionMultiplicitiesDiagonal, IsotypicDecompositionBasisDiagonal;
+export Base, PositiveRoots, coroot, WeightMatrix, FWeight, SteinbergWeight, WeylGroupOrder, RWeylGroupGen, WeylLength, ZWeylGroupGen, VertexFundomCoefficient, VertexFundom, VertexTOrbitSpace, VertexRTOrbitSpace, FundamentalInvariant, OrbitPolynomial, AntiOrbitPolynomial, WeylDenominator, CharacterPolynomial, HighestRoot, WeightList, ChebyshevLevel, ROrbit, ZOrbit, ZOrbitCardinality, GeneralizedCosine, RGeneralizedCosine, TMultiply, TPoly, TPolyFat, TPolyRecurrence, SubsXtoY, SubsYtoX, HermiteMatrix, RHermiteMatrix, InvariantRewrite, ChebyshevInvariantRewrite, THermiteMatrix, RTHermiteMatrix, CoefficientListPoly, CoefficientListLaurentPoly, DegreePoly, DegreeLaurentPoly, DegreeWeightSet, RPull, Pull, TMomentMatrix, TLocalizedMomentMatrix, SDPMatrices, SDPCoefficients, SDPMinMaxCoefficients, TArchimedeanPMI, ChebyshevArchimedeanSDP, BigRepGenMultiplicative, IrredRepGenMultiplicative, IrredRepDimMultiplicative, CharTableMultiplicative, IsotypicDecompositionMultiplicitiesMultiplicative, IsotypicDecompositionBasisMultiplicative, BigRepGenLinear, IrredRepGenLinear, IrredRepDimLinear, CharTableLinear, IsotypicDecompositionMultiplicitiesLinear, IsotypicDecompositionBasisLinear, BigRepGenDiagonal, IrredRepGenDiagonal, IrredRepDimDiagonal, CharTableDiagonal, IsotypicDecompositionMultiplicitiesDiagonal, IsotypicDecompositionBasisDiagonal, GradedDecompositionAdditive, GradedDecompositionMultiplicative, AdditiveToMultiplicativeCoinvariantBasis;
 
 local Reflection, RWeylGroup, ZWeylGroup, esp, MonomialMultiply, ChebyshevDegExp, TruncatedMonomialMomentMatrix, PrimalConstraintMatrix, DualConstraintMatrix, MonomialExponent, SolutionSet, MonomialExponent2, MonomialRewrite, MonomialHermiteMatrix, MonomialLocalizedPMI, CoeffInMatrix, ProcesiSchwarzMatrix, THermiteEntries, RTHermiteEntriesOld, RTHermiteEntries, InvariantDegrees, ZeroArrangement, EntryNameVecMultiplicative, GroupStructureMultiplicative, IrredRepMultiplicative, EntryNameVecLinear, GroupStructureLinear, IrredRepLinear, EntryNameVecDiagonal, GroupStructureDiagonal, IrredRepDiagonal;
+
+
+
 
 ########
 #BASICS#
@@ -33,6 +36,34 @@ local i, j;
   printf("Error: root system must be of simple Lie type")
  fi;
 end proc:
+
+PositiveRoots:=proc(type,n)
+ option remember; 
+ local i,j,k,rho;
+ rho:=Base(type,n);
+ if type = A then
+  [seq(seq([seq(if k=i then 1 elif k=j then -1 else 0 fi,k=1..n+1)],j=i+1..n+1),i=1..n  )]
+ elif type = 'B' then
+  [seq([seq(if k=i then 1 else 0 fi,k=1..n)],i=1..n),
+   seq(seq([seq(if k=i then 1 elif k=j then -1 else 0 fi,k=1..n  )],j=i+1..n  ),i=1..n-1),
+   seq(seq([seq(if k=i then 1 elif k=j then  1 else 0 fi,k=1..n  )],j=i+1..n  ),i=1..n-1)] 
+ elif type = C then
+  [seq([seq(if k=i then 2 else 0 fi,k=1..n)],i=1..n),
+   seq(seq([seq(if k=i then 1 elif k=j then -1 else 0 fi,k=1..n  )],j=i+1..n  ),i=1..n-1),
+   seq(seq([seq(if k=i then 1 elif k=j then  1 else 0 fi,k=1..n  )],j=i+1..n  ),i=1..n-1)] 
+ elif type = D then
+  [seq(seq([seq(if k=i then 1 elif k=j then -1 else 0 fi,k=1..n  )],j=i+1..n  ),i=1..n-1),
+   seq(seq([seq(if k=i then 1 elif k=j then  1 else 0 fi,k=1..n  )],j=i+1..n  ),i=1..n-1)] 
+ elif type = F and n = 4 then
+  [seq([seq(if k=i then 1 else 0 fi,k=1..n)],i=1..n),
+   seq(seq([seq(if k=i then 1 elif k=j then -1 else 0 fi,k=1..n  )],j=i+1..n  ),i=1..n-1),
+   seq(seq([seq(if k=i then 1 elif k=j then  1 else 0 fi,k=1..n  )],j=i+1..n  ),i=1..n-1),
+   1/2*[1,1,1,1],1/2*[1,1,1,-1],1/2*[1,1,-1,1],1/2*[1,-1,1,1],1/2*[1,1,-1,-1],1/2*[1,-1,1,-1],1/2*[1,-1,-1,1],1/2*[1,-1,-1,-1]]
+ elif type = G and n = 2 then
+  [rho[1],rho[1]+rho[2],2*rho[1]+rho[2],3*rho[1]+rho[2],3*rho[1]+2*rho[2],rho[2]]
+ fi;
+end proc:
+
 
 coroot:=proc(r::list) # coroot of the input
  local scalar, i;
@@ -146,6 +177,15 @@ ZWeylGroup:=proc(Type,n) option remember; # the Weyl group as an integer matrix 
  local W;
  W:=GroupTheory[Group]({op(ZWeylGroupGen(Type,n))});
  return [op(Elements(W))];
+end proc:
+
+WeylLength:=proc(type,n,s)
+ option remember;
+ local rho, rho2, L, PosRoots;
+ PosRoots:=PositiveRoots(type,n);
+ L:=map(rho->convert(-s.<rho>,list),PosRoots);
+ L:=select(rho->`or`(op(map(rho2->is(rho=rho2),PosRoots))),L);
+ return nops(L);
 end proc:
 
 ZeroArrangement:=proc(L)
@@ -314,6 +354,151 @@ ZOrbit:=proc(Type,alpha) option remember;
  return map(v->convert(M.<v>,list),Orb);
 end proc:
 
+SteinbergWeight:=proc(type,n,s)
+ option remember;
+ local omega, i, Gens, L;
+ omega:=FWeight(type,n);
+ Gens:=RWeylGroupGen(type,n);
+ L:=select(i->is(WeylLength(type,n,s.Gens[i])<WeylLength(type,n,s)),[seq(1..n)]);
+ return convert(s.<convert(map(i->omega[i],L),`+`)>,list);
+end proc:
+
+
+
+SubsXtoY:=proc(Type,n,f) 
+ global y;
+ y:='y';
+ local i, j;
+ if Type = A then
+  subs([seq(x[i]=convert([seq(y[j],j=1..i)],`*`),i=1..n  )                                                         ],f)
+ elif Type = C then
+  subs([seq(x[i]=convert([seq(y[j],j=1..i)],`*`),i=1..n  )                                                         ],f)
+ elif Type = B then
+  subs([seq(x[i]=convert([seq(y[j],j=1..i)],`*`),i=1..n-1),x[n  ]=sqrt(convert([seq(y[j],j=1..n  )],`*`)          )],f)
+ elif Type = D then
+  subs([seq(x[i]=convert([seq(y[j],j=1..i)],`*`),i=1..n-2),x[n  ]=sqrt(convert([seq(y[j],j=1..n  )],`*`)          )
+                                                          ,x[n-1]=sqrt(convert([seq(y[j],j=1..n-1)],`*`)*y[n]^(-1))],f)
+ elif Type = G then
+  subs([x[1]=y[1],x[2]=y[1]^2*y[3]],f)
+ else
+  prinf("Error: root system must be of simple Lie type")
+ fi;
+end proc:
+
+SubsYtoX:=proc(Type,n,f) 
+ global x;
+ x:='x';
+ local i, j;
+ if Type = A then
+  subs([y[1]=x[1],seq(y[i]=x[i]*x[i-1]^(-1),i=2..n),y[n+1]=x[n]^(-1),convert([seq(y[j],j=1..n+1)],`*`)=1],f)
+ elif Type = C then
+  subs([y[1]=x[1],seq(y[i]=x[i]*x[i-1]^(-1),i=2..n-1),y[n]=x[n]*x[n-1]^(-1)],f)
+ elif Type = B then
+  subs([y[1]=x[1],seq(y[i]=x[i]*x[i-1]^(-1),i=2..n-1),y[n]=x[n]^2*x[n-1]^(-1)],f)
+ elif Type = D then
+  subs([y[1]=x[1],seq(y[i]=x[i]*x[i-1]^(-1),i=2..n-2),y[n-1]=x[n]*x[n-1]*x[n-2]^(-1),y[n]=x[n]*x[n-1]^(-1)],f)
+ elif Type = G and n = 2 then
+  subs([y[1]=x[1],y[2]=x[1]*x[2]^(-1),y[3]=x[1]^(-2)*x[2],y[1]*y[2]*y[3]=1],f)
+ else
+  prinf("Error: root system must be of simple Lie type A, B, C, D, G")
+ fi;
+end proc:
+
+GradedDecompositionMultiplicative:=proc(f,n,var)
+option remember;
+
+ if f=0 then
+  [0]
+ else
+
+ local ord, i, j, InvRel, k, Gen, AugIdeal, h, g, L;
+ global x;
+
+ ord:=lexdeg([seq(var[i],i=1..2*n)]);
+
+ InvRel:=PolynomialIdeals[PolynomialIdeal](seq(1-var[i]*var[i+n],i=1..n));
+
+ k:=1;
+ g:=expand(subs([seq(seq(var[i]^(-j)=var[i+n]^j,i=1..n),j=1..6*n)],expand(f)));
+ L:=[];
+
+ while not(g=0) do
+  if k=1 then
+   Gen[k]:=PolynomialIdeals[PolynomialIdeal](seq(1-var[i],i=1..2*n))
+  else
+   Gen[k]:=PolynomialIdeals[Multiply](Gen[1],Gen[k-1])
+  fi;
+  AugIdeal[k]:=PolynomialIdeals[Add](Gen[k],InvRel);
+  h:=Groebner[NormalForm](g,Groebner[Basis]([op(PolynomialIdeals[Generators](AugIdeal[k]))],ord),ord);
+  g:=g-h;
+  L:=[op(L),h];
+  k:=k+1
+ od;
+ nops(L),subs([seq(var[i+n]=var[i]^(-1),i=1..n)],L);
+ fi;
+end proc:
+
+GradedDecompositionAdditive:=proc(f,n,var)
+option remember;
+
+ if f=0 then
+  [0]
+ else
+
+ local ord, i, InvRel, k, Gen, AugIdeal, h, g, L;
+ global omega;
+
+ ord:=lexdeg([seq(var[i],i=1..n)]);
+
+ k:=1;
+ g:=expand(f);
+ L:=[];
+
+ while not(g=0) do
+  if k=1 then
+   AugIdeal[k]:=PolynomialIdeals[PolynomialIdeal](seq(var[i],i=1..n))
+  else
+   AugIdeal[k]:=PolynomialIdeals[Multiply](AugIdeal[1],AugIdeal[k-1])
+  fi;
+  h:=Groebner[NormalForm](g,Groebner[Basis]([op(PolynomialIdeals[Generators](AugIdeal[k]))],ord),ord);
+  g:=g-h;
+  L:=[op(L),h];
+  k:=k+1
+ od;
+ nops(L)-1,L;
+ fi;
+end proc:
+
+AdditiveToMultiplicativeCoinvariantBasis:=proc(type,n,B)
+
+local i,j,SubsStandardToFWeight,g,f,ff,mindeg,ord,G,N,NN,L,LL,HilbertIdeal,M;
+
+SubsStandardToFWeight:=[seq(Y[j]=Transpose(MatrixInverse(WeightMatrix(Type,n)))[j].<seq(X[i],i=1..n)>                  ,j=1..RowDimension(WeightMatrix(Type,n)))];
+
+g:=expand(subs(SubsStandardToFWeight,B));
+
+f:=expand(subs([seq(X[i]=1-x[i]^(-1),i=1..n)],g));
+ff:=map(_->GradedDecompositionMultiplicative(_,n,x)[2],f):
+mindeg:=map(_->min(select(i->not(is(_[i]=0)),[seq(1..nops(_))]))-1,ff);
+ff:=[seq(ff[i][mindeg[i]+1],i=1..nops(ff))]:
+ff:=map(_->subs([seq(seq(x[i]^(-j)=x[i+n]^j,i=1..n),j=1..n^10)],_),ff):
+
+HilbertIdeal:=PolynomialIdeals[PolynomialIdeal](op(subs([seq(seq(x[i]^(-j)=x[i+n]^j,i=1..n),j=1..6*n)],FundamentalInvariant(Type,n))),seq(1-x[i]*x[i+n],i=1..n)):
+ord:=lexdeg([seq(x[i],i=1..2*n)]):
+G:=Groebner[Basis](HilbertIdeal,ord):
+N:=Groebner[NormalSet](G,ord)[1];
+NN:=map(_->[seq(degree(_,x[i]),i=1..2*n)],N):
+
+L:=map(_->Groebner[NormalForm](_,G,ord),ff);
+LL:=[seq(map(_->[subs([seq(x[i]=1,i=1..2*n)],_),[seq(degree(_,x[i]),i=1..2*n)]],convert(L[j],list)),j=1..nops(L))]:
+
+M:=Matrix(nops(NN),(i,j)->op(map(_->if nops(_)=0 then 0 else op(_) fi,[map(_->_[1],select(_->is(_[2]=NN[i]),LL[j]))])));
+
+return M, Determinant(M);
+
+end proc:
+
+
 ############
 #INVARIANTS#
 ############
@@ -337,12 +522,52 @@ FundamentalInvariant:=proc(Type,n) option remember; # as Laurent polynomials
    x[4]/x[1] + x[3]/(x[1]*x[4]) + x[3]/x[1] + x[2]/(x[1]*x[3]) + x[2]*x[4]/(x[1]*x[3]) + x[2]/(x[1]*x[4]) + x[3]/x[2] + x[3]*x[4]/x[2] + x[3]^2/(x[2]*x[4]) + x[4]/x[3] + x[4]^2/x[3] + 1/x[4] + x[4] + x[3]/x[4]^2 + x[3]/x[4] + x[2]*x[4]/x[3]^2 + x[2]/(x[3]*x[4]) + x[2]/x[3] + x[1]*x[4]/x[2] + x[1]*x[3]/(x[2]*x[4]) + x[1]*x[3]/x[2] + x[1]/x[3] + x[1]*x[4]/x[3] + x[1]/x[4]]
  elif Type=E and n>=6 and n<=8 then
   orb:=[seq(ZOrbit(Type,[seq(`if`(i=j,1,0),i=1..n)]),j=1..n)];
-  [seq(1/nops(orb[j])*convert(map(v->convert([seq(x[i]^v[i],i=1..6)],`*`),orb[j]),`+`),j=1..n)]
+  [seq(1/nops(orb[j])*convert(map(v->convert([seq(x[i]^v[i],i=1..n)],`*`),orb[j]),`+`),j=1..n)]
  elif Type=G and n=2 then
   [x[1]/6 + x[2]/(6*x[1]) + x[1]^2/(6*x[2]) + x[2]/(6*x[1]^2) + x[1]/(6*x[2]) + 1/(6*x[1]),x[2]/6 + x[2]^2/(6*x[1]^3) + x[1]^3/(6*x[2]) + x[1]^3/(6*x[2]^2) + x[2]/(6*x[1]^3) + 1/(6*x[2])]
  else
   printf("Error: root system must be of simple Lie Type A, B, C, D, F, G")
  fi;
+end proc:
+
+OrbitPolynomial:=proc(Type,alpha)
+ option remember;
+ local n, orb, v, i;
+ global x;
+
+ n:=nops(alpha);
+ orb:=ZOrbit(Type,alpha);
+ 1/nops(orb)*convert(map(v->convert([seq(x[i]^v[i],i=1..n)],`*`),orb),`+`);
+end proc;
+
+AntiOrbitPolynomial:=proc(Type,alpha)
+ option remember;
+ local n, G, i, j;
+ global x;
+
+ n:=nops(alpha);
+
+ G:=GroupTheory[Group](ZWeylGroupGen(Type,n));
+ G:=[op(GroupTheory[Elements](G))];
+
+ 1/nops(G)*convert([seq(Determinant(G[j])*convert([seq(x[i]^((G[j].<alpha>)[i]),i=1..n)],`*`),j=1..nops(G))],`+`);
+end proc;
+
+WeylDenominator:=proc(Type,n)
+ option remember;
+ local i, delta;
+ delta:=[seq(1,i=1..n)];
+ AntiOrbitPolynomial(Type,delta)
+end proc;
+
+CharacterPolynomial:=proc(Type,alpha)
+ option remember;
+ local n, G, i, delta;
+
+ n:=nops(alpha);
+ delta:=[seq(1,i=1..n)];
+
+ expand(simplify(AntiOrbitPolynomial(Type,alpha+delta)/AntiOrbitPolynomial(Type,delta)))
 end proc:
 
 esp:=proc(L,r) # r-th elementary symmetric polynomials, evaluated in list L
@@ -441,44 +666,70 @@ TMultiply:=proc(Type,alpha,beta) option remember; # recurrence formula for Cheby
 end proc:
 
 TPolyRecurrence:=proc(Type,alpha) option remember; # input list with nonnegative integer entries, at least one nonzero
- local n, i, j, beta, orb, K, eq;
+ local n, N, i, j, beta, gamma, orb, K, eq;
  n:=nops(alpha);
- j:=select(i->is(alpha[i]>0),[seq(i,i=1..n)])[1];
- beta:=[seq(`if`(i=j,1,0),i=1..n)];
- orb:=ZOrbit(Type,beta);
- K:=map(l->Pull(Type,alpha - beta + l),orb);
+ N:=WeylGroupOrder(Type,n);
+ beta:=Pull(Type,alpha);
+ if `and`(seq(is(beta[i]=0),i=1..n)) then
+  return T[seq(0,i=1..n)]
+ fi;
+ j:=select(i->is(beta[i]>0),[seq(i,i=1..n)])[1];
+ gamma:=[seq(`if`(i=j,1,0),i=1..n)];
+ orb:=ZOrbit(Type,gamma);
+ K:=map(l->Pull(Type,beta - gamma + l),orb);
  eq:=convert([seq(T[op(K[i])],i=1..nops(K))],`+`);
- solve(nops(orb)*T[op(beta)]*T[op(alpha-beta)]=eq,T[op(alpha)]);
+ solve(nops(orb)*T[op(gamma)]*T[op(beta-gamma)]=eq,T[op(beta)]);
 end proc:
 
-TPoly:=proc(Type,alpha)
+TPoly:=proc(Type,alpha) #for normalized orbit polynomials as in the article
  option remember;
- local n, beta, i, j, index, gamma, orb, K, KK, KKK, l, k;
+ local n, N, beta, i, j, index, gamma, orb, K, KK, KKK, l, k;
  n:=nops(alpha);
+ beta:=Pull(Type,alpha);
  global z;
  z:='z';
- if `and`(seq(is(alpha[i]=0),i=1..n)) then
+ if `and`(seq(is(beta[i]=0),i=1..n)) then
   return 1
- fi;
- if `or`(seq(is(alpha[i]<0),i=1..n)) then
-  beta:=Pull(Type,alpha)
- else
-  beta:=alpha
  fi;
  for j from 1 to n do
   if beta[j]=1 and `and`(seq(is(beta[i]=0),i=1..j-1)) and `and`(seq(is(beta[i]=0),i=j+1..n)) then
    return z[j]
   fi;
  od;
- #Now comes the actual procedure
+ #Now comes the actual procedure:
  index:=select(i->is(beta[i]>0),[seq(1..n)])[1];
  gamma:=[seq(`if`(j=index,1,0),j=1..n)];
  orb:=ZOrbit(Type,gamma);
- K:=map(l->Pull(Type,beta - gamma + l),orb);
- KK:=select(k->`and`(seq(is(k[i]=beta[i]),i=1..n)),K);
+ K:=map(l->Pull(Type,beta-gamma + l),orb);
+ KK:=select(k->`and`(seq(    is(k[i]=beta[i]) ,i=1..n)),K);
  KKK:=select(k->`or`(seq(not(is(k[i]=beta[i])),i=1..n)),K);
- #eq:=convert([seq(TPoly(Type,K[i]),i=1..nops(K))],`+`);
- expand(1/nops(KK)*(nops(orb)*TPoly(Type,beta - gamma)*z[index]-convert([seq(TPoly(Type,KKK[i]),i=1..nops(KKK))],`+`)));
+ expand(1/nops(KK)*(nops(orb)*TPoly(Type,gamma)*TPoly(Type,beta-gamma)-convert(map(k->TPoly(Type,k),KKK),`+`)));
+end proc:
+
+TPolyFat:=proc(Type,alpha) #for not-normailzed orbit polynomials
+ option remember;
+ local n, N, beta, i, j, index, gamma, orb, K, KK, KKK, l, k;
+ n:=nops(alpha);
+ N:=WeylGroupOrder(Type,n);
+ beta:=Pull(Type,alpha);
+ global z;
+ z:='z';
+ if `and`(seq(is(beta[i]=0),i=1..n)) then
+  return N
+ fi;
+ for j from 1 to n do
+  if beta[j]=1 and `and`(seq(is(beta[i]=0),i=1..j-1)) and `and`(seq(is(beta[i]=0),i=j+1..n)) then
+   return z[j]
+  fi;
+ od;
+ #Now comes the actual procedure:
+ index:=select(i->is(beta[i]>0),[seq(1..n)])[1];
+ gamma:=[seq(`if`(j=index,1,0),j=1..n)];
+ orb:=ZOrbit(Type,gamma);
+ K:=map(l->Pull(Type,beta-gamma + l),orb);
+ KK:=select(k->`and`(seq(    is(k[i]=beta[i]) ,i=1..n)),K);
+ KKK:=select(k->`or`(seq(not(is(k[i]=beta[i])),i=1..n)),K);
+ expand(1/nops(KK)*(nops(orb)/N*TPoly(Type,gamma)*TPoly(Type,beta-gamma)-convert(map(k->TPoly(Type,k),KKK),`+`)));
 end proc:
 
 ChebyshevInvariantRewrite:=proc(Type,n,invariant) option remember; # This proc will give an output regardless if the input is invariant or not. Input must be Laurent polynomial in x[i]
@@ -503,45 +754,6 @@ global y;
  Split:=[seq([Terms[j]*convert([seq(Var[i]^(-Expo[j][i]),i=1..n)],`*`),map(l->degree(Terms[j],l),Var)],j=1..nops(Terms))]; 
  NewTerms:=select(l->`and`(seq(is(l[2][i]>=0),i=1..n)), Split); 
  convert(map(l->ZOrbitCardinality(Type,l[2])*l[1]*TPoly(Type,l[2]), NewTerms),`+`); 
-end proc:
-
-SubsXtoY:=proc(Type,n,f) 
- global y;
- y:='y';
- local i, j;
- if Type = A then
-  subs([seq(x[i]=convert([seq(y[j],j=1..i)],`*`),i=1..n  )                                                         ],f)
- elif Type = C then
-  subs([seq(x[i]=convert([seq(y[j],j=1..i)],`*`),i=1..n  )                                                         ],f)
- elif Type = B then
-  subs([seq(x[i]=convert([seq(y[j],j=1..i)],`*`),i=1..n-1),x[n  ]=sqrt(convert([seq(y[j],j=1..n  )]          ,`*`))],f)
- elif Type = D then
-  subs([seq(x[i]=convert([seq(y[j],j=1..i)],`*`),i=1..n-2),x[n  ]=sqrt(convert([seq(y[j],j=1..n  )          ],`*`))
-                                                          ,x[n-1]=sqrt(convert([seq(y[j],j=1..n-1)],`*`)*y[n]^(-1))],f)
- elif Type = G then
-  subs([x[1]=y[1],x[2]=y[1]^2*y[3]],f)
- else
-  prinf("Error: root system must be of simple Lie type")
- fi;
-end proc:
-
-SubsYtoX:=proc(Type,n,f) 
- global x;
- x:='x';
- local i, j;
- if Type = A then
-  subs([y[1]=x[1],seq(y[i]=x[i]*x[i-1]^(-1),i=2..n),y[n+1]=x[n]^(-1),convert([seq(y[j],j=1..n+1)],`*`)=1],f)
- elif Type = C then
-  subs([y[1]=x[1],seq(y[i]=x[i]*x[i-1]^(-1),i=2..n-1),y[n]=x[n]*x[n-1]^(-1)],f)
- elif Type = B then
-  subs([y[1]=x[1],seq(y[i]=x[i]*x[i-1]^(-1),i=2..n-1),y[n]=x[n]^2*x[n-1]^(-1)],f)
- elif Type = D then
-  subs([y[1]=x[1],seq(y[i]=x[i]*x[i-1]^(-1),i=2..n-2),y[n-1]=x[n]*x[n-1]*x[n-2]^(-1),y[n]=x[n]*x[n-1]^(-1)],f)
- elif Type = G and n = 2 then
-  subs([y[1]=x[1],y[2]=x[1]*x[2]^(-1),y[3]=x[1]^(-2)*x[2],y[1]*y[2]*y[3]=1],f)
- else
-  prinf("Error: root system must be of simple Lie type A, B, C, D, G")
- fi;
 end proc:
 
 MonomialMultiply:=proc(alpha,beta) # recurrence formula for standard monomial basis (just for comparisons)
@@ -1203,9 +1415,12 @@ CharTableMultiplicative:=proc(Type,n) option remember;
 end proc:
 
 IsotypicDecompositionMultiplicitiesMultiplicative:=proc(Type,n,d) option remember;
- local BigRep, BigChar, i;
- BigRep:=GroupStructureMultiplicative(Type,n,BigRepGenMultiplicative(Type,n,d)):
- BigChar:=Vector(nops(BigRep),i->Trace(BigRep[i])): 
+ local W, WW, L, l, k, BigChar, i;
+ W:=ZWeylGroupGen(Type,n);
+ W:=GroupStructureMultiplicative(Type,n,W);
+ L:=WeightList(Type,n,d);
+ WW:=WeylGroupOrder(Type,n);
+ BigChar:=Vector(WW,i->nops(select(k->is(k[1]=k[2]),map(l->[convert(W[i].<l>,list),l],L))));
  convert(LinearSolve(CharTableMultiplicative(Type,n),BigChar),list);
 end proc:
 
