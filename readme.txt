@@ -30,27 +30,27 @@ The reflections can be defined through a crystallographic root system, which is 
 The invariant lattice Omega is spanned by the fundamental weights omega_1...omega_n of the root system and also called weight lattice. 
 A theorem from multiplicative invariant theory states that those elements of the group ring Q[Omega], which are invariant under the induced action of W, form a polynomial algebra: 
  
-(*) Q[Omega]^W = Q[theta_{omega_1}, ..., theta_{omega_n}],
+(*) $\mathbb{Q}[\Omega]^\mathcal{W} = \mathbb{Q}[\theta_{\omega_1}, ..., \theta_{\omega_n}],$
 
-where for every weight in Omega we define the "generalized cosine" 
+where for every weight $\mu\in\Omega$ we define the "generalized cosine" 
 
-    theta_weight := 1/|W| \sum\limits_{A \in W} e^{A weight},
+    $\theta_\mu := \frac{1}{\vert\mathcal{W}\vert} \sum\limits_{s \in \mathcal{W}} e^{s(\mu)}$,
     
 which is simply the averaging sum over all orbit points and in particular invariant. 
-The property (*) allows to define the generalized Chebyshev polynomial (of the first kind) associated to a weight, namely the unique multivariate T_weight in Q[z_1, ..., z_n], such that 
+The property (*) allows to define the generalized Chebyshev polynomial (of the first kind) associated to a weight, namely the unique multivariate $T_\mu \in \mathbb{Q}[z_1, ..., z_n]$, such that 
 
-    T_weight(theta_{omega_1}, ..., theta_{omega_n}) = theta_weight.
+    $T_\mu(\theta_{\omega_1}, ..., \theta_{\omega_n}) = \theta_\mu$.
 
-(Why is it called "generalized"? Because this extends the univariate Chebyshev polynomials defined by T_k ((x+x^{-1})/2) = (x^k + x^{-k})/2.) 
-These polynomials form a basis of Q[z_1, ..., z_n] and are orthogonal on the orbit space of W, that is, on the basic semi-algebraic set 
+(Why is it called "generalized"? Because this extends the univariate Chebyshev polynomials defined by $T_k ((x+x^{-1})/2) = (x^k + x^{-k})/2$.) 
+These polynomials form a basis of $\mathbb{Q}[z_1, ..., z_n]$ and are orthogonal on the orbit space of W, that is, on the basic semi-algebraic set 
 
-    TOrbSpace := { (theta_{omega_1}, ..., theta_{omega_n})(u) | u in R^n }.
+    $Z := { (\theta_{\mu_1}, ..., \theta_{\mu_n})(u) \vert u in \mathbb{R}^n }$.
 
-Here, theta_weight becomes a function in u by setting e^{weight}(u) := exp(-2 Pi i <weight, u>). 
+Here, $\theta_\mu$ becomes a function in $u$ by setting $e^{\mu}(u) := \exp(-2 \pi i \langle \mu, u \rangle )$. 
 Those are the special functions associated to root systems, that is, periodic W-invariant trigonometric polynomials, see [6] for more. 
 In [5], we have constructed a Hermite matrix polynomial H with the property
 
-    TOrbSpace = { z in R^n | H(z) is positive semi-definite}.
+    $Z = \{ z \in \mathbb{R}^n \vert H(z) \mbox{ is positive semi-definite} \}$.
     
 The matrix entries of H are given through a closed formula that is available as a command in the package. 
 Alternatively, one can use a "Procesi-Schwarz-type approach", which is described in section 4 of [7], which we conjecture to be applicable for multiplicative actions in [5]. 
@@ -86,10 +86,10 @@ https://link.springer.com/chapter/10.1007/978-1-4757-3542-0_1
 -Our work on the subject:
 
 [4] E. Hubert, T. Metzlaff, P. Moustrou and C. Riener: Optimization of trigonometric polynomials with crystallographic symmetry and spectral bounds for set avoiding graphs.
-https://hal.science/hal-03768067
+https://link.springer.com/article/10.1007/s10107-024-02149-1
 
-[5] E. Hubert, T. Metzlaff, and C. Riener: Polynomial description for the T-orbit spaces of multiplicative actions.
-https://hal.science/hal-03590007
+[5] E. Hubert, T. Metzlaff, and C. Riener: Orbit Spaces of Weyl Groups Acting on Compact Tori: A Unified and Explicit Polynomial Description.
+https://epubs.siam.org/doi/10.1137/23M158173X
 
 
 -An introduction to the numerical aspects of Fourier analysis with special functions of root systems:
