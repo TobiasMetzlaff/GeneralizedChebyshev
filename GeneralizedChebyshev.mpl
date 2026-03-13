@@ -5,9 +5,9 @@ option package;
 
 with(LinearAlgebra):
 
-export Base, PositiveRoots, coroot, WeightMatrix, FWeight, SteinbergWeight, WeylGroupOrder, RWeylGroupGen, WeylLength, ZWeylGroupGen, VertexFundomCoefficient, VertexFundom, VertexTOrbitSpace, VertexRTOrbitSpace, FundamentalInvariant, OrbitPolynomial, AntiOrbitPolynomial, WeylDenominator, CharacterPolynomial, HighestRoot, WeightList, ChebyshevLevel, ROrbit, ZOrbit, ZOrbitCardinality, GeneralizedCosine, RGeneralizedCosine, TMultiply, TPoly, TPolyFat, TPolyRecurrence, SubsXtoY, SubsYtoX, HermiteMatrix, RHermiteMatrix, InvariantRewrite, ChebyshevInvariantRewrite, THermiteMatrix, RTHermiteMatrix, CoefficientListPoly, CoefficientListLaurentPoly, DegreePoly, DegreeLaurentPoly, DegreeWeightSet, RPull, Pull, TMomentMatrix, TLocalizedMomentMatrix, SDPMatrices, SDPCoefficients, SDPMinMaxCoefficients, TArchimedeanPMI, ChebyshevArchimedeanSDP, BigRepGenMultiplicative, IrredRepGenMultiplicative, IrredRepDimMultiplicative, CharTableMultiplicative, IsotypicDecompositionMultiplicitiesMultiplicative, IsotypicDecompositionBasisMultiplicative, BigRepGenLinear, IrredRepGenLinear, IrredRepDimLinear, CharTableLinear, IsotypicDecompositionMultiplicitiesLinear, IsotypicDecompositionBasisLinear, BigRepGenDiagonal, IrredRepGenDiagonal, IrredRepDimDiagonal, CharTableDiagonal, IsotypicDecompositionMultiplicitiesDiagonal, IsotypicDecompositionBasisDiagonal, GradedDecompositionAdditive, GradedDecompositionMultiplicative, AdditiveToMultiplicativeCoinvariantBasis;
+export Base, PositiveRoots, coroot, WeightMatrix, FWeight, SteinbergWeight, WeylGroupOrder, RWeylGroupGen, WeylLength, ZWeylGroupGen, VertexFundomCoefficient, VertexFundom, VertexTOrbitSpace, VertexRTOrbitSpace, FundamentalInvariant, OrbitPolynomial, AntiOrbitPolynomial, WeylDenominator, CharacterPolynomial, HighestRoot, WeightList, ChebyshevLevel, ROrbit, ZOrbit, ZOrbitCardinality, GeneralizedCosine, RGeneralizedCosine, TMultiply, TPoly, TPolyFat, TPolyRecurrence, SubsXtoY, SubsYtoX, HermiteMatrix, RHermiteMatrix, InvariantRewrite, ChebyshevInvariantRewrite, MultiplicativeAction, IsMultiplicativeInvariant, THermiteMatrix, RTHermiteMatrix, CoefficientListPoly, CoefficientListLaurentPoly, DegreePoly, DegreeLaurentPoly, DegreeWeightSet, RPull, Pull, TMomentMatrix, TLocalizedMomentMatrix, SDPMatrices, SDPCoefficients, SDPMinMaxCoefficients, TArchimedeanPMI, ChebyshevArchimedeanSDP, BigRepGenMultiplicative, IrredRepGenMultiplicative, IrredRepDimMultiplicative, CharTableMultiplicative, IsotypicDecompositionMultiplicitiesMultiplicative, IsotypicDecompositionBasisMultiplicative, BigRepGenLinear, IrredRepGenLinear, IrredRepDimLinear, CharTableLinear, IsotypicDecompositionMultiplicitiesLinear, IsotypicDecompositionBasisLinear, BigRepGenDiagonal, IrredRepGenDiagonal, IrredRepDimDiagonal, CharTableDiagonal, IsotypicDecompositionMultiplicitiesDiagonal, IsotypicDecompositionBasisDiagonal, GradedDecompositionAdditive, GradedDecompositionMultiplicative, AdditiveToMultiplicativeCoinvariantBasis, RWeylGroup, ZWeylGroup;
 
-local Reflection, RWeylGroup, ZWeylGroup, esp, MonomialMultiply, ChebyshevDegExp, TruncatedMonomialMomentMatrix, PrimalConstraintMatrix, DualConstraintMatrix, MonomialExponent, SolutionSet, MonomialExponent2, MonomialRewrite, MonomialHermiteMatrix, MonomialLocalizedPMI, CoeffInMatrix, ProcesiSchwarzMatrix, THermiteEntries, RTHermiteEntriesOld, RTHermiteEntries, InvariantDegrees, ZeroArrangement, EntryNameVecMultiplicative, GroupStructureMultiplicative, IrredRepMultiplicative, EntryNameVecLinear, GroupStructureLinear, IrredRepLinear, EntryNameVecDiagonal, GroupStructureDiagonal, IrredRepDiagonal;
+local Reflection, esp, MonomialMultiply, ChebyshevDegExp, TruncatedMonomialMomentMatrix, PrimalConstraintMatrix, DualConstraintMatrix, MonomialExponent, SolutionSet, MonomialExponent2, MonomialRewrite, MonomialHermiteMatrix, MonomialLocalizedPMI, CoeffInMatrix, ProcesiSchwarzMatrix, THermiteEntries, RTHermiteEntriesOld, RTHermiteEntries, InvariantDegrees, ZeroArrangement, EntryNameVecMultiplicative, GroupStructureMultiplicative, IrredRepMultiplicative, EntryNameVecLinear, GroupStructureLinear, IrredRepLinear, EntryNameVecDiagonal, GroupStructureDiagonal, IrredRepDiagonal;
 
 
 
@@ -370,16 +370,18 @@ SubsXtoY:=proc(Type,n,f)
  y:='y';
  local i, j;
  if Type = A then
-  subs([seq(x[i]=convert([seq(y[j],j=1..i)],`*`),i=1..n  )                                                         ],f)
+  subs([seq(x[i]=convert([seq(y[j],j=1..i)],`*`),i=1..n  ),seq(X[i]=convert([seq(Y[j],j=1..i)],`+`),i=1..n  )],f)
  elif Type = C then
-  subs([seq(x[i]=convert([seq(y[j],j=1..i)],`*`),i=1..n  )                                                         ],f)
+  subs([seq(x[i]=convert([seq(y[j],j=1..i)],`*`),i=1..n  ),seq(X[i]=convert([seq(Y[j],j=1..i)],`+`),i=1..n  )],f)
  elif Type = B then
-  subs([seq(x[i]=convert([seq(y[j],j=1..i)],`*`),i=1..n-1),x[n  ]=sqrt(convert([seq(y[j],j=1..n  )],`*`)          )],f)
+  subs([seq(x[i]=convert([seq(y[j],j=1..i)],`*`),i=1..n-1),x[n]=sqrt(convert([seq(y[j],j=1..n  )],`*`)),seq(X[i]=convert([seq(Y[j],j=1..i)],`+`),i=1..n-1),X[n]=1/2*(convert([seq(Y[j],j=1..n  )],`+`))],f)
  elif Type = D then
   subs([seq(x[i]=convert([seq(y[j],j=1..i)],`*`),i=1..n-2),x[n  ]=sqrt(convert([seq(y[j],j=1..n  )],`*`)          )
-                                                          ,x[n-1]=sqrt(convert([seq(y[j],j=1..n-1)],`*`)*y[n]^(-1))],f)
+                                                          ,x[n-1]=sqrt(convert([seq(y[j],j=1..n-1)],`*`)*y[n]^(-1)),
+        seq(X[i]=convert([seq(Y[j],j=1..i)],`+`),i=1..n-2),X[n  ]=1/2*(convert([seq(Y[j],j=1..n  )],`+`)          )
+                                                          ,X[n-1]=1/2*(convert([seq(Y[j],j=1..n-1)],`+`)-Y[n]     )],f)
  elif Type = G then
-  subs([x[1]=y[1],x[2]=y[1]^2*y[3]],f)
+  subs([x[1]=y[1],x[2]=y[1]^2*y[3],X[1]=Y[1],X[2]=2*Y[1]+Y[3]],f)
  else
   prinf("Error: root system must be of simple Lie type")
  fi;
@@ -390,15 +392,20 @@ SubsYtoX:=proc(Type,n,f)
  x:='x';
  local i, j;
  if Type = A then
-  subs([y[1]=x[1],seq(y[i]=x[i]*x[i-1]^(-1),i=2..n),y[n+1]=x[n]^(-1),convert([seq(y[j],j=1..n+1)],`*`)=1],f)
+  subs([y[1]=x[1],seq(y[i]=x[i]*x[i-1]^(-1),i=2..n),y[n+1]= x[n]^(-1),convert([seq(y[j],j=1..n+1)],`*`)=1,
+        Y[1]=X[1],seq(Y[i]=X[i]-X[i-1]     ,i=2..n),Y[n+1]=-X[n]     ,convert([seq(Y[j],j=1..n+1)],`+`)=0],f)
  elif Type = C then
-  subs([y[1]=x[1],seq(y[i]=x[i]*x[i-1]^(-1),i=2..n-1),y[n]=x[n]*x[n-1]^(-1)],f)
+  subs([y[1]=x[1],seq(y[i]=x[i]*x[i-1]^(-1),i=2..n-1),y[n]=x[n]  *x[n-1]^(-1),
+        Y[1]=X[1],seq(Y[i]=X[i]-X[i-1]     ,i=2..n-1),Y[n]=X[n]  -X[n-1]     ],f)
  elif Type = B then
-  subs([y[1]=x[1],seq(y[i]=x[i]*x[i-1]^(-1),i=2..n-1),y[n]=x[n]^2*x[n-1]^(-1)],f)
+  subs([y[1]=x[1],seq(y[i]=x[i]*x[i-1]^(-1),i=2..n-1),y[n]=x[n]^2*x[n-1]^(-1),
+        Y[1]=X[1],seq(Y[i]=X[i]-X[i-1]     ,i=2..n-1),Y[n]=2*X[n]-X[n-1]     ],f)
  elif Type = D then
-  subs([y[1]=x[1],seq(y[i]=x[i]*x[i-1]^(-1),i=2..n-2),y[n-1]=x[n]*x[n-1]*x[n-2]^(-1),y[n]=x[n]*x[n-1]^(-1)],f)
+  subs([y[1]=x[1],seq(y[i]=x[i]*x[i-1]^(-1),i=2..n-2),y[n-1]=x[n]*x[n-1]*x[n-2]^(-1),y[n]=x[n]*x[n-1]^(-1),
+        Y[1]=X[1],seq(Y[i]=X[i]-X[i-1]     ,i=2..n-2),Y[n-1]=X[n]+X[n-1]-X[n-2]     ,Y[n]=X[n]-X[n-1]     ],f)
  elif Type = G and n = 2 then
-  subs([y[1]=x[1],y[2]=x[1]*x[2]^(-1),y[3]=x[1]^(-2)*x[2],y[1]*y[2]*y[3]=1],f)
+  subs([y[1]=x[1],y[2]=x[1]*x[2]^(-1),y[3]=x[1]^(-2)*x[2],y[1]*y[2]*y[3]=1,
+        Y[1]=X[1],Y[2]=X[1]-X[2]     ,Y[3]=-2*X[1]+x[2]  ,Y[1]+Y[2]+Y[3]=0],f)
  else
   prinf("Error: root system must be of simple Lie type A, B, C, D, G")
  fi;
@@ -470,10 +477,11 @@ option remember;
 end proc:
 
 AdditiveToMultiplicativeCoinvariantBasis:=proc(type,n,B)
+option remember;
 
 local i,j,SubsStandardToFWeight,g,f,ff,mindeg,ord,G,N,NN,L,LL,HilbertIdeal,M;
 
-SubsStandardToFWeight:=[seq(Y[j]=Transpose(MatrixInverse(WeightMatrix(Type,n)))[j].<seq(X[i],i=1..n)>                  ,j=1..RowDimension(WeightMatrix(Type,n)))];
+SubsStandardToFWeight:=[seq(Y[j]=Transpose(MatrixInverse(WeightMatrix(Type,n)))[j].<seq(X[i],i=1..n)>,j=1..RowDimension(WeightMatrix(Type,n)))];
 
 g:=expand(subs(SubsStandardToFWeight,B));
 
@@ -490,11 +498,14 @@ N:=Groebner[NormalSet](G,ord)[1];
 NN:=map(_->[seq(degree(_,x[i]),i=1..2*n)],N):
 
 L:=map(_->Groebner[NormalForm](_,G,ord),ff);
-LL:=[seq(map(_->[subs([seq(x[i]=1,i=1..2*n)],_),[seq(degree(_,x[i]),i=1..2*n)]],convert(L[j],list)),j=1..nops(L))]:
 
-M:=Matrix(nops(NN),(i,j)->op(map(_->if nops(_)=0 then 0 else op(_) fi,[map(_->_[1],select(_->is(_[2]=NN[i]),LL[j]))])));
+return expand(subs([seq(x[i]=x[i-n]^(-1),i=n+1..2*n)],L));
 
-return M, Determinant(M);
+#LL:=[seq(map(_->[subs([seq(x[i]=1,i=1..2*n)],_),[seq(degree(_,x[i]),i=1..2*n)]],convert(L[j],list)),j=1..nops(L))]:
+
+#M:=Matrix(nops(NN),(i,j)->op(map(_->if nops(_)=0 then 0 else op(_) fi,[map(_->_[1],select(_->is(_[2]=NN[i]),LL[j]))])));
+
+#return M, Determinant(M);
 
 end proc:
 
@@ -732,16 +743,11 @@ TPolyFat:=proc(Type,alpha) #for not-normailzed orbit polynomials
  expand(1/nops(KK)*(nops(orb)/N*TPoly(Type,gamma)*TPoly(Type,beta-gamma)-convert(map(k->TPoly(Type,k),KKK),`+`)));
 end proc:
 
-ChebyshevInvariantRewrite:=proc(Type,n,invariant) option remember; # This proc will give an output regardless if the input is invariant or not. Input must be Laurent polynomial in x[i]
-local W, Var, Terms, Expo, Split, NewTerms, Coset, i, j, k, l;
-global T; 
- T:='T'; 
- Var:=[seq(x[i],i=1..n)]; 
- Terms:=[op(expand(invariant))]; 
- Expo:=map(k->map(l->degree(k,l),Var), Terms); 
- Split:=[seq([Terms[j]*convert([seq(Var[i]^(-Expo[j][i]),i=1..n)],`*`),map(l->degree(Terms[j],l),Var)], j=1..nops(Terms))]; 
- NewTerms:=select(l->`and`(seq(is(l[2][i]>=0),i=1..n)), Split); 
- convert(map(l->ZOrbitCardinality(Type,l[2])*l[1]*T[op(l[2])], NewTerms),`+`);  # nops(ZOrbit(Type,map(k->if k>=1 then 1 else 0 fi,l[2])))
+MultiplicativeAction:=proc(Type,n,transformation,polynomial)
+ local s,f,i,j;
+ s:=transformation;
+ f:=polynomial;
+ return simplify(subs([seq(x[i]=convert([seq(x[j]^(s[j][i]),j=1..n)],`*`),i=1..n)],f));
 end proc:
 
 InvariantRewrite:=proc(Type,n,invariant) option remember; # This proc will give an output regardless if the input is invariant or not. Input must be Laurent polynomial in x[i]
@@ -754,6 +760,31 @@ global y;
  Split:=[seq([Terms[j]*convert([seq(Var[i]^(-Expo[j][i]),i=1..n)],`*`),map(l->degree(Terms[j],l),Var)],j=1..nops(Terms))]; 
  NewTerms:=select(l->`and`(seq(is(l[2][i]>=0),i=1..n)), Split); 
  convert(map(l->ZOrbitCardinality(Type,l[2])*l[1]*TPoly(Type,l[2]), NewTerms),`+`); 
+end proc:
+
+ChebyshevInvariantRewrite:=proc(Type,n,invariant) option remember; # This proc will give an output regardless if the input is invariant or not. Input must be Laurent polynomial in x[i]
+local W, Var, Terms, Expo, Split, NewTerms, Coset, i, j, k, l;
+global T; 
+ T:='T'; 
+ Var:=[seq(x[i],i=1..n)]; 
+ Terms:=[op(expand(invariant))]; 
+ Expo:=map(k->map(l->degree(k,l),Var), Terms); 
+ Split:=[seq([Terms[j]*convert([seq(Var[i]^(-Expo[j][i]),i=1..n)],`*`),map(l->degree(Terms[j],l),Var)], j=1..nops(Terms))]; 
+ NewTerms:=select(l->`and`(seq(is(l[2][i]>=0),i=1..n)), Split); 
+ convert(map(l->ZOrbitCardinality(Type,l[2])*l[1]*T[op(l[2])], NewTerms),`+`);  # nops(ZOrbit(Type,map(k->if k>=1 then 1 else 0 fi,l[2])))
+end proc:
+
+IsMultiplicativeInvariant:=proc(Type,n,polynomial)
+ local s,f,L,l,i,booly;
+ s:=ZWeylGroupGen(Type,n);
+ f:=polynomial;
+ L:=[seq(simplify(f-MultiplicativeAction(Type,n,s[i],f)),i=1..nops(s))];
+ booly:=convert(map(l->is(l=0),L),`and`);
+ if booly then
+  return op([booly,[InvariantRewrite(Type,n,f)]])
+ else
+  return booly
+ fi;
 end proc:
 
 MonomialMultiply:=proc(alpha,beta) # recurrence formula for standard monomial basis (just for comparisons)
